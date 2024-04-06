@@ -1,13 +1,60 @@
 # User Interface (UI) for Bad Walden Stadtwerke
 
 This directory contains all the user interface design for the utility service management software for the city of Bad Walden.
-
 ![UI Design](Stadtwerke_UI.svg)
 
 ## Structure
 
 The UI is structured into several Pages, each with multiple states.
 For each page, the top frame is the initial state when the page is loaded. Below the top frame, there are several states that the page can be in. The states are triggered by user interaction, such as clicking a button or selecting an option from a dropdown menu.
+
+### Basic Design
+
+#### Layout
+
+#### Color Scheme
+
+---
+
+### Pages
+
+#### Login
+
+![Login Page](Login/Exports/Login.svg)
+
+##### First Login
+
+---
+
+#### Buerger
+
+##### Home
+
+##### Stadtwerke
+
+##### Wasser
+
+##### Strom
+
+##### Gas
+
+##### Wärmepumpe
+
+##### Rechnungen
+
+---
+
+#### Admin
+
+##### Wasser
+
+##### Strom
+
+##### Gas
+
+##### Wärmepumpe
+
+##### Kunden
 
 ## Getting Started
 
