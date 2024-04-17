@@ -1,11 +1,11 @@
-package com.bad_walden_stadtwerke.components.communication;
+package com.bad_walden_stadtwerke.communication;
 
 import java.io.IOException;
 import java.net.URI;
 
 import com.bad_walden_stadtwerke.components.ExceptionPopup;
-import com.bad_walden_stadtwerke.components.mock.MockHttpClient;
-import com.bad_walden_stadtwerke.components.mock.MockActiveSession;
+import com.bad_walden_stadtwerke.mock.MockHttpClient;
+import com.bad_walden_stadtwerke.mock.MockActiveSession;
 
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;

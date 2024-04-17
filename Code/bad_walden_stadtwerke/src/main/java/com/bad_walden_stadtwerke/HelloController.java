@@ -7,8 +7,8 @@ import javafx.scene.control.Label;
 import java.io.IOException;
 import java.util.Locale;
 
-import static com.example.demo.HelloApplication.switchScene;
-import static com.example.demo.LanguageController.setLanguage;
+import static com.bad_walden_stadtwerke.HelloApplication.switchScene;
+import static com.bad_walden_stadtwerke.LanguageController.setLanguage;
 
 public class HelloController {
 

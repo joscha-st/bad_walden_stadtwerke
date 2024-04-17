@@ -1,4 +1,4 @@
-package com.bad_walden_stadtwerke.components.mock;
+package com.bad_walden_stadtwerke.mock;
 
 import static org.mockito.Mockito.*;
 

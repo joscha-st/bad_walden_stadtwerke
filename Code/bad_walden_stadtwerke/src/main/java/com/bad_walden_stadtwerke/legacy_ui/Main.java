@@ -1,4 +1,4 @@
-package com.bad_walden_stadtwerke;
+package com.bad_walden_stadtwerke.legacy_ui;
 
 import com.bad_walden_stadtwerke.components.MainContent;
 import com.bad_walden_stadtwerke.components.Sidebar;
