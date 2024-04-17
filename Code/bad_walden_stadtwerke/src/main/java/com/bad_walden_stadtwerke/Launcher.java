@@ -1,4 +1,4 @@
-package com.bad_walden_stadtwerke.legacy_ui;
+package com.bad_walden_stadtwerke;
 
 import com.bad_walden_stadtwerke.HelloApplication;
 

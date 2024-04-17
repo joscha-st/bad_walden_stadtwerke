@@ -18,7 +18,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>com.bad_walden_stadtwerke.legacy_ui.Launcher</mainClass>
+                  <mainClass>com.bad_walden_stadtwerke.Launcher</mainClass>
                 </transformer>
               </transformers>
             </configuration>
