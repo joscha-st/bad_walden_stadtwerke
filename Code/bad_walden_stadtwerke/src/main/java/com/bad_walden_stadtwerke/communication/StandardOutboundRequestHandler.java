@@ -3,7 +3,7 @@ package com.bad_walden_stadtwerke.communication;
 import java.io.IOException;
 import java.net.URI;
 
-import com.bad_walden_stadtwerke.components.ExceptionPopup;
+import com.bad_walden_stadtwerke.ui.components.errorHandling.ExceptionPopup;
 import com.bad_walden_stadtwerke.mock.MockHttpClient;
 import com.bad_walden_stadtwerke.mock.MockActiveSession;
 
