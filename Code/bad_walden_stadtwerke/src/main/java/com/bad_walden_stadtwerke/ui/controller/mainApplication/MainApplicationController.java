@@ -1,14 +1,15 @@
 package com.bad_walden_stadtwerke.ui.controller.mainApplication;
 
-import com.bad_walden_stadtwerke.ui.components.mainApplication.Sidebar;
+import com.bad_walden_stadtwerke.ui.components.mainApplication.SidebarItems;
 import com.bad_walden_stadtwerke.ui.controller.LanguageController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TreeView;
-import javafx.scene.control.TreeItem;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.scene.control.TreeItem;
 
 public class MainApplicationController {
 
@@ -24,16 +25,22 @@ public class MainApplicationController {
     @FXML
     private Button englishButton;
 
+    private SidebarItems sidebarItems;
+
     @FXML
     public void initialize() {
         setupSidebar();
         setupLogoutButton();
     }
+    private ChangeListener<TreeItem<String>> sidebarListener;
 
     private void setupSidebar() {
-        TreeItem<String> rootItem = Sidebar.createRootItem();
-        sidebarTreeView.setRoot(rootItem);
-        Sidebar.setTreeViewActionListener(sidebarTreeView);
+        if (sidebarListener != null) {
+            sidebarTreeView.getSelectionModel().selectedItemProperty().removeListener(sidebarListener);
+        }
+        SidebarItems SidebarItems = new SidebarItems();
+        sidebarTreeView.setRoot(SidebarItems);
+        sidebarListener = SidebarItems.setTreeViewActionListener(sidebarTreeView);
     }
 
     private void setupLogoutButton() {
@@ -59,7 +66,7 @@ public class MainApplicationController {
     }
 
     private void updateUI() {
-        Sidebar.updateLanguage();
+        SidebarItems.updateLanguage();
         setupSidebar();
         setupLogoutButton();
     }
