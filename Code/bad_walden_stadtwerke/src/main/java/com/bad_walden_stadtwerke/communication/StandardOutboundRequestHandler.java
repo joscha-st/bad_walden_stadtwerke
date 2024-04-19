@@ -6,10 +6,12 @@ import java.net.URI;
 import com.bad_walden_stadtwerke.ui.components.errorHandling.ExceptionPopup;
 import com.bad_walden_stadtwerke.mock.MockHttpClient;
 import com.bad_walden_stadtwerke.mock.MockActiveSession;
+import com.bad_walden_stadtwerke.sales.types.Tariff;
 
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
+import java.util.List;
 
 public class StandardOutboundRequestHandler {
 
@@ -32,8 +34,12 @@ public class StandardOutboundRequestHandler {
         return response.body();
     }
 
+    public static List<Tariff> makeTariffOutboundRequest(String category) {
+        return TariffJsonParser.parseJson(makeStandardOutboundRequest("category: " + category));
+    }
+
     private static HttpResponse<String> sendRequestToServer(HttpRequest request) {
-        HttpResponse<String> response = null;
+        HttpResponse<String> response;
         try {
             response = client.send(request, BodyHandlers.ofString());
             System.out.println("Communication: response code: " + response.statusCode());
