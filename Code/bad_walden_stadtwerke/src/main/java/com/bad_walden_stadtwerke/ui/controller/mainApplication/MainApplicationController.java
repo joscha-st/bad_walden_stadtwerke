@@ -1,14 +1,11 @@
 package com.bad_walden_stadtwerke.ui.controller.mainApplication;
 
-import com.bad_walden_stadtwerke.communication.StandardOutboundRequestHandler;
-import com.bad_walden_stadtwerke.sales.types.Tariff;
 import com.bad_walden_stadtwerke.ui.components.mainApplication.SidebarItems;
 import com.bad_walden_stadtwerke.ui.controller.LanguageController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TreeView;
 
-import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
