@@ -34,8 +34,6 @@ public class MainApplicationController {
     public void initialize() {
         setupSidebar();
         setupLogoutButton();
-        List<Tariff> electricity = StandardOutboundRequestHandler.makeTariffOutboundRequest("electricity");
-        System.out.println(electricity);
     }
     private ChangeListener<TreeItem<String>> sidebarListener;
 

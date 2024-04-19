@@ -6,14 +6,18 @@ public class Tariff {
     private final String description;
     private final int price;
     private final String unit;
+    private final int minDuration;
+    private final int cancellationPeriod;
     private final String category;
 
-    public Tariff(int id, String name, String description, int price, String unit, String category) {
+    public Tariff(int id, String name, String description, int price, String unit, int minDuration, int cancellationPeriod, String category) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.unit = unit;
+        this.minDuration = minDuration;
+        this.cancellationPeriod = cancellationPeriod;
         this.category = category;
     }
 
@@ -39,5 +43,13 @@ public class Tariff {
 
     public String getCategory() {
         return category;
+    }
+
+    public int getMinDuration() {
+        return minDuration;
+    }
+
+    public int getCancellationPeriod() {
+        return cancellationPeriod;
     }
 }

@@ -11,13 +11,7 @@ public class TariffJsonParser {
     public static List<Tariff> parseJson(String json) {
         List<Tariff> tariffs = new ArrayList<>();
 
-        json = json.trim();
-        if (json.startsWith("[")) {
-            json = json.substring(1);
-        }
-        if (json.endsWith("]")) {
-            json = json.substring(0, json.length() - 1);
-        }
+        json = trimJson(json);
 
         int bracketCount = 0;
         int start = 0;
@@ -38,6 +32,16 @@ public class TariffJsonParser {
         return tariffs;
     }
 
+    private static String trimJson(String json) {
+        json = json.trim();
+        if (json.startsWith("[")) {
+            json = json.substring(1);
+        }
+        if (json.endsWith("]")) {
+            json = json.substring(0, json.length() - 1);
+        }
+        return json;
+    }
 
     private static Tariff parseTariff(String json) {
         int id = -1;
@@ -45,28 +49,21 @@ public class TariffJsonParser {
         String description = null;
         int price = -1;
         String unit = null;
+        int minDuration = -1;
+        int cancellationPeriod = -1;
         String category = null;
 
-        json = json.trim();
-        json = json.substring(1, json.length() - 1); // remove outer { and }
-
-        // Split on comma not enclosed in quotes
-        String[] keyValuePairs = json.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)", -1);
+        String[] keyValuePairs = extractKeyValuePairs(json);
 
         for (String pair : keyValuePairs) {
-            // Split on colon not enclosed in quotes
             String[] parts = pair.split(":(?=([^\"]*\"[^\"]*\")*[^\"]*$)", -1);
 
             if (parts.length == 2) {
                 String key = parts[0].trim();
                 String value = parts[1].trim();
 
-                if (key.startsWith("\"") && key.endsWith("\"")) {
-                    key = key.substring(1, key.length() - 1);
-                }
-                if (value.startsWith("\"") && value.endsWith("\"")) {
-                    value = value.substring(1, value.length() - 1);
-                }
+                key = trimPart(key);
+                value = trimPart(value);
 
                 switch (key) {
                     case "id":
@@ -84,6 +81,12 @@ public class TariffJsonParser {
                     case "unit":
                         unit = value;
                         break;
+                    case "minDuration":
+                        minDuration = Integer.parseInt(value);
+                        break;
+                    case "cancellationPeriod":
+                        cancellationPeriod = Integer.parseInt(value);
+                        break;
                     case "category":
                         category = value;
                         break;
@@ -93,7 +96,21 @@ public class TariffJsonParser {
             }
         }
 
-        return new Tariff(id, name, description, price, unit, category);
+        return new Tariff(id, name, description, price, unit, minDuration, cancellationPeriod, category);
+    }
+
+    private static String trimPart(String key) {
+        if (key.startsWith("\"") && key.endsWith("\"")) {
+            key = key.substring(1, key.length() - 1);
+        }
+        return key;
+    }
+
+    private static String[] extractKeyValuePairs(String json) {
+        json = json.trim();
+        json = json.substring(1, json.length() - 1); // remove outer { and }
+
+        return json.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)", -1);
     }
 
 }
