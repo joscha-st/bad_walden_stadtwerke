@@ -1,4 +1,4 @@
-package com.bad_walden_stadtwerke.components;
+package com.bad_walden_stadtwerke.ui.components.errorHandling;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;

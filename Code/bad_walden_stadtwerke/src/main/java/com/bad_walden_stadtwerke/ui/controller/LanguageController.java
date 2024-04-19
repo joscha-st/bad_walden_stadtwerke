@@ -1,10 +1,10 @@
-package com.bad_walden_stadtwerke;
+package com.bad_walden_stadtwerke.ui.controller;
 
 import java.util.Locale;
 
 public class LanguageController {
 
-    static Locale language = Locale.ENGLISH;
+    static Locale language = Locale.GERMAN;
 
     public static Locale getLanguage() {
         return language;

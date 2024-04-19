@@ -1,4 +1,4 @@
-package com.bad_walden_stadtwerke.components;
+package com.bad_walden_stadtwerke.ui.components.errorHandling;
 
 //TODO: decide on if to have a unified error handler
 public class runtimeErrorHandler {
