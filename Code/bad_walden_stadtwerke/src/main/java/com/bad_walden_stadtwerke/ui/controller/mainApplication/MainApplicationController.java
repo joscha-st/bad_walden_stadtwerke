@@ -29,8 +29,7 @@ public class MainApplicationController {
 
     @FXML
     public void initialize() {
-        setupSidebar();
-        setupLogoutButton();
+        updateUI();
     }
     private ChangeListener<TreeItem<String>> sidebarListener;
 
