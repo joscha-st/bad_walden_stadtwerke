@@ -7,6 +7,7 @@ import java.net.ConnectException;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandler;
+import java.util.Objects;
 
 public class MockHttpClient {
 
@@ -35,6 +36,11 @@ public class MockHttpClient {
 
     private static String mockResponseBodySupplier(HttpRequest request){
         //TODO: Implement custom logic
+
+        if (Objects.equals(request.uri().toString(), "https://request-handling.int.bad-walden-stadtwerke.com/test")) {
+            return "{\"Hello World\"}";
+        }
+
         return "[{\"id\": 1, \"name\": \"Grundversorgung Tarif\", \"description\": \"Dieser Tarif bietet eine sichere und zuverlässige Grundstromversorgung für Ihren Haushalt, 100% Ökostrom.\", \"price\": 29, \"unit\": \"kWh\", \"category\": \"electricity\"}, {\"id\": 2, \"name\": \"Komfort Tarif\", \"description\": \"Unser Komfort Tarif bietet zusätzliche Dienstleistungen und Vorteile für Komfort liebende Kunden, 100% Ökostrom.\", \"price\": 32, \"unit\": \"kWh\", \"category\": \"electricity\"}, {\"id\": 3, \"name\": \"Super Saver Tarif\", \"description\": \"Unser Super Saver Tarif bietet die niedrigsten Preise für budgetbewusste Kunden, 100% Ökostrom.\", \"price\": 22, \"unit\": \"kWh\", \"cancellationPeriod\": 3, \"minDuration\": 12, \"category\": \"electricity\"}]\n";
     }
 

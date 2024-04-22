@@ -1,14 +1,17 @@
 package com.bad_walden_stadtwerke.sales.types;
 
-public class Tariff {
-    private final int id;
-    private final String name;
-    private final String description;
-    private final int price;
-    private final String unit;
-    private final int minDuration;
-    private final int cancellationPeriod;
-    private final String category;
+import static com.bad_walden_stadtwerke.communication.BadWJsonParser.extractKeyValuePairs;
+import static com.bad_walden_stadtwerke.communication.BadWJsonParser.trimPart;
+
+public class Tariff implements BadWObjectBuildableFromJsonParser {
+    private int id;
+    private String name;
+    private String description;
+    private int price;
+    private String unit;
+    private int minDuration;
+    private int cancellationPeriod;
+    private String category;
 
     public Tariff(int id, String name, String description, int price, String unit, int minDuration, int cancellationPeriod, String category) {
         this.id = id;
@@ -19,6 +22,57 @@ public class Tariff {
         this.minDuration = minDuration;
         this.cancellationPeriod = cancellationPeriod;
         this.category = category;
+    }
+
+    public Tariff() {};
+
+    public void fillFromJson(String json) {
+        String[] keyValuePairs = extractKeyValuePairs(json);
+
+        for (String pair : keyValuePairs) {
+            String[] parts = pair.split(":(?=([^\"]*\"[^\"]*\")*[^\"]*$)", -1);
+
+            if (parts.length == 2) {
+                String key = parts[0].trim();
+                String value = parts[1].trim();
+
+                key = trimPart(key);
+                value = trimPart(value);
+
+                fillObjectVarWithJsonValueOfCorrespondingKey(key, value);
+            }
+        }
+    }
+
+    private void fillObjectVarWithJsonValueOfCorrespondingKey(String key, String value) {
+        switch (key) {
+            case "id":
+                this.id = Integer.parseInt(value);
+                break;
+            case "name":
+                this.name = value;
+                break;
+            case "description":
+                this.description = value;
+                break;
+            case "price":
+                this.price = Integer.parseInt(value);
+                break;
+            case "unit":
+                this.unit = value;
+                break;
+            case "minDuration":
+                this.minDuration = Integer.parseInt(value);
+                break;
+            case "cancellationPeriod":
+                this.cancellationPeriod = Integer.parseInt(value);
+                break;
+            case "category":
+                this.category = value;
+                break;
+            default:
+                break;
+        }
     }
 
     public int getId() {
@@ -52,4 +106,5 @@ public class Tariff {
     public int getCancellationPeriod() {
         return cancellationPeriod;
     }
+
 }
