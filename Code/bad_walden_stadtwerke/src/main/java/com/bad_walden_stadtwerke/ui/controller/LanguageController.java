@@ -14,6 +14,12 @@ public class LanguageController {
     }
 
     public static void setLanguage(Locale language) {
+        if (language == null) {
+            throw new IllegalArgumentException("Language must not be null");
+        }
+        if (LanguageController.language.equals(language)) {
+            return;
+        }
         LanguageController.language = language;
         notifyObservers();
     }
