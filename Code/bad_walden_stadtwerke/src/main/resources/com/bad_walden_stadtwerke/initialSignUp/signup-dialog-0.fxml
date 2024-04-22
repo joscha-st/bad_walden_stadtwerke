@@ -6,14 +6,20 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.geometry.Insets?>
 
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.bad_walden_stadtwerke.ui.controller.initialSignUp.InitialSignUpControllerStep0" prefWidth="1000" prefHeight="550" stylesheets="@styles.css">
+<HBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.bad_walden_stadtwerke.ui.controller.initialSignUp.InitialSignUpControllerStep0" prefWidth="1000" prefHeight="550" stylesheets="@styles.css">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
-    <Label text="Neukunden Aufnahme" styleClass="title"/>
-    <Label text="Herzlich Willkommen bei den Bad Walden Stadtwerken, Herr Paul Peter" styleClass="sub-header"/>
-    <Label text="Damit wir Sie als Neukunden aufnehmen können, benötigen wir noch ein paar Informationen von Ihnen." styleClass="text"/>
-    <HBox alignment="BOTTOM_RIGHT" VBox.vgrow="ALWAYS">
-        <Button text="Weiter" onAction="#next" styleClass="button"/>
-    </HBox>
-</VBox>
+    <VBox prefWidth="800" prefHeight="550">
+        <Label fx:id="signUpHeadlineLabel" text="%signUpHeadlineLabel" styleClass="title" />
+        <Label fx:id="signUpWelcomeLabel" styleClass="sub-header"/>
+        <Label fx:id="signUpWelcomeText" text="%signUpWelcomeText" styleClass="text"/>
+    </VBox>
+    <VBox prefWidth="200" prefHeight="550">
+        <Button fx:id="changeLanguageToEnglishButton" text="%languageEnglish" onAction="#changeLanguageToEnglish" styleClass="language-button"/>
+        <Button fx:id="changeLanguageToGermanButton" text="%languageGerman" onAction="#changeLanguageToGerman" styleClass="language-button"/>
+        <HBox alignment="BOTTOM_RIGHT" VBox.vgrow="ALWAYS">
+            <Button fx:id="signUpNextButton" text="%signUpNextButton" onAction="#next" styleClass="button"/>
+        </HBox>
+    </VBox>
+</HBox>
