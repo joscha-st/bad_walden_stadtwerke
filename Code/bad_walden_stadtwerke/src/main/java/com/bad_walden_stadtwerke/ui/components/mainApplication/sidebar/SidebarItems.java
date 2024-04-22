@@ -57,7 +57,7 @@ public class SidebarItems extends KeyedTreeItem implements LanguageChangeObserve
     }
 
     private KeyedTreeItem createContractsItem() {
-        return createTreeItem("sidebarContracts", createServiceItems("sidebarWater", "sidebarElectricity", "sidebarGas"));
+        return createTreeItem("sidebarTariff", createServiceItems("sidebarWater", "sidebarElectricity", "sidebarGas"));
     }
 
     private KeyedTreeItem createTreeItem(String key, List<KeyedTreeItem> children) {
