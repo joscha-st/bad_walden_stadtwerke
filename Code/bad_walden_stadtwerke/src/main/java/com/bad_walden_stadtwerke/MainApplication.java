@@ -8,18 +8,21 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ResourceBundle;
-
-import static java.util.ResourceBundle.getBundle;
+import com.bad_walden_stadtwerke.ui.controller.SignUpManager;
 
 
 public class MainApplication extends Application {
 
     static Stage stage;
+    private final SignUpManager signUpController = new SignUpManager();
+
     @Override
     public void start(Stage stage) throws IOException {
         MainApplication.stage = stage;
         switchScene();
         stage.setTitle("Stadtwerke Bad Walden");
+
+        signUpController.checkAndOpenForSignUp();
     }
 
     public static void main(String[] args) {

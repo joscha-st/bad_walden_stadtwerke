@@ -24,7 +24,7 @@ For each page, the top frame is the initial state when the page is loaded. Below
 
 ##### First Login
 
----
+## ![First Login](Login/Exports/SignUp.svg)
 
 #### Buerger
 
