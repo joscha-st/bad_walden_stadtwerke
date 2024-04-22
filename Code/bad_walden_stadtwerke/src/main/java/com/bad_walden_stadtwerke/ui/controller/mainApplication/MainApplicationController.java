@@ -68,13 +68,11 @@ public class MainApplicationController implements LanguageChangeObserver {
     @FXML
     public void onButtonDeutschClick() {
         LanguageController.setLanguage(Locale.GERMAN);
-        updateUI();
     }
 
     @FXML
     public void onButtonEnglishClick() {
         LanguageController.setLanguage(Locale.ENGLISH);
-        updateUI();
     }
 
     @Override
