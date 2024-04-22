@@ -5,10 +5,9 @@ import com.bad_walden_stadtwerke.ui.controller.SignUpManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
+public class InitialSignUpControllerStep3 {
 
-public class InitialSignUpControllerStep1 {
-
-    private static final String FXML_PATH = "/com/bad_walden_stadtwerke/initialSignUp/signup-dialog-2.fxml";
+    private static final String FXML_PATH = "/com/bad_walden_stadtwerke/initialSignUp/signup-dialog-4.fxml";
     private static final String BUNDLE_NAME = SignUpManager.BUNDLE_NAME;
 
     @FXML
