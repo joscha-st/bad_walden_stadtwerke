@@ -11,8 +11,8 @@
     <VBox prefWidth="270" style="-fx-border-color: black; -fx-border-width: 0 2 0 0;" >
         <TreeView fx:id="sidebarTreeView" VBox.vgrow="ALWAYS" showRoot="false" />
         <HBox>
-            <Button fx:id="germanButton" text="German" onAction="#onButtonDeutschClick" HBox.hgrow="ALWAYS" maxWidth="Infinity" alignment="CENTER" />
-            <Button fx:id="englishButton" text="English" onAction="#onButtonEnglishClick" HBox.hgrow="ALWAYS" maxWidth="Infinity" alignment="CENTER" />
+            <Button fx:id="germanButton" text="%languageGerman" onAction="#onButtonDeutschClick" HBox.hgrow="ALWAYS" maxWidth="Infinity" alignment="CENTER" />
+            <Button fx:id="englishButton" text="%languageEnglish" onAction="#onButtonEnglishClick" HBox.hgrow="ALWAYS" maxWidth="Infinity" alignment="CENTER" />
         </HBox>
         <Button fx:id="logoutButton"  maxWidth="Infinity" alignment="CENTER" />
     </VBox>
