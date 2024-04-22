@@ -11,6 +11,4 @@ public class InitialSignUpControllerStep4 {
         Stage stage = FXMLUtility.getStageFromEvent(event);
         stage.close();
     }
-
-
 }
