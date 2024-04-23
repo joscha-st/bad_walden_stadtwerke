@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.geometry.Insets?>
+
+<HBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.bad_walden_stadtwerke.ui.controller.initialSignUp.InitialSignUpControllerStep0" prefWidth="1000" prefHeight="550" stylesheets="@styles.css">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+    <VBox prefWidth="800" prefHeight="550">
+        <Label fx:id="signUpHeadlineLabel" text="%signUpHeadlineLabel" styleClass="title" />
+        <Label fx:id="signUpWelcomeLabel" styleClass="sub-header"/>
+        <Label fx:id="signUpWelcomeText" text="%signUpWelcomeText" styleClass="text"/>
+    </VBox>
+    <VBox prefWidth="200" prefHeight="550">
+        <Label fx:id="signUpLanguageLabel" text="%signUpLanguageLabel" styleClass="sub-header">
+            <padding>
+                <Insets bottom="10.0" left="0.0" right="0.0" top="0.0"/>
+            </padding>
+        </Label>
+        <Button fx:id="changeLanguageToEnglishButton" text="%languageEnglish" onAction="#changeLanguageToEnglish" styleClass="language-button"/>
+        <Button fx:id="changeLanguageToGermanButton" text="%languageGerman" onAction="#changeLanguageToGerman" styleClass="language-button"/>
+        <HBox alignment="BOTTOM_RIGHT" VBox.vgrow="ALWAYS">
+            <Button fx:id="signUpNextButton" text="%signUpNextButton" onAction="#next" styleClass="button"/>
+        </HBox>
+    </VBox>
+</HBox>

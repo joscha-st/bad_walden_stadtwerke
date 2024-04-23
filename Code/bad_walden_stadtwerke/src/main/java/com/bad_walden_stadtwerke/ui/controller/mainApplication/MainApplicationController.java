@@ -1,17 +1,23 @@
 package com.bad_walden_stadtwerke.ui.controller.mainApplication;
 
-import com.bad_walden_stadtwerke.ui.components.mainApplication.SidebarItems;
+import com.bad_walden_stadtwerke.mock.MockActiveSession;
+import com.bad_walden_stadtwerke.ui.components.mainApplication.sidebar.SidebarItems;
+import com.bad_walden_stadtwerke.ui.controller.LanguageChangeObserver;
 import com.bad_walden_stadtwerke.ui.controller.LanguageController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TreeView;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.scene.control.TreeItem;
+import java.text.MessageFormat;
 
-public class MainApplicationController {
+public class MainApplicationController implements LanguageChangeObserver {
+
+    private static MainApplicationController instance;
 
     @FXML
     private TreeView<String> sidebarTreeView;
@@ -25,28 +31,47 @@ public class MainApplicationController {
     @FXML
     private Button englishButton;
 
-    private SidebarItems sidebarItems;
+    @FXML
+    private Label welcomeHeadLineLabel;
+
+    private ChangeListener<TreeItem<String>> sidebarListener;
+
+    public MainApplicationController() {
+        LanguageController.addObserver(this);
+    }
 
     @FXML
     public void initialize() {
         setupSidebar();
-        setupLogoutButton();
+        updateUI();
     }
-    private ChangeListener<TreeItem<String>> sidebarListener;
+
+
+    private void setupWelcomeHeadLine() {
+        ResourceBundle messages = ResourceBundle.getBundle("Bundle", LanguageController.getLanguage());
+        String welcomeMessage = messages.getString("mainApplicationWelcomeHeadline");
+        welcomeHeadLineLabel.setText(MessageFormat.format(welcomeMessage, MockActiveSession.getFriendlyDisplayName()));
+    }
 
     private void setupSidebar() {
         if (sidebarListener != null) {
             sidebarTreeView.getSelectionModel().selectedItemProperty().removeListener(sidebarListener);
         }
-        SidebarItems SidebarItems = new SidebarItems();
-        sidebarTreeView.setRoot(SidebarItems);
-        sidebarListener = SidebarItems.setTreeViewActionListener(sidebarTreeView);
+        SidebarItems sidebarItems = new SidebarItems();
+        sidebarTreeView.setRoot(sidebarItems);
+        sidebarListener = sidebarItems.setTreeViewActionListener(sidebarTreeView);
     }
 
     private void setupLogoutButton() {
         ResourceBundle messages = ResourceBundle.getBundle("Bundle", LanguageController.getLanguage());
         logoutButton.setText(messages.getString("mainApplicationLogoutButton"));
         logoutButton.setOnAction(event -> logLogoutAction());
+    }
+
+    private void setupLanguageButtons() {
+        ResourceBundle messages = ResourceBundle.getBundle("Bundle", LanguageController.getLanguage());
+        germanButton.setText(messages.getString("languageGerman"));
+        englishButton.setText(messages.getString("languageEnglish"));
     }
 
     private void logLogoutAction() {
@@ -56,18 +81,21 @@ public class MainApplicationController {
     @FXML
     public void onButtonDeutschClick() {
         LanguageController.setLanguage(Locale.GERMAN);
-        updateUI();
     }
 
     @FXML
     public void onButtonEnglishClick() {
         LanguageController.setLanguage(Locale.ENGLISH);
+    }
+
+    @Override
+    public void onLanguageChange(Locale newLocale) {
         updateUI();
     }
 
-    private void updateUI() {
-        SidebarItems.updateLanguage();
-        setupSidebar();
+    public void updateUI() {
         setupLogoutButton();
+        setupLanguageButtons();
+        setupWelcomeHeadLine();
     }
 }

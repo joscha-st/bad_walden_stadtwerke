@@ -9,4 +9,8 @@ public class MockActiveSession {
     public static String getBearerToken() {
         return bearerToken;
     }
+    private static String friendlyDisplayName = "Paul Peter";
+    public static String getFriendlyDisplayName() {
+        return friendlyDisplayName;
+    }
 }
