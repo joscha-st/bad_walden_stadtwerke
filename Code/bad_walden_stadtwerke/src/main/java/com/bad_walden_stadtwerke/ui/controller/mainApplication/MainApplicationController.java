@@ -1,5 +1,6 @@
 package com.bad_walden_stadtwerke.ui.controller.mainApplication;
 
+import com.bad_walden_stadtwerke.mock.MockActiveSession;
 import com.bad_walden_stadtwerke.ui.components.mainApplication.sidebar.SidebarItems;
 import com.bad_walden_stadtwerke.ui.controller.LanguageChangeObserver;
 import com.bad_walden_stadtwerke.ui.controller.LanguageController;
@@ -33,8 +34,6 @@ public class MainApplicationController implements LanguageChangeObserver {
     @FXML
     private Label welcomeHeadLineLabel;
 
-    public static String user_name = "Max Mustermann";
-
     private ChangeListener<TreeItem<String>> sidebarListener;
 
     public MainApplicationController() {
@@ -51,7 +50,7 @@ public class MainApplicationController implements LanguageChangeObserver {
     private void setupWelcomeHeadLine() {
         ResourceBundle messages = ResourceBundle.getBundle("Bundle", LanguageController.getLanguage());
         String welcomeMessage = messages.getString("mainApplicationWelcomeHeadline");
-        welcomeHeadLineLabel.setText(MessageFormat.format(welcomeMessage, user_name));
+        welcomeHeadLineLabel.setText(MessageFormat.format(welcomeMessage, MockActiveSession.getFriendlyDisplayName()));
     }
 
     private void setupSidebar() {
