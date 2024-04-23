@@ -1,16 +1,19 @@
 package com.bad_walden_stadtwerke.ui.controller.mainApplication;
 
+import com.bad_walden_stadtwerke.mock.MockActiveSession;
 import com.bad_walden_stadtwerke.ui.components.mainApplication.sidebar.SidebarItems;
 import com.bad_walden_stadtwerke.ui.controller.LanguageChangeObserver;
 import com.bad_walden_stadtwerke.ui.controller.LanguageController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TreeView;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.scene.control.TreeItem;
+import java.text.MessageFormat;
 
 public class MainApplicationController implements LanguageChangeObserver {
 
@@ -28,6 +31,9 @@ public class MainApplicationController implements LanguageChangeObserver {
     @FXML
     private Button englishButton;
 
+    @FXML
+    private Label welcomeHeadLineLabel;
+
     private ChangeListener<TreeItem<String>> sidebarListener;
 
     public MainApplicationController() {
@@ -38,6 +44,13 @@ public class MainApplicationController implements LanguageChangeObserver {
     public void initialize() {
         setupSidebar();
         updateUI();
+    }
+
+
+    private void setupWelcomeHeadLine() {
+        ResourceBundle messages = ResourceBundle.getBundle("Bundle", LanguageController.getLanguage());
+        String welcomeMessage = messages.getString("mainApplicationWelcomeHeadline");
+        welcomeHeadLineLabel.setText(MessageFormat.format(welcomeMessage, MockActiveSession.getFriendlyDisplayName()));
     }
 
     private void setupSidebar() {
@@ -83,5 +96,6 @@ public class MainApplicationController implements LanguageChangeObserver {
     public void updateUI() {
         setupLogoutButton();
         setupLanguageButtons();
+        setupWelcomeHeadLine();
     }
 }
