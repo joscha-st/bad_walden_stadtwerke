@@ -16,6 +16,11 @@
         <Label fx:id="signUpWelcomeText" text="%signUpWelcomeText" styleClass="text"/>
     </VBox>
     <VBox prefWidth="200" prefHeight="550">
+        <Label fx:id="signUpLanguageLabel" text="%signUpLanguageLabel" styleClass="sub-header">
+            <padding>
+                <Insets bottom="10.0" left="0.0" right="0.0" top="0.0"/>
+            </padding>
+        </Label>
         <Button fx:id="changeLanguageToEnglishButton" text="%languageEnglish" onAction="#changeLanguageToEnglish" styleClass="language-button"/>
         <Button fx:id="changeLanguageToGermanButton" text="%languageGerman" onAction="#changeLanguageToGerman" styleClass="language-button"/>
         <HBox alignment="BOTTOM_RIGHT" VBox.vgrow="ALWAYS">
