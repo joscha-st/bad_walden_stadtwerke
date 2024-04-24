@@ -1,3 +1,5 @@
+package com.bad_walden_stadtwerke;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.bad_walden_stadtwerke.logic.ValidateBillingAddress.ValidationResult;
