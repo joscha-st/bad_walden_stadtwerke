@@ -25,7 +25,8 @@ jobs:
       uses: actions/setup-java@v2
       with:
         java-version: '11'
-        distribution: 'oracle'
+        distribution: 'zulu'
+        java-package: 'jdk+fx'
     - name: Build with Maven
       run: mvn -B package --file Code/bad_walden_stadtwerke/pom.xml
 
