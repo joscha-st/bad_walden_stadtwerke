@@ -6,11 +6,11 @@ public class Customer {
     private String firstName;  //Maybe we need to handle multiple First Names?
     private String lastName;
     private String street;
-    private int houseNumber;
+    private String houseNumber;
     private String postalCode;
     private String city;
 
-    public Customer(String firstName, String lastName, String street, int houseNumber, String postalCode, String city){
+    public Customer(String firstName, String lastName, String street, String houseNumber, String postalCode, String city){
         this.firstName = firstName;
         this.lastName = lastName;
         this.street = street;
@@ -43,11 +43,11 @@ public class Customer {
         this.street = street;
     }
 
-    public int getHouseNumber() {
+    public String getHouseNumber() {
         return houseNumber;
     }
 
-    public void setHouseNumber(int houseNumber) {
+    public void setHouseNumber(String houseNumber) {
         this.houseNumber = houseNumber;
     }
 
