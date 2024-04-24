@@ -35,6 +35,9 @@ public class InitialSignUpControllerStep0 {
     @FXML
     private javafx.scene.control.Label signUpHeadlineLabel;
 
+    @FXML
+    private javafx.scene.control.Label signUpLanguageLabel;
+
     private ResourceBundle messages;
 
     @FXML
@@ -69,6 +72,7 @@ public class InitialSignUpControllerStep0 {
             signUpNextButton.setText(messages.getString("signUpNextButton"));
             changeLanguageToGermanButton.setText(messages.getString("languageGerman"));
             changeLanguageToEnglishButton.setText(messages.getString("languageEnglish"));
+            signUpLanguageLabel.setText(messages.getString("signUpLanguageLabel"));
         });
     }
 
