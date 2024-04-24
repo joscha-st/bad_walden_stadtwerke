@@ -54,49 +54,60 @@ The Home page is the first page the user sees after logging in.
 
 ##### Stadtwerke
 
-Then, there is an overview for the user over the 
+Then, there is an overview for the user over their consumption and costs.
 ![Stadtwerke](Buerger/Exports/Stadtwerke.svg)
 
 ##### Wasser
 
+This page gives the user a closer look at their water consumption and they have the possibility to view their contract and change their water tariff.
 ![Wasser](Buerger/Exports/Wasser.svg)
 
 ##### Strom
 
+This page gives the user a closer look at their electricity consumption and they have the possibility to view their contract and change their electricity tariff or terminate their electricity contract.
 ![Strom](Buerger/Exports/Strom.svg)
 
 ##### Gas
-
+This page gives the user a closer look at their electricity consumption and they have the possibility to view their contract and change their electricity tariff or terminate their gas contract.
 ![Gas](Buerger/Exports/Gas.svg)
 
 ##### Wärmepumpe
 
+This page gives the user a closer look at their heating pump consumption and they have the possibility to view their contract and change their heating pump tariff or terminate their heating pump contract.
 ![Wärmepumpe](Buerger/Exports/Wärmepumpe.svg)
 
 ##### Rechnungen
 
+On this page, the user can view their past bills.
 ![Rechnungen](Buerger/Exports/Rechnungen.svg)
 
 ---
 
 #### Poweruser
 
+The poweruser is the an employee of the utility service of Bad Walden. Only they can enter the following pages.
+
 ##### Wasser
 
+On this page, the user can view, edit and add the water tariffs.
 ![Poweruser Wasser](Poweruser/Exports/P_Wasser.svg)
 
 ##### Strom
 
+On this page, the user can view, edit and add the electricity tariffs.
 ![Poweruser Strom](Poweruser/Exports/P_Strom.svg)
 
 ##### Gas
 
+On this page, the user can view, edit and add the gas tariffs.
 ![Poweruser Gas](Poweruser/Exports/P_Gas.svg)
 
 ##### Wärmepumpe
 
+On this page, the user can view, edit and add the heating pump tariffs.
 ![Poweruser Wärmepumpe](Poweruser/Exports/P_Wärmepumpe.svg)
 
 ##### Kunden
 
+On this page, the user can search and view customers and their tariffs. The user can also edit the tariffs of the customers.
 ![Poweruser Kunden](Poweruser/Exports/P_Kunden.svg)
