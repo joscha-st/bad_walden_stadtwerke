@@ -6,17 +6,19 @@ import java.net.URI;
 import com.bad_walden_stadtwerke.ui.components.errorHandling.ExceptionPopup;
 import com.bad_walden_stadtwerke.mock.MockHttpClient;
 import com.bad_walden_stadtwerke.mock.MockActiveSession;
+import com.bad_walden_stadtwerke.sales.types.Tariff;
 
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
+import java.util.List;
 
 public class StandardOutboundRequestHandler {
 
     static MockHttpClient client;
-    static final String endpointUrl = "https://request-handling.int.bad-walden-stadtwerke.com/";
+    static final String standardEndpointUrl = "https://request-handling.int.bad-walden-stadtwerke.com/";
 
-    public static String makeStandardOutboundRequest(String jsonPayload) {
+    public static String makeStandardOutboundRequest(String jsonPayload, String endpointUrl) {
         CreateNewClientIfNoneExists();
 
         HttpRequest request = HttpRequest.newBuilder()
@@ -32,8 +34,12 @@ public class StandardOutboundRequestHandler {
         return response.body();
     }
 
+    public static List<Tariff> makeTariffOutboundRequest(String category) {
+        return BadWJsonParser.parseJson(makeStandardOutboundRequest("category: " + category, "https://request-handling.int.bad-walden-stadtwerke.com/tariff-data/"), Tariff::new);
+    }
+
     private static HttpResponse<String> sendRequestToServer(HttpRequest request) {
-        HttpResponse<String> response = null;
+        HttpResponse<String> response;
         try {
             response = client.send(request, BodyHandlers.ofString());
             System.out.println("Communication: response code: " + response.statusCode());

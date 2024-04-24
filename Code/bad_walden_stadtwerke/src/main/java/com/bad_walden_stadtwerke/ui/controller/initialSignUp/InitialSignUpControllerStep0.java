@@ -1,5 +1,6 @@
 package com.bad_walden_stadtwerke.ui.controller.initialSignUp;
 
+import com.bad_walden_stadtwerke.mock.MockActiveSession;
 import com.bad_walden_stadtwerke.ui.controller.FXMLUtility;
 import com.bad_walden_stadtwerke.ui.controller.LanguageController;
 import com.bad_walden_stadtwerke.ui.controller.SignUpManager;
@@ -14,7 +15,6 @@ import java.util.ResourceBundle;
 public class InitialSignUpControllerStep0 {
 
     private static final String SIGN_UP_DIALOG_PATH = "/com/bad_walden_stadtwerke/initialSignUp/signup-dialog-1.fxml";
-    private static final String USER_NAME = "Paul Peter";
     private static final String BUNDLE_NAME = SignUpManager.BUNDLE_NAME;
 
     @FXML
@@ -34,6 +34,9 @@ public class InitialSignUpControllerStep0 {
 
     @FXML
     private javafx.scene.control.Label signUpHeadlineLabel;
+
+    @FXML
+    private javafx.scene.control.Label signUpLanguageLabel;
 
     private ResourceBundle messages;
 
@@ -62,13 +65,14 @@ public class InitialSignUpControllerStep0 {
     private void updateTexts() {
         Platform.runLater(() -> {
             String welcomeText = messages.getString("signUpWelcomeLabel");
-            String formattedWelcomeText = welcomeText.replace("{0}", USER_NAME);
+            String formattedWelcomeText = welcomeText.replace("{0}",  MockActiveSession.getFriendlyDisplayName());
             signUpWelcomeLabel.setText(formattedWelcomeText);
             signUpWelcomeText.setText(messages.getString("signUpWelcomeText"));
             signUpHeadlineLabel.setText(messages.getString("signUpHeadlineLabel"));
             signUpNextButton.setText(messages.getString("signUpNextButton"));
             changeLanguageToGermanButton.setText(messages.getString("languageGerman"));
             changeLanguageToEnglishButton.setText(messages.getString("languageEnglish"));
+            signUpLanguageLabel.setText(messages.getString("signUpLanguageLabel"));
         });
     }
 

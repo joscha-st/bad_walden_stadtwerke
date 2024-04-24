@@ -6,15 +6,16 @@
 <?import javafx.scene.control.TreeView?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 
-
-
+<?import javafx.scene.shape.Rectangle?>
 <HBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.bad_walden_stadtwerke.ui.controller.mainApplication.MainApplicationController" stylesheets="@styles.css">
     <VBox prefWidth="270" style="-fx-border-color: black; -fx-border-width: 0 2 0 0;" >
         <TreeView fx:id="sidebarTreeView" VBox.vgrow="ALWAYS" showRoot="false" />
         <HBox>
-            <Button fx:id="germanButton" text="%languageGerman" onAction="#onButtonDeutschClick" HBox.hgrow="ALWAYS" maxWidth="Infinity" alignment="CENTER" />
-            <Button fx:id="englishButton" text="%languageEnglish" onAction="#onButtonEnglishClick" HBox.hgrow="ALWAYS" maxWidth="Infinity" alignment="CENTER" />
+            <Button fx:id="germanButton" text="%languageGerman" onAction="#onButtonDeutschClick" HBox.hgrow="ALWAYS" maxWidth="Infinity" alignment="CENTER" style="-fx-font: 16 Arial;" />
+            <Button fx:id="englishButton" text="%languageEnglish" onAction="#onButtonEnglishClick" HBox.hgrow="ALWAYS" maxWidth="Infinity" alignment="CENTER" style="-fx-font: 16 Arial;" />
         </HBox>
         <Button fx:id="logoutButton"  maxWidth="Infinity" alignment="CENTER" />
     </VBox>
@@ -22,7 +23,12 @@
         <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
         </padding>
-        <Label text="Lorem ipsum dolor sit amet, consectetur adipiscing elit." />
-        <Label text="Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
+        <Label fx:id="welcomeHeadLineLabel" style="-fx-font: 86 Arial;"/>
+        <ImageView fx:id="imageView" fitHeight="500" fitWidth="1000">
+            <Image url="@img_1.png" />
+            <clip>
+                <Rectangle width="1000" height="500" arcWidth="33" arcHeight="33"/>
+            </clip>
+        </ImageView>
     </VBox>
 </HBox>
