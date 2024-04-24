@@ -1,6 +1,6 @@
 package com.bad_walden_stadtwerke.ui.controller.initialSignUp;
 
-import com.bad_walden_stadtwerke.logic.BillingAddress;
+import com.bad_walden_stadtwerke.logic.Customer;
 import com.bad_walden_stadtwerke.ui.controller.FXMLUtility;
 import com.bad_walden_stadtwerke.ui.controller.SignUpManager;
 import javafx.event.ActionEvent;
@@ -30,7 +30,7 @@ public class InitialSignUpControllerStep1 {
     @FXML
     public void next(ActionEvent event) {
         try{
-            BillingAddress newBillingAddress = new BillingAddress(firstName.getText(), lastName.getText(), street.getText(), houseNumber.getText(), postalCode.getText(), city.getText());
+            Customer newCustomer = new Customer(firstName.getText(), lastName.getText(), street.getText(), houseNumber.getText(), postalCode.getText(), city.getText());
         }catch(Exception e){
             showErrorPopup("Please Check your address details again.", String.valueOf(e));
             return;

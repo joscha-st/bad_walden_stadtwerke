@@ -1,6 +1,6 @@
 package com.bad_walden_stadtwerke.logic;
 
-public class BillingAddress {
+public class Customer {
 
     //Billing Address
     private String firstName;  //Maybe we need to handle multiple First Names?
@@ -10,7 +10,7 @@ public class BillingAddress {
     private String postalCode;
     private String city;
 
-    public BillingAddress(String firstName, String lastName, String street, String houseNumber, String postalCode, String city){
+    public Customer(String firstName, String lastName, String street, String houseNumber, String postalCode, String city){
         this.firstName = firstName;
         this.lastName = lastName;
         this.street = street;
