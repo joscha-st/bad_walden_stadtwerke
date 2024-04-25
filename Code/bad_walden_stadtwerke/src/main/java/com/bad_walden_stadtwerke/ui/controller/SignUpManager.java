@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class SignUpManager implements LanguageChangeObserver{
+public class SignUpManager implements LanguageChangeObserver {
 
     private static final String SIGN_UP_DIALOG_PATH = "/com/bad_walden_stadtwerke/initialSignUp/signup-dialog-0.fxml";
     public static final String BUNDLE_NAME = "Bundle";

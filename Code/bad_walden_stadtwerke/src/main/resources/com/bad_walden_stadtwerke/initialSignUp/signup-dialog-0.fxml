@@ -23,14 +23,14 @@
                 <Insets bottom="10.0" left="0.0" right="0.0" top="0.0"/>
             </padding>
         </Label>
-            <Button fx:id="changeLanguageToEnglishButton" text="%languageEnglish" onAction="#changeLanguageToEnglish" style="-fx-font-size: 16px; -fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-padding: 10px 20px; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-min-width: 200px; -fx-max-width: 200px;"/>
+        <Button fx:id="changeLanguageToEnglishButton" text="%languageEnglish" onAction="#changeLanguageToEnglish" style="-fx-font-size: 16px; -fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-padding: 10px 20px; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-min-width: 200px; -fx-max-width: 200px;">
             <graphic>
                 <ImageView>
                     <Image url="@english-flag.png" requestedHeight="23" requestedWidth="38"/>
                 </ImageView>
             </graphic>
         </Button>
-        <Button fx:id="changeLanguageToGermanButton" text="%languageGerman" onAction="#changeLanguageToGerman" style="-fx-font-size: 16px; -fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-padding: 10px 20px; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-min-width: 200px; -fx-max-width: 200px;"/>
+        <Button fx:id="changeLanguageToGermanButton" text="%languageGerman" onAction="#changeLanguageToGerman" style="-fx-font-size: 16px; -fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-padding: 10px 20px; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-min-width: 200px; -fx-max-width: 200px;">
             <graphic>
                 <ImageView>
                     <Image url="@german-flag.png" requestedHeight="23" requestedWidth="38"/>

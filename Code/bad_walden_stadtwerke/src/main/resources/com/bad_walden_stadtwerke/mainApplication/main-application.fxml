@@ -14,8 +14,20 @@
     <VBox prefWidth="270" style="-fx-border-color: black; -fx-border-width: 0 2 0 0;" >
         <TreeView fx:id="sidebarTreeView" VBox.vgrow="ALWAYS" showRoot="false" style="-fx-font-size: 18px; -fx-font-family: 'Arial';" />
         <HBox>
-            <Button fx:id="germanButton" text="%languageGerman" onAction="#onButtonDeutschClick" HBox.hgrow="ALWAYS" maxWidth="Infinity" alignment="CENTER" style="-fx-font-size: 16px; -fx-font-family: 'Arial';" />
-            <Button fx:id="englishButton" text="%languageEnglish" onAction="#onButtonEnglishClick" HBox.hgrow="ALWAYS" maxWidth="Infinity" alignment="CENTER" style="-fx-font-size: 16px; -fx-font-family: 'Arial';" />
+            <Button fx:id="germanButton" text="%languageGerman" onAction="#onButtonDeutschClick" HBox.hgrow="ALWAYS" maxWidth="Infinity" alignment="CENTER" style="-fx-font-size: 16px; -fx-font-family: 'Arial';">
+                <graphic>
+                    <ImageView>
+                        <Image url="@german-flag.png" requestedHeight="23" requestedWidth="38"/>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <Button fx:id="englishButton" text="%languageEnglish" onAction="#onButtonEnglishClick" HBox.hgrow="ALWAYS" maxWidth="Infinity" alignment="CENTER" style="-fx-font-size: 16px; -fx-font-family: 'Arial';" >
+                <graphic>
+                    <ImageView>
+                        <Image url="@english-flag.png" requestedHeight="23" requestedWidth="38"/>
+                    </ImageView>
+                </graphic>
+            </Button>
         </HBox>
         <Button fx:id="logoutButton"  maxWidth="Infinity" alignment="CENTER" style="-fx-font-size: 18px; -fx-font-family: 'Arial';" />
     </VBox>
