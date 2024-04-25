@@ -1,5 +1,7 @@
 package com.bad_walden_stadtwerke.communication;
 
+import static com.bad_walden_stadtwerke.ui.components.mainApplication.sidebar.SidebarItems.messages;
+
 import java.io.IOException;
 import java.net.URI;
 
@@ -8,12 +10,14 @@ import com.bad_walden_stadtwerke.ui.components.errorHandling.ExceptionPopup;
 import com.bad_walden_stadtwerke.mock.MockHttpClient;
 import com.bad_walden_stadtwerke.mock.MockActiveSession;
 import com.bad_walden_stadtwerke.sales.types.Tariff;
+import com.bad_walden_stadtwerke.ui.controller.LanguageController;
 
 import java.net.http.HttpRequest;
 import java.net.http.HttpRequest.BodyPublishers;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 public class StandardOutboundRequestHandler {
@@ -28,6 +32,7 @@ public class StandardOutboundRequestHandler {
                 .uri(URI.create(endpointUrl))
                 .header("Content-Type", "application/json")
                 .header("Authorization", "Basic " + MockActiveSession.getBearerToken())
+                .header("Accept-Language", getActiveLanguageAndCountryForHeader())
                 .POST(BodyPublishers.ofString(jsonPayload))
                 .build();
         System.out.println("Communication: StandardOutboundRequest prepared: " + request.toString());
@@ -71,6 +76,11 @@ public class StandardOutboundRequestHandler {
         }
     }
 
+    private static String getActiveLanguageAndCountryForHeader() {
+        Locale activeLanguage = LanguageController.getLanguage();
+        return activeLanguage.getLanguage() + "-" + activeLanguage.getCountry();
+    }
+
     private static void displayNetworkError(String error) {
         System.out.println("Communication: Error: " + error);
         ExceptionPopup.showErrorPopup("Network Error", error);
@@ -79,21 +89,21 @@ public class StandardOutboundRequestHandler {
     private static String getStatusCodeErrorDescription(int code) {
         switch(code){
             case 400:
-                return "400 - Oops, we couldn't understand your request. Please check and try again.";
+                return messages.getString("webRequestsBadRequest");
             case 401:
-                return "401 - Sorry, you'll need to log in to access this.";
+                return messages.getString("webRequestsUnauthorizedAccess");
             case 403:
-                return "403 - Sorry, you don't have permission to access this.";
+                return messages.getString("webRequestsForbiddenAccess");
             case 404:
-                return "404 - Sorry, we couldn't find what you're looking for. Please have an admin check the configuration";
+                return messages.getString("webRequestsNotFound");
             case 500:
-                return "500 - Oops, something went wrong on our side. We're looking into it.";
+                return messages.getString("webRequestsInternalServerError");
             case 502:
-                return "502 - There seems to be an issue with the service. Please try again later.";
+                return messages.getString("webRequestsBadGateway");
             case 503:
-                return "503 - Sorry, the service is unavailable right now. Please try again later.";
+                return messages.getString("webRequestsServiceUnavailable");
             default:
-                return "An unexpected error has occurred. Please try again later.";
+                return messages.getString("webRequestsDefaultError");
         }
     }
 }
