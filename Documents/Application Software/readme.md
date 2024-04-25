@@ -36,7 +36,7 @@ The Login Page can be used to login into the account. By typing in the correct u
 ![Customer: Login process](UI_Einlogprozess.png)
 
 #### Customer: Invoice
-This process gives the user an overview of all their invoices. They can filter their invoices by date, look at their gas consumption and they have the possibility to view their tariff and change their gas tariff.
+This process gives the user an overview of all their invoices. They can filter their invoices by date and utilities.
 ![Customer: Invoice](UI_Kunde_Rechnungen.png)
 
 #### Customer: Tariff details gas
