@@ -39,11 +39,5 @@ public class StandardOutboundRequestHandlerTest {
         boolean expectedResponse = true;
         assertEquals(expectedResponse, actualResponse);
     }
-// @Test
-//     void testNetworkErrorHandling() {
-//         MockHttpClient.mockServerSideError = true;
-//         String actualResponse = StandardOutboundRequestHandler.makeStandardOutboundRequest("test", "https://request-handling.int.bad-walden-stadtwerke.com/test");
-//         int expectedResponseCode = 503;
-//     }
 
 }

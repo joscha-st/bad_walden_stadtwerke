@@ -50,7 +50,5 @@ public class MainApplication extends Application implements LanguageChangeObserv
     public void onLanguageChange(Locale newLocale) {
         bundle = ResourceBundle.getBundle("Bundle", newLocale);
         stage.setTitle(bundle.getString("mainApplicationTitle"));
-        String actualResponse = StandardOutboundRequestHandler.makeStandardOutboundRequest("test", "https://request-handling.int.bad-walden-stadtwerke.com/test");
-
     }
 }
