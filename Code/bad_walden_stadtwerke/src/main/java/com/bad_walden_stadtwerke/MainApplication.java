@@ -1,5 +1,6 @@
 package com.bad_walden_stadtwerke;
 
+import com.bad_walden_stadtwerke.communication.StandardOutboundRequestHandler;
 import com.bad_walden_stadtwerke.ui.controller.LanguageChangeObserver;
 import com.bad_walden_stadtwerke.ui.controller.LanguageController;
 import javafx.application.Application;
