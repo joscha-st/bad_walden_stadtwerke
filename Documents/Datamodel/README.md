@@ -1,6 +1,7 @@
 # Modelling
 
 ## Database design
+
 A shared database will be used for all *Bad Walden* software.  
 The following EER diagram displays the databased design with tables for the *stadtwerke* software as well as used shared tables:
 ![db_EER_markup.png](db_EER_markup.png)
