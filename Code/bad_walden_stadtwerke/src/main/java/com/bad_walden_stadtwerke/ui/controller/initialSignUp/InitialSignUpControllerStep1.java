@@ -1,19 +1,24 @@
 package com.bad_walden_stadtwerke.ui.controller.initialSignUp;
 
-import com.bad_walden_stadtwerke.logic.Customer;
+import com.bad_walden_stadtwerke.logic.BillingAddress;
 import com.bad_walden_stadtwerke.ui.controller.FXMLUtility;
+import com.bad_walden_stadtwerke.ui.controller.LanguageChangeObserver;
+import com.bad_walden_stadtwerke.ui.controller.LanguageController;
 import com.bad_walden_stadtwerke.ui.controller.SignUpManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 import static com.bad_walden_stadtwerke.ui.components.errorHandling.ExceptionPopup.showErrorPopup;
 
-//BillingAddressInput
-public class InitialSignUpControllerStep1 {
+public class InitialSignUpControllerStep1  {
 
     private static final String FXML_PATH = "/com/bad_walden_stadtwerke/initialSignUp/signup-dialog-2.fxml";
     private static final String BUNDLE_NAME = SignUpManager.BUNDLE_NAME;
+    private ResourceBundle bundle = ResourceBundle.getBundle(BUNDLE_NAME, LanguageController.getLanguage());
 
     @FXML
     private TextField firstName;
@@ -30,9 +35,9 @@ public class InitialSignUpControllerStep1 {
     @FXML
     public void next(ActionEvent event) {
         try{
-            Customer newCustomer = new Customer(firstName.getText(), lastName.getText(), street.getText(), houseNumber.getText(), postalCode.getText(), city.getText());
+            BillingAddress billingAddress = new BillingAddress(firstName.getText(), lastName.getText(), street.getText(), houseNumber.getText(), postalCode.getText(), city.getText());
         }catch(Exception e){
-            showErrorPopup("Please Check your address details again.", String.valueOf(e));
+            showErrorPopup(bundle.getString("signUpErrorTitle"), String.valueOf(e));
             return;
         }
 
