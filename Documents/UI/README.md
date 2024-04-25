@@ -31,7 +31,7 @@ Red arrows show to which page or state the user interaction leads to. There migh
 When logging in for the first time, the user has to enter some information and choose their tariffs first. 
 Here is an overview over the pages which we implemented in German and in English:
 ![SignUp whole process](Login/Exports/SignUp.svg)
-After the Welcome Page and choosing a language, the user can input their data: Name, Street, House Number, City and Postal Code. If every field is filled in, the button will be activated so that the user can go on. Before going to the next page, the business logic checks that the information are valid. 
+After the Welcome Page and choosing a language, the user can input their data: Name, Street, House Number, City and Postal Code. If every field is filled in, the button will be activated so that the user can go on. Before going to the next page, the business logic checks that the information is valid. 
 ![SignUp Data Collection](Login/Exports/SignUp_DataCollection.svg)
 Then, the user can choose their tariffs. First, the "Stromtarif" where the user can choose a tariff or choose to not buy electricity from the utility service of Bad Walden:
 ![SignUp "Stromtarif"](Login/Exports/SignUp/SignUp_Stromtarif.svg)
@@ -42,7 +42,7 @@ As water is the basic tariff that every citizen has to have, they cannot choose 
 
 ##### Login Page
 
-The Login Page can be used to login into the account. By typing in the correct username and passwort the user will be led to the Home Page.
+The Login Page can be used to login into the account. By typing in the correct username and password the user will be led to the Home Page.
 ![Login Page](Login/Exports/Login.svg)
 
 #### Buerger
