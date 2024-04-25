@@ -85,7 +85,7 @@ public class StandardOutboundRequestHandler {
 
     private static void displayNetworkError(String error) {
         System.out.println("Communication: Error: " + error);
-        ExceptionPopup.showErrorPopup("Network Error", error);
+        ExceptionPopup.showErrorPopup(messages.getString("webRequestsErrorTitle"), error);
     }
 
     private static String getStatusCodeErrorDescription(int code) {
