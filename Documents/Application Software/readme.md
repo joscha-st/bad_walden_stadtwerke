@@ -32,11 +32,11 @@ This process shows what will happen, if the customer relocates and therefore is 
 ![Customer: Inital Sign Up](Sign_Up_Server_BPMN.png)
 
 #### Customer: Login process
-The Login Page can be used to login into the account. By typing in the correct username and passwort the user will be led to the Home Page.
+The Login Page can be used to login into the account. By typing in the correct username and password the user will be led to the Home Page.
 ![Customer: Login process](UI_Einlogprozess.png)
 
 #### Customer: Invoice
-This process gives the user an overview of all their invoices. They can filter their invoices by date look at their gas consumption and they have the possibility to view their tariff and change their gas tariff.
+This process gives the user an overview of all their invoices. They can filter their invoices by date, look at their gas consumption and they have the possibility to view their tariff and change their gas tariff.
 ![Customer: Invoice](UI_Kunde_Rechnungen.png)
 
 #### Customer: Tariff details gas
@@ -56,12 +56,9 @@ We modeled this process exemplary for gas, since it is the same process for ever
 ![Poweruser: Tariff details gas](UI_Poweruser_Tarifdetails_GAS.png)
 
 #### Poweruser: Customer management
-This process gives the poweruser an overciew of all customers and their tariffs. Instead of filtering through the segments, the individual customer's tariff are in the focus. Powerusers can change, add and delete the documents.
+This process gives the poweruser an overview of all customers and their tariffs. Instead of filtering through the segments, the individual customer's tariff are in the focus. Powerusers can change, add and delete the documents.
 ![Poweruser: Customer management](UI_Poweruser_Kundenmanagement.png)
 
 
 
-## Contact
-
-If you have any questions or need assistance, please contact @baghdadbaecker or @TrustedSamu
 
