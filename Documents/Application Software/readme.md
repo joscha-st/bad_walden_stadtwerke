@@ -1,8 +1,4 @@
 # Modelling
-import os
-
-# List files in the current directory
-print(os.listdir())
 ## Application Software
 
 This repository contains BPMN diagrams created for modeling various processes within the context of public utilities. BPMN (Business Process Model and Notation) is a standardized graphical notation for representing business processes, enabling the visualization and analysis of complex workflows. 
@@ -17,16 +13,16 @@ We display general cases (= GC) such as classification in the basic supply, tari
 ### General cases
 
 #### Classification in basic supply
-
+This process shows the classification of a customer into the basic supply.
 ![Classification in basic supply](GC_Fall_in_Grundversorgung.png)
 
 #### Tariff changes
-
+This process shows what will happen, if the customer wants to change their tariff.
 ![Tariff changes](GC_Tarifwechsel)
 
 
 #### Relocation
-
+This process shows what will happen, if the customer relocates and therefore is no longer a customer of our public utility.
 ![Relocation](GC_Umzug.png)
 
 ### User Interface
@@ -36,41 +32,34 @@ We display general cases (= GC) such as classification in the basic supply, tari
 ![Customer: Inital Sign Up](Sign_Up_Server_BPMN.png)
 
 #### Customer: Login process
+The Login Page can be used to login into the account. By typing in the correct username and passwort the user will be led to the Home Page.
 ![Customer: Login process](UI_Einlogprozess.png)
 
 #### Customer: Invoice
+This process gives the user an overview of all their invoices. They can filter their invoices by date look at their gas consumption and they have the possibility to view their tariff and change their gas tariff.
 ![Customer: Invoice](UI_Kunde_Rechnungen.png)
 
 #### Customer: Tariff details gas
+This process gives the user a closer look at their gas consumption and they have the possibility to view their tariff and change their gas tariff.
 ![Customer: Tariff details gas](UI_Kunde_Tarifdetails_GAS.png)
 
 #### Customer: Tariff details water
+This process gives the user a closer look at their water consumption and they have the possibility to view their tariff and change their water tariff.
 ![Customer: Tariff details water](UI_Kunde_Tarifdetails_WASSER.png)
 
 #### Customer: Tariff details electrictiy
+This process gives the user a closer look at their electrictiy consumption and they have the possibility to view their tariff and change their electrictiy tariff.
 ![Customer: Tariff details electricity](UI_Kunde_Vertragsdetails_STROM.png)
 
 #### Poweruser: Tariff details gas
+We modeled this process exemplary for gas, since it is the same process for every segment. This process gives the poweruser a closer look at all tariffs relating to gas. Poweruser can change, add and delete the documents.
 ![Poweruser: Tariff details gas](UI_Poweruser_Tarifdetails_GAS.png)
 
 #### Poweruser: Customer management
+This process gives the poweruser an overciew of all customers and their tariffs. Instead of filtering through the segments, the individual customer's tariff are in the focus. Powerusers can change, add and delete the documents.
 ![Poweruser: Customer management](UI_Poweruser_Kundenmanagement.png)
 
 
-## Getting Started
-
-To view or modify the BPMN models, follow these steps:
-
-1. **Open Editor**: Use a BPMN modeling tool such as Camunda Modeler or Signavio.
-2. **Open File**: Open the respective BPMN file (`*.bpmn`) from this directory in the BPMN modeling tool.
-3. **Modify Models**: Modify the BPMN models as needed to reflect any changes or updates to the business processes.
-
-## Contributing
-
-1. **Clone Repository**: Clone the repository to your local machine.
-2. **Modify BPMN Models**: Make modifications or additions to the BPMN models using a BPMN modeling tool.
-3. **Commit Changes**: Commit the changes to your local repository.
-4. **Create Pull Request**: Create a pull request to merge the changes into the main branch of the repository.
 
 ## Contact
 
