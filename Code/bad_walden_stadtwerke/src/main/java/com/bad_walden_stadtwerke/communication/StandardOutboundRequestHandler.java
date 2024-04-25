@@ -24,8 +24,7 @@ public class StandardOutboundRequestHandler {
     static MockHttpClient client;
     static final String standardEndpointUrl = "https://request-handling.int.bad-walden-stadtwerke.com/";
 
-    //TODO: Add refreshing logic
-    private static ResourceBundle messages = ResourceBundle.getBundle("Bundle", LanguageController.getLanguage());
+    private static ResourceBundle messages;
 
     public static String makeStandardOutboundRequest(String jsonPayload, String endpointUrl) {
         CreateNewClientIfNoneExists();
@@ -85,10 +84,12 @@ public class StandardOutboundRequestHandler {
 
     private static void displayNetworkError(String error) {
         System.out.println("Communication: Error: " + error);
+        updateResourceBundleToCurrentLanguage();
         ExceptionPopup.showErrorPopup(messages.getString("webRequestsErrorTitle"), error);
     }
 
     private static String getStatusCodeErrorDescription(int code) {
+        updateResourceBundleToCurrentLanguage();
         switch(code){
             case 400:
                 return messages.getString("webRequestsBadRequest");
@@ -107,5 +108,9 @@ public class StandardOutboundRequestHandler {
             default:
                 return messages.getString("webRequestsDefaultError");
         }
+    }
+
+    private static void updateResourceBundleToCurrentLanguage() {
+        messages = ResourceBundle.getBundle("Bundle", LanguageController.getLanguage());
     }
 }
