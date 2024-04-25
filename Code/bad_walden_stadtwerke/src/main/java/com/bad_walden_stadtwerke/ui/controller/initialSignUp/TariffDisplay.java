@@ -1,0 +1,150 @@
+package com.bad_walden_stadtwerke.ui.controller.initialSignUp;
+
+import com.bad_walden_stadtwerke.sales.types.Tariff;
+import com.bad_walden_stadtwerke.ui.controller.LanguageController;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+
+public class TariffDisplay {
+    private static final String FONT_SIZE = "16px";
+    private static final String FONT_FAMILY = "Arial";
+    private static final String BUTTON_BACKGROUND_COLOR = "-fx-background-color: #ffffff";
+    private static final String BUTTON_SELECTED_BACKGROUND_COLOR = "-fx-background-color: #ffcc00";
+    private static final double COLUMN_WIDTH_SMALL = 80;
+    private static final double COLUMN_WIDTH_MEDIUM = 120;
+    private static final double COLUMN_WIDTH_LARGE = 175;
+    private static final int SPACING = 10;
+    private static final int PADDING = 10;
+    private static final int MAX_HEIGHT = 100;
+
+    private final ScrollPane scrollPane;
+    private final ArrayList<Tariff> tariffs;
+    private final VBox header;
+    private Tariff selectedTariff;
+    private final ResourceBundle bundle;
+
+
+    TariffDisplay(ScrollPane scrollPane, ArrayList<Tariff> tariffs, VBox header) {
+        this.scrollPane = scrollPane;
+        this.tariffs = tariffs;
+        this.header = header;
+        this.selectedTariff = null;
+        this.bundle = ResourceBundle.getBundle("bundle", LanguageController.getLanguage());
+
+        setupHeader();
+        displayTariffs();
+    }
+
+    public Tariff getSelectedTariff() {
+        return selectedTariff;
+    }
+
+    public void displayTariffs() {
+        VBox content = new VBox(SPACING);
+        scrollPane.setContent(content);
+
+        tariffs.forEach(tariff -> content.getChildren().add(createTariffRow(tariff, content)));
+    }
+
+    private HBox createTariffRow(Tariff tariff, VBox content) {
+        HBox row = new HBox(SPACING);
+        row.setPadding(new Insets(0, PADDING, 0, PADDING));
+        row.getChildren().addAll(
+                createLabel(tariff.getName(), COLUMN_WIDTH_MEDIUM),
+                createLabel(tariff.getDescription(), COLUMN_WIDTH_LARGE, MAX_HEIGHT),
+                createLabel(tariff.getPrice() + " " + tariff.getUnit(), COLUMN_WIDTH_SMALL),
+                createLabel(tariff.getMinDuration() + " " + bundle.getString("months"), COLUMN_WIDTH_MEDIUM),
+                createLabel(tariff.getCancellationPeriod() + " " +  bundle.getString("months"), COLUMN_WIDTH_MEDIUM),
+                createSelectButton(tariff, content),
+                createMoreButton(tariff)
+        );
+
+        return row;
+    }
+
+    private Label createLabel(String text, double width) {
+        return createLabel(text, width, Double.MAX_VALUE);
+    }
+
+    private Label createLabel(String text, double width, double maxHeight) {
+        Label label = new Label(text);
+        label.setPrefWidth(width);
+        label.setMaxWidth(width);
+        label.setMaxHeight(maxHeight);
+        label.setEllipsisString("...");
+        label.setWrapText(true);
+        label.setStyle("-fx-font-family: " + FONT_FAMILY + "; -fx-font-size: " + FONT_SIZE + ";");
+        return label;
+    }
+
+    private StackPane createSelectButton(Tariff tariff, VBox content) {
+        Button button = new Button(bundle.getString("tariffSelectButton"));
+        button.setStyle(BUTTON_BACKGROUND_COLOR + "; -fx-font-family: " + FONT_FAMILY + "; -fx-font-size: " + FONT_SIZE + ";");
+        button.setOnAction(event -> {
+            this.selectedTariff = tariff;
+            content.getChildren().stream()
+                    .map(node -> (HBox) node)
+                    .flatMap(hBox -> hBox.getChildren().stream())
+                    .forEach(this::resetNodeStyle);
+            button.setStyle(BUTTON_SELECTED_BACKGROUND_COLOR + "; -fx-font-family: " + FONT_FAMILY + "; -fx-font-size: " + FONT_SIZE + ";");
+        });
+    
+        StackPane stackPane = new StackPane();
+        stackPane.getChildren().add(button);
+        StackPane.setAlignment(button, Pos.CENTER);
+
+        return stackPane;
+    }
+
+        private void resetNodeStyle(Node node) {
+            if (node instanceof StackPane) {
+                StackPane stackPane = (StackPane) node;
+                Button button = (Button) stackPane.getChildren().get(0);
+                button.setStyle(BUTTON_BACKGROUND_COLOR + "; -fx-font-family: " + FONT_FAMILY + "; -fx-font-size: " + FONT_SIZE + ";");
+            }
+        }
+
+    private StackPane createMoreButton(Tariff tariff) {
+        Button moreButton = new Button(bundle.getString("tariffShowMoreButton"));
+        moreButton.setStyle(BUTTON_BACKGROUND_COLOR + "; -fx-font-family: " + FONT_FAMILY + "; -fx-font-size: " + FONT_SIZE + ";");
+        moreButton.setOnAction(event -> showAlert(tariff));
+
+        StackPane stackPane = new StackPane();
+        stackPane.getChildren().add(moreButton);
+        StackPane.setAlignment(moreButton, Pos.CENTER);
+
+        return stackPane;
+    }
+
+    private void showAlert(Tariff tariff) {
+        Dialog<Object> dialog = new Dialog<>();
+        dialog.setTitle(bundle.getString("tariffDetailsTitle"));
+        dialog.setDialogPane(tariff.getDialogPane());
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
+        dialog.showAndWait();
+    }
+
+    private void setupHeader() {
+        header.getChildren().clear();
+
+        HBox headerRow = new HBox(SPACING);
+        headerRow.setPadding(new Insets(0, PADDING, 0, PADDING));
+
+        headerRow.getChildren().addAll(
+                createLabel(bundle.getString("tariffNameHeader"), COLUMN_WIDTH_MEDIUM),
+                createLabel(bundle.getString("tariffDescriptionHeader"), COLUMN_WIDTH_LARGE),
+                createLabel(bundle.getString("tariffPriceHeader"), COLUMN_WIDTH_SMALL),
+                createLabel(bundle.getString("tariffMinDurationHeader"), COLUMN_WIDTH_MEDIUM),
+                createLabel(bundle.getString("tariffCancellationPeriodHeader"), COLUMN_WIDTH_MEDIUM)
+        );
+
+        header.getChildren().add(headerRow);
+    }
+}
