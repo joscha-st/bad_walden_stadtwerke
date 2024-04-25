@@ -1,7 +1,5 @@
 package com.bad_walden_stadtwerke.communication;
 
-import static com.bad_walden_stadtwerke.ui.components.mainApplication.sidebar.SidebarItems.messages;
-
 import java.io.IOException;
 import java.net.URI;
 
@@ -19,11 +17,15 @@ import java.net.http.HttpResponse.BodyHandlers;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
 public class StandardOutboundRequestHandler {
 
     static MockHttpClient client;
     static final String standardEndpointUrl = "https://request-handling.int.bad-walden-stadtwerke.com/";
+
+    //TODO: Add refreshing logic
+    private static ResourceBundle messages = ResourceBundle.getBundle("Bundle", LanguageController.getLanguage());
 
     public static String makeStandardOutboundRequest(String jsonPayload, String endpointUrl) {
         CreateNewClientIfNoneExists();
