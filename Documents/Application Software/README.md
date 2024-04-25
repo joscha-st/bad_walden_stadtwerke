@@ -57,7 +57,7 @@ We modeled this process exemplary for gas, since it is the same process for ever
 ![Poweruser: Tariff details gas](UI_Poweruser_Tarifdetails_GAS.png)
 
 #### Poweruser: Customer management
-This process gives the poweruser an overview of all customers and their tariffs. Instead of filtering through the segments, the individual customer's tariff are in the focus. Powerusers can change, add and delete the documents.
+This process gives the poweruser an overview of all customers and their tariffs. Instead of filtering through the segments, the individual customer's tariffs are in the focus. Powerusers can change, add and delete the documents.
 ![Poweruser: Customer management](UI_Poweruser_Kundenmanagement.png)
 
 
