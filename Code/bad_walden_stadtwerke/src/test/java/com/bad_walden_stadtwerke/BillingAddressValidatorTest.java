@@ -1,6 +1,5 @@
 package com.bad_walden_stadtwerke;
 
-import com.bad_walden_stadtwerke.logic.BillingAddressValidator;
 import com.bad_walden_stadtwerke.logic.BillingAddress;
 import org.junit.jupiter.api.Test;
 
