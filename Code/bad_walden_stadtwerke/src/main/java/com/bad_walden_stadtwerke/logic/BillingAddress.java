@@ -1,5 +1,4 @@
 package com.bad_walden_stadtwerke.logic;
-import com.bad_walden_stadtwerke.logic.BillingAddressValidator;
 
 public class BillingAddress {
 
@@ -21,10 +20,26 @@ public class BillingAddress {
         validate();
     }
 
-    private void validate(BillingAddress this) {
+    private void validate() {
         BillingAddressValidator.validateBillingAddress(this);
 
     }
+
+    public String toJson() {
+        return "{"
+                + createJsonPair("firstName", firstName) + ","
+                + createJsonPair("lastName", lastName) + ","
+                + createJsonPair("street", street) + ","
+                + createJsonPair("houseNumber", houseNumber) + ","
+                + createJsonPair("postalCode", postalCode) + ","
+                + createJsonPair("city", city)
+                + "}";
+    }
+
+    private String createJsonPair(String key, String value) {
+        return "\"" + key + "\": \"" + value + "\"";
+    }
+
 
     public String getFirstName() {
         return this.firstName;

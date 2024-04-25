@@ -1,5 +1,6 @@
 package com.bad_walden_stadtwerke;
 
+import com.bad_walden_stadtwerke.communication.StandardOutboundRequestHandler;
 import com.bad_walden_stadtwerke.ui.controller.LanguageChangeObserver;
 import com.bad_walden_stadtwerke.ui.controller.LanguageController;
 import javafx.application.Application;
@@ -49,5 +50,7 @@ public class MainApplication extends Application implements LanguageChangeObserv
     public void onLanguageChange(Locale newLocale) {
         bundle = ResourceBundle.getBundle("Bundle", newLocale);
         stage.setTitle(bundle.getString("mainApplicationTitle"));
+        String actualResponse = StandardOutboundRequestHandler.makeStandardOutboundRequest("test", "https://request-handling.int.bad-walden-stadtwerke.com/test");
+
     }
 }

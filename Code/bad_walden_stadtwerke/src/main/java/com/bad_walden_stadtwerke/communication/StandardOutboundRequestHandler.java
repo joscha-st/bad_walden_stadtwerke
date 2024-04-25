@@ -3,15 +3,18 @@ package com.bad_walden_stadtwerke.communication;
 import java.io.IOException;
 import java.net.URI;
 
+import com.bad_walden_stadtwerke.logic.BillingAddress;
 import com.bad_walden_stadtwerke.ui.components.errorHandling.ExceptionPopup;
 import com.bad_walden_stadtwerke.mock.MockHttpClient;
 import com.bad_walden_stadtwerke.mock.MockActiveSession;
 import com.bad_walden_stadtwerke.sales.types.Tariff;
 
 import java.net.http.HttpRequest;
+import java.net.http.HttpRequest.BodyPublishers;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.List;
+import java.util.Objects;
 
 public class StandardOutboundRequestHandler {
 
@@ -25,17 +28,22 @@ public class StandardOutboundRequestHandler {
                 .uri(URI.create(endpointUrl))
                 .header("Content-Type", "application/json")
                 .header("Authorization", "Basic " + MockActiveSession.getBearerToken())
-                .POST(HttpRequest.BodyPublishers.ofString(jsonPayload))
+                .POST(BodyPublishers.ofString(jsonPayload))
                 .build();
         System.out.println("Communication: StandardOutboundRequest prepared: " + request.toString());
 
         HttpResponse<String> response = sendRequestToServer(request);
 
-        return response.body();
+        return response != null ? response.body() : null;
     }
 
     public static List<Tariff> makeTariffOutboundRequest(String category) {
         return BadWJsonParser.parseJson(makeStandardOutboundRequest("category: " + category, "https://request-handling.int.bad-walden-stadtwerke.com/tariff-data/"), Tariff::new);
+    }
+
+    public static boolean makeUpdateBillingAddressForUserOutboundRequest(BillingAddress billingAddress) {
+        String response = makeStandardOutboundRequest(billingAddress.toJson(), "https://request-handling.int.bad-walden-stadtwerke.com/user-data/billing-address");
+        return Objects.equals(response, "{\"status\": \"success\"}");
     }
 
     private static HttpResponse<String> sendRequestToServer(HttpRequest request) {
