@@ -13,9 +13,21 @@
 <HBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.bad_walden_stadtwerke.ui.controller.mainApplication.MainApplicationController">
     <VBox prefWidth="270" style="-fx-border-color: black; -fx-border-width: 0 2 0 0;" >
         <TreeView fx:id="sidebarTreeView" VBox.vgrow="ALWAYS" showRoot="false" style="-fx-font-size: 18px; -fx-font-family: 'Arial';" />
-        <HBox>
-            <Button fx:id="germanButton" text="%languageGerman" onAction="#onButtonDeutschClick" HBox.hgrow="ALWAYS" maxWidth="Infinity" alignment="CENTER" style="-fx-font-size: 16px; -fx-font-family: 'Arial';" />
-            <Button fx:id="englishButton" text="%languageEnglish" onAction="#onButtonEnglishClick" HBox.hgrow="ALWAYS" maxWidth="Infinity" alignment="CENTER" style="-fx-font-size: 16px; -fx-font-family: 'Arial';" />
+        <HBox alignment="BOTTOM_CENTER" VBox.vgrow="ALWAYS">
+            <Button fx:id="germanButton" text="%languageGerman" onAction="#onButtonDeutschClick" style="-fx-font-size: 14px; -fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-padding: 10px 20px; -fx-border-radius: 5px; -fx-background-radius: 5px;" maxWidth="Infinity" HBox.hgrow="ALWAYS">
+                <graphic>
+                    <ImageView>
+                        <Image url="@../images/german-flag.png" requestedHeight="20" requestedWidth="35"/>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <Button fx:id="englishButton" text="%languageEnglish" onAction="#onButtonEnglishClick" style="-fx-font-size: 14px; -fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-padding: 10px 20px; -fx-border-radius: 5px; -fx-background-radius: 5px;" maxWidth="Infinity" HBox.hgrow="ALWAYS">
+                <graphic>
+                    <ImageView>
+                        <Image url="@../images/english-flag.png" requestedHeight="20" requestedWidth="35"/>
+                    </ImageView>
+                </graphic>
+            </Button>
         </HBox>
         <Button fx:id="logoutButton"  maxWidth="Infinity" alignment="CENTER" style="-fx-font-size: 18px; -fx-font-family: 'Arial';" />
     </VBox>
@@ -25,7 +37,7 @@
         </padding>
         <Label fx:id="welcomeHeadLineLabel" style="-fx-font-size: 86px; -fx-font-family: 'Arial';"/>
         <ImageView fx:id="imageView" fitHeight="500" fitWidth="1000">
-            <Image url="@img_1.png" />
+            <Image url="@../images/bad_walden_1.png" />
             <clip>
                 <Rectangle width="1000" height="500" arcWidth="33" arcHeight="33"/>
             </clip>
