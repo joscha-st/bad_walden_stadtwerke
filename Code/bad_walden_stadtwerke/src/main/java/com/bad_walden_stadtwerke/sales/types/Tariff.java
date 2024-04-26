@@ -34,10 +34,7 @@ public class Tariff implements BadWObjectBuildableFromJsonParser {
         this.category = category;
     }
 
-    public Tariff() {
-    }
-
-    ;
+    public Tariff() {};
 
     public void fillFromJson(String json) {
         String[] keyValuePairs = extractKeyValuePairs(json);
