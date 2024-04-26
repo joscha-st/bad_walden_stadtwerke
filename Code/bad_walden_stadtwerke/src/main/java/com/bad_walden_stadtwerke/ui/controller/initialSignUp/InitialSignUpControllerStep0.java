@@ -65,7 +65,7 @@ public class InitialSignUpControllerStep0 {
     private void updateTexts() {
         Platform.runLater(() -> {
             String welcomeText = messages.getString("signUpWelcomeLabel");
-            String formattedWelcomeText = welcomeText.replace("{0}",  MockActiveSession.getFriendlyDisplayName());
+            String formattedWelcomeText = welcomeText.replace("{0}",  MockActiveSession.getActiveUser().getFriendlyDisplayName());
             signUpWelcomeLabel.setText(formattedWelcomeText);
             signUpWelcomeText.setText(messages.getString("signUpWelcomeText"));
             signUpHeadlineLabel.setText(messages.getString("signUpHeadlineLabel"));

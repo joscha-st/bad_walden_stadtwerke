@@ -45,6 +45,9 @@ public class MockHttpClient {
         if (Objects.equals(request.uri().toString(), "https://request-handling.int.bad-walden-stadtwerke.com/user-data/billing-address")) {
             return "{\"status\": \"success\"}";
         }
+        if (Objects.equals(request.uri().toString(), "https://request-handling.int.bad-walden-stadtwerke.com/user-data/tariff-selection")) {
+            return "{\"status\": \"success\"}";
+        }
         return "{\"status\": \"connected\"}";
     }
 }

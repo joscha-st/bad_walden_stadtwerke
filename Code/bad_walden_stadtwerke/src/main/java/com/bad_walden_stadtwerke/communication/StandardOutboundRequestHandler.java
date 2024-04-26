@@ -52,6 +52,11 @@ public class StandardOutboundRequestHandler {
         return Objects.equals(response, "{\"status\": \"success\"}");
     }
 
+    public static boolean makeTariffSelectionForUserOutboundRequest(Tariff tariff) {
+        String response = makeStandardOutboundRequest(tariff.idToJson(), "https://request-handling.int.bad-walden-stadtwerke.com/user-data/tariff-selection");
+        return Objects.equals(response, "{\"status\": \"success\"}");
+    }
+
     private static HttpResponse<String> sendRequestToServer(HttpRequest request) {
         HttpResponse<String> response;
         try {

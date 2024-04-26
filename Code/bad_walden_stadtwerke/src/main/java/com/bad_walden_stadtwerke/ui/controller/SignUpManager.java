@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+import com.bad_walden_stadtwerke.mock.MockActiveSession;
+
 public class SignUpManager implements LanguageChangeObserver{
 
     private static final String SIGN_UP_DIALOG_PATH = "/com/bad_walden_stadtwerke/initialSignUp/signup-dialog-0.fxml";
@@ -68,8 +70,7 @@ public class SignUpManager implements LanguageChangeObserver{
     }
 
     private boolean hasUserSignedUp() {
-        //TODO: Replace with the user's signup status @joscha-st from mock
-        return false;
+        return MockActiveSession.getActiveUser().getHasDoneInitialSignUp();
     }
 
     @Override
