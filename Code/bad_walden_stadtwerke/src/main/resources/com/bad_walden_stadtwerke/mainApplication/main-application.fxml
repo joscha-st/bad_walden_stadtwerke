@@ -13,7 +13,7 @@
 <HBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.bad_walden_stadtwerke.ui.controller.mainApplication.MainApplicationController">
     <VBox prefWidth="270" style="-fx-border-color: black; -fx-border-width: 0 2 0 0;" >
         <TreeView fx:id="sidebarTreeView" VBox.vgrow="ALWAYS" showRoot="false" style="-fx-font-size: 18px; -fx-font-family: 'Arial';" />
-        <HBox alignment="BOTTOM_CENTER" VBox.vgrow="ALWAYS">
+        <HBox alignment="BOTTOM_CENTER">
             <Button fx:id="germanButton" text="%languageGerman" onAction="#onButtonDeutschClick" style="-fx-font-size: 14px; -fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-padding: 10px 20px; -fx-border-radius: 5px; -fx-background-radius: 5px;" maxWidth="Infinity" HBox.hgrow="ALWAYS">
                 <graphic>
                     <ImageView>

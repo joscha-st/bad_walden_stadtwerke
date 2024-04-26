@@ -19,10 +19,16 @@
         <Tab text="%signUpOthersCheckBox" closable="false" style="-fx-font-size: 18px;">
             <Label text="%signUpHeatingOthersText" style="-fx-font-size: 18px; -fx-padding: 10px; -fx-font-family: 'Arial';"/>        </Tab>
         <Tab text="%signUpGasCheckBox" closable="false" style="-fx-font-size: 18px;">
-            <ScrollPane prefHeight="400" fx:id="scrollPaneGas"/>
+            <VBox>
+                <VBox fx:id="headerGas"/>
+                <ScrollPane prefHeight="300" fx:id="scrollPaneGas"/>
+            </VBox>
         </Tab>
         <Tab text="%signUpHeatPumpCheckBox" closable="false" style="-fx-font-size: 18px;">
-            <ScrollPane prefHeight="400" fx:id="scrollPaneHeatPump"/>
+            <VBox>
+                <VBox fx:id="headerHeatPump"/>
+                <ScrollPane prefHeight="300" fx:id="scrollPaneHeatPump"/>
+            </VBox>
         </Tab>
     </TabPane>
     <HBox alignment="BOTTOM_RIGHT" VBox.vgrow="ALWAYS">
