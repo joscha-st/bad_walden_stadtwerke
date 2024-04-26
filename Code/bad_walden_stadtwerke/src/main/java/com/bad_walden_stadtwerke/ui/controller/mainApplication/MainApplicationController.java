@@ -50,7 +50,7 @@ public class MainApplicationController implements LanguageChangeObserver {
     private void setupWelcomeHeadLine() {
         ResourceBundle messages = ResourceBundle.getBundle("Bundle", LanguageController.getLanguage());
         String welcomeMessage = messages.getString("mainApplicationWelcomeHeadline");
-        welcomeHeadLineLabel.setText(MessageFormat.format(welcomeMessage, MockActiveSession.getFriendlyDisplayName()));
+        welcomeHeadLineLabel.setText(MessageFormat.format(welcomeMessage, MockActiveSession.getActiveUser().getFriendlyDisplayName()));
     }
 
     private void setupSidebar() {

@@ -38,4 +38,11 @@ public class StandardOutboundRequestHandlerTest {
         boolean expectedResponse = true;
         assertEquals(expectedResponse, actualResponse);
     }
+
+    @Test
+    void testMakeTariffSelectionForUserOutboundRequest() {
+        boolean actualResponse = StandardOutboundRequestHandler.makeTariffSelectionForUserOutboundRequest(new Tariff(1, "Basic", "Basic", 25, "kWh", 12, 12, "electricity"));
+        boolean expectedResponse = true;
+        assertEquals(expectedResponse, actualResponse);
+    }
 }

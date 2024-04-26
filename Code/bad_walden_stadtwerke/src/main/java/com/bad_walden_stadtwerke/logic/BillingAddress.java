@@ -1,5 +1,7 @@
 package com.bad_walden_stadtwerke.logic;
 
+import static com.bad_walden_stadtwerke.communication.BadWJsonParser.createJsonPair;
+
 public class BillingAddress {
 
     private String firstName;
@@ -35,11 +37,6 @@ public class BillingAddress {
                 + createJsonPair("city", city)
                 + "}";
     }
-
-    private String createJsonPair(String key, String value) {
-        return "\"" + key + "\": \"" + value + "\"";
-    }
-
 
     public String getFirstName() {
         return this.firstName;
