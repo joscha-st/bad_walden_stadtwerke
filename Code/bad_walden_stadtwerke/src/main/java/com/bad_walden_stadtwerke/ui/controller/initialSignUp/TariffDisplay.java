@@ -29,9 +29,10 @@ public class TariffDisplay {
     private final VBox header;
     private Tariff selectedTariff;
     private final ResourceBundle bundle;
+    private VBox content;
 
 
-    TariffDisplay(ScrollPane scrollPane, ArrayList<Tariff> tariffs, VBox header) {
+    public TariffDisplay(ScrollPane scrollPane, ArrayList<Tariff> tariffs, VBox header) {
         this.scrollPane = scrollPane;
         this.tariffs = tariffs;
         this.header = header;
@@ -46,7 +47,7 @@ public class TariffDisplay {
         return selectedTariff;
     }
 
-    public void displayTariffs() {
+    private void displayTariffs() {
         VBox content = new VBox(SPACING);
         scrollPane.setContent(content);
 
@@ -146,5 +147,13 @@ public class TariffDisplay {
         );
 
         header.getChildren().add(headerRow);
+    }
+
+    public ScrollPane getScrollPane() {
+        return scrollPane;
+    }
+
+    public VBox getContent() {
+        return content;
     }
 }
