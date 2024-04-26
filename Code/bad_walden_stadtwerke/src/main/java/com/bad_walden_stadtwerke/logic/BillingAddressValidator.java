@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 public class BillingAddressValidator {
     public static final String ALPHABETIC_PATTERN = "[a-zA-Z]+";
     public static final String ALPHABETIC_SPACE_DASH_PATTERN = "[a-zA-Z\\s\\-]+";
+    public static final String ALPHABETIC_SPACE_DASH_DOT_PATTERN = "[a-zA-Z\\s\\-\\.]+";
     public static final String HOUSE_NUMBER_PATTERN = "^\\d+[a-z]?$";
     public static final String POSTAL_CODE_PATTERN = "\\d{5}(-\\d{4})?";
     public static final int MAX_NAME_LENGTH = 50;
@@ -43,19 +44,19 @@ public class BillingAddressValidator {
     }
 
     private static void validateFirstName(String firstName, ResourceBundle bundle) {
-        if (!firstName.matches(ALPHABETIC_PATTERN)) {
+        if (!firstName.matches(ALPHABETIC_SPACE_DASH_PATTERN)) {
             throw new IllegalArgumentException(bundle.getString("signUpFirstNameLabel") + "\n" + bundle.getString("signUpAddressErrorLabel"));
         }
     }
 
     private static void validateLastName(String lastName, ResourceBundle bundle) {
-        if (!lastName.matches(ALPHABETIC_PATTERN)) {
+        if (!lastName.matches(ALPHABETIC_SPACE_DASH_PATTERN)) {
             throw new IllegalArgumentException(bundle.getString("signUpLastNameLabel") + "\n" + bundle.getString("signUpAddressErrorLabel"));
         }
     }
 
     private static void validateStreet(String street, ResourceBundle bundle) {
-        if (!street.matches(ALPHABETIC_SPACE_DASH_PATTERN)) {
+        if (!street.matches(ALPHABETIC_SPACE_DASH_DOT_PATTERN)) {
             throw new IllegalArgumentException(bundle.getString("signUpStreetLabel") + "\n" + bundle.getString("signUpAddressErrorLabel"));
         }
     }
