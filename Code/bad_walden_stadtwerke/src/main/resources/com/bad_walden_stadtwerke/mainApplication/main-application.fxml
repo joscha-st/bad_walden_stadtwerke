@@ -37,7 +37,7 @@
         </padding>
         <Label fx:id="welcomeHeadLineLabel" style="-fx-font-size: 86px; -fx-font-family: 'Arial';"/>
         <ImageView fx:id="imageView" fitHeight="500" fitWidth="1000">
-            <Image url="@../images/bad_walden_1.png" />
+            <Image url="@../images/BadWalden2.png" />
             <clip>
                 <Rectangle width="1000" height="500" arcWidth="33" arcHeight="33"/>
             </clip>
