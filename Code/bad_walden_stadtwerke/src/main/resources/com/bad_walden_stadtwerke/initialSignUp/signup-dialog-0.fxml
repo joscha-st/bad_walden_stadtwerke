@@ -16,6 +16,7 @@
         <Label fx:id="signUpHeadlineLabel" text="%signUpHeadlineLabel" style="-fx-font-size: 36px; -fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-text-fill: #000000;" />
         <Label fx:id="signUpWelcomeLabel" style="-fx-font-size: 28px; -fx-font-family: 'Arial'; -fx-text-fill: #333333;"/>
         <Label fx:id="signUpWelcomeText" text="%signUpWelcomeText" style="-fx-font-size: 18px; -fx-font-family: 'Arial'; -fx-text-fill: #000000;"/>
+        <Label fx:id="signUpWelcomeText2" text="%signUpWelcomeText2" style="-fx-font-size: 18px; -fx-font-family: 'Arial'; -fx-text-fill: #000000;-fx-padding: 10px 0px;"/>
     </VBox>
     <VBox prefWidth="200" prefHeight="550">
         <Label fx:id="signUpLanguageLabel" text="%signUpLanguageLabel" style="-fx-font-size: 18px; -fx-font-family: 'Arial'; -fx-text-fill: #333333;">
