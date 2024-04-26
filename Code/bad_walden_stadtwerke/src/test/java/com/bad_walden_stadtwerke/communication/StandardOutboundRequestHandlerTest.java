@@ -11,7 +11,6 @@ import java.util.Objects;
 import org.junit.jupiter.api.Test;
 
 import com.bad_walden_stadtwerke.logic.BillingAddress;
-import com.bad_walden_stadtwerke.mock.MockHttpClient;
 import com.bad_walden_stadtwerke.sales.types.Tariff;
 
 /**
@@ -39,5 +38,4 @@ public class StandardOutboundRequestHandlerTest {
         boolean expectedResponse = true;
         assertEquals(expectedResponse, actualResponse);
     }
-
 }
