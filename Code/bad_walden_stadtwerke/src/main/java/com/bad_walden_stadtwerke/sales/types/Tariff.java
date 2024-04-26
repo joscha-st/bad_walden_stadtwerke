@@ -1,5 +1,15 @@
 package com.bad_walden_stadtwerke.sales.types;
 
+import com.bad_walden_stadtwerke.ui.controller.LanguageController;
+import javafx.geometry.Insets;
+import javafx.scene.control.DialogPane;
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
+import javafx.geometry.Pos;
+import javafx.scene.layout.HBox;
+
+import java.util.ResourceBundle;
+
 import static com.bad_walden_stadtwerke.communication.BadWJsonParser.extractKeyValuePairs;
 import static com.bad_walden_stadtwerke.communication.BadWJsonParser.trimPart;
 
@@ -106,5 +116,4 @@ public class Tariff implements BadWObjectBuildableFromJsonParser {
     public int getCancellationPeriod() {
         return cancellationPeriod;
     }
-
 }
