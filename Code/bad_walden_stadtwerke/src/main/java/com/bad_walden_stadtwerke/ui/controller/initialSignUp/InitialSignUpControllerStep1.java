@@ -1,5 +1,6 @@
 package com.bad_walden_stadtwerke.ui.controller.initialSignUp;
 
+import com.bad_walden_stadtwerke.communication.StandardOutboundRequestHandler;
 import com.bad_walden_stadtwerke.logic.BillingAddress;
 import com.bad_walden_stadtwerke.ui.controller.FXMLUtility;
 import com.bad_walden_stadtwerke.ui.controller.LanguageChangeObserver;
@@ -37,6 +38,7 @@ public class InitialSignUpControllerStep1  {
         try{
             BillingAddress billingAddress = new BillingAddress(firstName.getText(), lastName.getText(), street.getText(), houseNumber.getText(), postalCode.getText(), city.getText());
             //TODO: implement logic to save billing address @joscha-st
+            StandardOutboundRequestHandler.makeUpdateBillingAddressForUserOutboundRequest(billingAddress);
         }catch(Exception e){
             showErrorPopup(bundle.getString("signUpErrorTitle"), String.valueOf(e));
             return;

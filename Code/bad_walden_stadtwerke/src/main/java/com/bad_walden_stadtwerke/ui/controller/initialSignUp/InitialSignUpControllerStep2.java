@@ -1,5 +1,6 @@
 package com.bad_walden_stadtwerke.ui.controller.initialSignUp;
 
+import com.bad_walden_stadtwerke.communication.StandardOutboundRequestHandler;
 import com.bad_walden_stadtwerke.sales.types.Tariff;
 import com.bad_walden_stadtwerke.ui.controller.FXMLUtility;
 import com.bad_walden_stadtwerke.ui.controller.LanguageController;
@@ -11,6 +12,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import static com.bad_walden_stadtwerke.ui.components.errorHandling.ExceptionPopup.showErrorPopup;
@@ -43,7 +45,8 @@ public class InitialSignUpControllerStep2 {
     @FXML
     public void initialize() {
         // TODO: remove mock later @joscha-st
-        setupElectricityMock();
+        List<Tariff> temp = StandardOutboundRequestHandler.makeTariffOutboundRequest("electricity");
+        electricity = (ArrayList<Tariff>) temp;
         displayElectricityTariffs();
     }
 
@@ -53,6 +56,7 @@ public class InitialSignUpControllerStep2 {
         try {
             checkSelectedTariff();
             //TODO: implement logic to save tariff @joscha-st
+            StandardOutboundRequestHandler.makeTariffSelectionForUserOutboundRequest(selectedTariff);
             loadNextStep(event);
         } catch (IllegalArgumentException e) {
             showErrorPopup(bundle.getString("signUpErrorTitle"), String.valueOf(e));

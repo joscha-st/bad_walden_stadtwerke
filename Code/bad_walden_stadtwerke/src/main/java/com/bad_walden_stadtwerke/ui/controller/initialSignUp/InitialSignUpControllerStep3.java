@@ -1,5 +1,6 @@
 package com.bad_walden_stadtwerke.ui.controller.initialSignUp;
 
+import com.bad_walden_stadtwerke.communication.StandardOutboundRequestHandler;
 import com.bad_walden_stadtwerke.sales.types.Tariff;
 import com.bad_walden_stadtwerke.ui.controller.FXMLUtility;
 import com.bad_walden_stadtwerke.ui.controller.LanguageController;
@@ -59,9 +60,11 @@ public class InitialSignUpControllerStep3 {
             if (tabIndex == 1) {
                 tariff = gasDisplay.getSelectedTariff();
                 //TODO: implement logic to save gas tariff @joscha-st
+                StandardOutboundRequestHandler.makeTariffSelectionForUserOutboundRequest(tariff);
             } else if (tabIndex == 2) {
                 tariff = heatingDisplay.getSelectedTariff();
                 //TODO: implement logic to save heating tariff @joscha-st
+                StandardOutboundRequestHandler.makeTariffSelectionForUserOutboundRequest(tariff);
             }
             try {
                 checkTariffIsSelected();
