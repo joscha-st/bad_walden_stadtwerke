@@ -6,6 +6,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -127,7 +128,7 @@ public class TariffDisplay {
     private void showAlert(Tariff tariff) {
         Dialog<Object> dialog = new Dialog<>();
         dialog.setTitle(bundle.getString("tariffDetailsTitle"));
-        dialog.setDialogPane(tariff.getDialogPane());
+        dialog.setDialogPane(getDialogPane(tariff));
         dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
         dialog.showAndWait();
     }
@@ -147,6 +148,52 @@ public class TariffDisplay {
         );
 
         header.getChildren().add(headerRow);
+    }
+
+
+
+    public DialogPane getDialogPane(Tariff tariff) {
+        DialogPane dialogPane = new DialogPane();
+        ResourceBundle bundle = ResourceBundle.getBundle("bundle", LanguageController.getLanguage());
+
+        GridPane grid = createTariffGridPane();
+
+        grid.add(createTariffLabel(bundle.getString("tariffName"), tariff.getName()), 0, 0);
+        grid.add(createTariffLabel(bundle.getString("tariffDescription"), tariff.getDescription()), 0, 1);
+        grid.add(createTariffLabel(bundle.getString("tariffPrice"), Integer.toString(tariff.getPrice())), 0, 2);
+        grid.add(createTariffLabel(bundle.getString("tariffUnit"), tariff.getUnit()), 0, 3);
+        grid.add(createTariffLabel(bundle.getString("tariffMinDuration"), Integer.toString(tariff.getMinDuration())), 0, 4);
+        grid.add(createTariffLabel(bundle.getString("tariffCancellationPeriod"), Integer.toString(tariff.getMinDuration())), 0, 5);
+
+        dialogPane.setContent(grid);
+
+        return dialogPane;
+    }
+
+    private GridPane createTariffGridPane() {
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(20, 10, 10, 10));
+        return grid;
+    }
+
+    private HBox createTariffLabel(String labelText, String valueText) {
+        Label label = new Label(labelText);
+        label.setWrapText(true);
+        label.setPrefWidth(120);
+        label.setMaxWidth(120);
+        label.setAlignment(Pos.TOP_LEFT);
+
+        Label valueLabel = new Label(valueText);
+        valueLabel.setWrapText(true);
+        valueLabel.setMaxWidth(400);
+        valueLabel.setAlignment(Pos.TOP_LEFT);
+
+        label.setStyle("-fx-font-weight: bold; -fx-font-size: 14px; -fx-font-family: Arial;");
+        valueLabel.setStyle("-fx-font-size: 14px; -fx-font-family: Arial;");
+
+        return new HBox(label, valueLabel);
     }
 
     public ScrollPane getScrollPane() {

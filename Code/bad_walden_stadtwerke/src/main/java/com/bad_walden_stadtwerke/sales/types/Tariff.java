@@ -116,48 +116,4 @@ public class Tariff implements BadWObjectBuildableFromJsonParser {
     public int getCancellationPeriod() {
         return cancellationPeriod;
     }
-
-    public DialogPane getDialogPane() {
-        DialogPane dialogPane = new DialogPane();
-        ResourceBundle bundle = ResourceBundle.getBundle("bundle", LanguageController.getLanguage());
-
-        GridPane grid = createGridPane();
-
-        grid.add(createLabel(bundle.getString("tariffName"), name), 0, 0);
-        grid.add(createLabel(bundle.getString("tariffDescription"), description), 0, 1);
-        grid.add(createLabel(bundle.getString("tariffPrice"), Integer.toString(price)), 0, 2);
-        grid.add(createLabel(bundle.getString("tariffUnit"), unit), 0, 3);
-        grid.add(createLabel(bundle.getString("tariffMinDuration"), Integer.toString(minDuration)), 0, 4);
-        grid.add(createLabel(bundle.getString("tariffCancellationPeriod"), Integer.toString(cancellationPeriod)), 0, 5);
-
-        dialogPane.setContent(grid);
-
-        return dialogPane;
-    }
-
-    private GridPane createGridPane() {
-        GridPane grid = new GridPane();
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(20, 10, 10, 10));
-        return grid;
-    }
-
-    private HBox createLabel(String labelText, String valueText) {
-        Label label = new Label(labelText);
-        label.setWrapText(true);
-        label.setPrefWidth(120);
-        label.setMaxWidth(120);
-        label.setAlignment(Pos.TOP_LEFT);
-
-        Label valueLabel = new Label(valueText);
-        valueLabel.setWrapText(true);
-        valueLabel.setMaxWidth(400);
-        valueLabel.setAlignment(Pos.TOP_LEFT);
-
-        label.setStyle("-fx-font-weight: bold; -fx-font-size: 14px; -fx-font-family: Arial;");
-        valueLabel.setStyle("-fx-font-size: 14px; -fx-font-family: Arial;");
-
-        return new HBox(label, valueLabel);
-    }
 }
