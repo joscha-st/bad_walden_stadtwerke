@@ -12,12 +12,10 @@ public class BillingAddressValidator {
     public static final String HOUSE_NUMBER_PATTERN = "^\\d+[a-z]?$";
     public static final String POSTAL_CODE_PATTERN = "\\d{5}(-\\d{4})?";
     public static final int MIN_FIRSTNAME_LASTNAME_CITY_STREET_LENGTH  = 2;
-    public static final int MIN_POSTAL_CODE_LENGTH = 5;
     public static final int MIN_HOUSE_NUMBER_LENGTH = 1;
     public static final int MAX_NAME_LENGTH = 50;
     public static final int MAX_STREET_LENGTH = 100;
     public static final int MAX_CITY_LENGTH = 50;
-    public static final int MAX_POSTAL_CODE_LENGTH = 5;
     public static final int MAX_HOUSE_NUMBER_LENGTH = 4;
 
 
@@ -39,7 +37,6 @@ public class BillingAddressValidator {
         validateLength(billingAddress.getLastName(), MIN_FIRSTNAME_LASTNAME_CITY_STREET_LENGTH, MAX_NAME_LENGTH, "signUpLastNameLabel", bundle);
         validateLength(billingAddress.getStreet(), MIN_FIRSTNAME_LASTNAME_CITY_STREET_LENGTH, MAX_STREET_LENGTH, "signUpStreetLabel", bundle);
         validateLength(billingAddress.getCity(), MIN_FIRSTNAME_LASTNAME_CITY_STREET_LENGTH, MAX_CITY_LENGTH, "signUpCityLabel", bundle);
-        validateLength(billingAddress.getPostalCode(), MIN_POSTAL_CODE_LENGTH,  MAX_POSTAL_CODE_LENGTH, "signUpPostalCodeLabel", bundle);
         validateLength(billingAddress.getHouseNumber(),MIN_HOUSE_NUMBER_LENGTH,  MAX_HOUSE_NUMBER_LENGTH, "signUpPostalCodeLabel", bundle);
     }
 
