@@ -59,4 +59,9 @@ public class BadWJsonParser {
         return json.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)", -1);
     }
 
+    public static String createJsonPair(String key, String value) {
+        return "\"" + key + "\": \"" + value + "\"";
+    }
+
+
 }

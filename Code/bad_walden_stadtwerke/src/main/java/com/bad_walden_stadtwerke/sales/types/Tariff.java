@@ -3,6 +3,8 @@ package com.bad_walden_stadtwerke.sales.types;
 import static com.bad_walden_stadtwerke.communication.BadWJsonParser.extractKeyValuePairs;
 import static com.bad_walden_stadtwerke.communication.BadWJsonParser.trimPart;
 
+import com.bad_walden_stadtwerke.communication.BadWJsonParser;
+
 public class Tariff implements BadWObjectBuildableFromJsonParser {
     private int id;
     private String name;
@@ -73,6 +75,10 @@ public class Tariff implements BadWObjectBuildableFromJsonParser {
             default:
                 break;
         }
+    }
+
+    public String idToJson() {
+        return "{" + BadWJsonParser.createJsonPair("id", String.valueOf(this.id)) + "}";
     }
 
     public int getId() {
