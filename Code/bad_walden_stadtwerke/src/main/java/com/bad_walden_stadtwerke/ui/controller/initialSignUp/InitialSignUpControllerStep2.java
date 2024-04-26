@@ -42,6 +42,7 @@ public class InitialSignUpControllerStep2 {
 
     @FXML
     public void initialize() {
+        // TODO: remove mock later @joscha-st
         setupElectricityMock();
         displayElectricityTariffs();
     }
@@ -51,6 +52,7 @@ public class InitialSignUpControllerStep2 {
         selectedTariff = electricityDisplay.getSelectedTariff();
         try {
             checkSelectedTariff();
+            //TODO: implement logic to save tariff @joscha-st
             loadNextStep(event);
         } catch (IllegalArgumentException e) {
             showErrorPopup(bundle.getString("signUpErrorTitle"), String.valueOf(e));

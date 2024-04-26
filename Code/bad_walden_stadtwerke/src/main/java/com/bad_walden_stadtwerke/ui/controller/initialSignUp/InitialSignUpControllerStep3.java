@@ -53,12 +53,15 @@ public class InitialSignUpControllerStep3 {
     public void next(ActionEvent event) {
         if (isFirstTabSelected()) {
             loadNextStep(event);
+            //TODO: implement logic to save "other" tariff @joscha-st
         } else {
             int tabIndex = getSelectedTabIndex();
             if (tabIndex == 1) {
                 tariff = gasDisplay.getSelectedTariff();
+                //TODO: implement logic to save gas tariff @joscha-st
             } else if (tabIndex == 2) {
                 tariff = heatingDisplay.getSelectedTariff();
+                //TODO: implement logic to save heating tariff @joscha-st
             }
             try {
                 checkTariffIsSelected();

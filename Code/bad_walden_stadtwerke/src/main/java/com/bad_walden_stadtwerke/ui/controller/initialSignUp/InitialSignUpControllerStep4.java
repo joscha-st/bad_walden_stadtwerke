@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 public class InitialSignUpControllerStep4 {
     @FXML
     public void close(ActionEvent event) {
+        // Save that user has completed the initial sign up @joscha-st
         Stage stage = FXMLUtility.getStageFromEvent(event);
         stage.close();
     }
