@@ -45,8 +45,8 @@ public class InitialSignUpControllerStep2 {
     @FXML
     public void initialize() {
         // TODO: remove mock later @joscha-st
-        List<Tariff> temp = StandardOutboundRequestHandler.makeTariffOutboundRequest("electricity");
-        electricity = (ArrayList<Tariff>) temp;
+        // TODO: check on whether to use ArrayList or normal List
+        electricity = (ArrayList<Tariff>) StandardOutboundRequestHandler.makeTariffOutboundRequest("electricity");
         displayElectricityTariffs();
     }
 

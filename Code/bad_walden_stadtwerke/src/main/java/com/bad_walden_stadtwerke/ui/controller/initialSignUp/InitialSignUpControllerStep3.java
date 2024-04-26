@@ -45,9 +45,9 @@ public class InitialSignUpControllerStep3 {
     @FXML
     public void initialize() {
         //TODO: remove mock later @joscha-st
-        setupMock();
+        gas = (ArrayList<Tariff>) StandardOutboundRequestHandler.makeTariffOutboundRequest("gas");
+        heating = (ArrayList<Tariff>) StandardOutboundRequestHandler.makeTariffOutboundRequest("heatpump");
         displayTariffs();
-
     }
 
     @FXML

@@ -44,7 +44,7 @@ public class StandardOutboundRequestHandler {
     }
 
     public static List<Tariff> makeTariffOutboundRequest(String category) {
-        return BadWJsonParser.parseJson(makeStandardOutboundRequest("category: " + category, "https://request-handling.int.bad-walden-stadtwerke.com/tariff-data"), Tariff::new);
+        return BadWJsonParser.parseJson(makeStandardOutboundRequest("category: " + category, "https://request-handling.int.bad-walden-stadtwerke.com/tariff-data/" + category), Tariff::new);
     }
 
     public static boolean makeUpdateBillingAddressForUserOutboundRequest(BillingAddress billingAddress) {

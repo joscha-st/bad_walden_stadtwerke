@@ -34,20 +34,37 @@ public class MockHttpClient {
         return mockResponse;
     }
 
-    private static String mockResponseBodySupplier(HttpRequest request){
+    private static String mockResponseBodySupplier(HttpRequest request) {
+        String uri = request.uri().toString();
 
-        if (Objects.equals(request.uri().toString(), "https://request-handling.int.bad-walden-stadtwerke.com/test")) {
+        if (uri.equals("https://request-handling.int.bad-walden-stadtwerke.com/test")) {
             return "{\"Hello World\"}";
         }
-        if (Objects.equals(request.uri().toString(), "https://request-handling.int.bad-walden-stadtwerke.com/tariff-data")) {
-            return "[{\"id\": 1, \"name\": \"Grundversorgung Tarif\", \"description\": \"Dieser Tarif bietet eine sichere und zuverlässige Grundstromversorgung für Ihren Haushalt, 100% Ökostrom.\", \"price\": 29, \"unit\": \"kWh\", \"category\": \"electricity\"}, {\"id\": 2, \"name\": \"Komfort Tarif\", \"description\": \"Unser Komfort Tarif bietet zusätzliche Dienstleistungen und Vorteile für Komfort liebende Kunden, 100% Ökostrom.\", \"price\": 32, \"unit\": \"kWh\", \"category\": \"electricity\"}, {\"id\": 3, \"name\": \"Super Saver Tarif\", \"description\": \"Unser Super Saver Tarif bietet die niedrigsten Preise für budgetbewusste Kunden, 100% Ökostrom.\", \"price\": 22, \"unit\": \"kWh\", \"cancellationPeriod\": 3, \"minDuration\": 12, \"category\": \"electricity\"}]\n";
+
+        if (uri.startsWith("https://request-handling.int.bad-walden-stadtwerke.com/tariff-data")) {
+            if (uri.contains("/electricity")) {
+                return "[{\"id\": 1, \"name\": \"Grundversorgung Tarif\", \"description\": \"Dieser Tarif bietet eine sichere und zuverlässige Grundstromversorgung für Ihren Haushalt, 100% Ökostrom.\", \"price\": 29, \"unit\": \"kWh\", \"category\": \"electricity\"}]";
+            }
+            else if (uri.contains("/gas")) {
+                return "[{\"id\": 2, \"name\": \"Gas Tarif\", \"description\": \"Dieser Tarif bietet eine sichere und zuverlässige Gasversorgung für Ihren Haushalt, 100% umweltfreundlich.\", \"price\": 19, \"unit\": \"m3\", \"category\": \"gas\"}]";
+            }
+            else if (uri.contains("/heatpump")) {
+                return "[{\"id\": 3, \"name\": \"Heat Pump Tarif\", \"description\": \"Dieser Tarif bietet niedrigste Preise für umweltfreundliche Wärmeversorgung.\", \"price\": 12, \"unit\": \"kWh\", \"category\": \"heat pump\"}]";
+            }
+            else {
+                return "{\"status\": \"Category not recognized\"}";
+            }
+
         }
-        if (Objects.equals(request.uri().toString(), "https://request-handling.int.bad-walden-stadtwerke.com/user-data/billing-address")) {
+        if (uri.equals("https://request-handling.int.bad-walden-stadtwerke.com/user-data/billing-address")) {
             return "{\"status\": \"success\"}";
         }
-        if (Objects.equals(request.uri().toString(), "https://request-handling.int.bad-walden-stadtwerke.com/user-data/tariff-selection")) {
+
+        if (uri.equals("https://request-handling.int.bad-walden-stadtwerke.com/user-data/tariff-selection")) {
             return "{\"status\": \"success\"}";
         }
+
         return "{\"status\": \"connected\"}";
     }
+
 }
