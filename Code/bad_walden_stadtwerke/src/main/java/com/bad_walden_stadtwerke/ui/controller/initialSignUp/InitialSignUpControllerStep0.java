@@ -31,6 +31,8 @@ public class InitialSignUpControllerStep0 {
 
     @FXML
     private javafx.scene.control.Label signUpWelcomeText;
+    @FXML
+    private javafx.scene.control.Label signUpWelcomeText2;
 
     @FXML
     private javafx.scene.control.Label signUpHeadlineLabel;
@@ -68,6 +70,7 @@ public class InitialSignUpControllerStep0 {
             String formattedWelcomeText = welcomeText.replace("{0}",  MockActiveSession.getActiveUser().getFriendlyDisplayName());
             signUpWelcomeLabel.setText(formattedWelcomeText);
             signUpWelcomeText.setText(messages.getString("signUpWelcomeText"));
+            signUpWelcomeText2.setText(messages.getString("signUpWelcomeText2"));
             signUpHeadlineLabel.setText(messages.getString("signUpHeadlineLabel"));
             signUpNextButton.setText(messages.getString("signUpNextButton"));
             changeLanguageToGermanButton.setText(messages.getString("languageGerman"));
