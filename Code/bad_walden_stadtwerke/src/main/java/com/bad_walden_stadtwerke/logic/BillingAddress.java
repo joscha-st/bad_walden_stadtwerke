@@ -12,12 +12,12 @@ public class BillingAddress {
     private String city;
 
     public BillingAddress(String firstName, String lastName, String street,String houseNumber, String postalCode, String city){
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.street = street;
-        this.houseNumber = houseNumber;
-        this.postalCode = postalCode;
-        this.city = city;
+        this.firstName = firstName.trim(); //.trim() removes any extra spaces from the end or the beginning of the string.
+        this.lastName = lastName.trim();
+        this.street = street.trim();
+        this.houseNumber = houseNumber.trim();
+        this.postalCode = postalCode.trim();
+        this.city = city.trim();
 
         validate();
     }
