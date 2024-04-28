@@ -60,6 +60,40 @@ public class BillingAddressValidatorTest {
     }
 
     @Test
+    public void whenFirstNameContainsUmlauts_thenValidationSucceeds() {
+        assertDoesNotThrow(()->new BillingAddress("Jörg", VALID_LAST_NAME, VALID_STREET, VALID_HOUSE_NUMBER, VALID_POSTAL_CODE, VALID_CITY));
+    }
+
+    @Test
+    public void whenLastNameContainsApostrophe() {
+        assertDoesNotThrow(()->new BillingAddress(VALID_FIRST_NAME, "O'Nail", VALID_STREET, VALID_HOUSE_NUMBER, VALID_POSTAL_CODE, VALID_CITY));
+    }
+
+    @Test
+    public void whenLastNameContainsEszett_thenValidationSucceeds() {
+        assertDoesNotThrow(()->new BillingAddress(VALID_FIRST_NAME, "Strauß", VALID_STREET, VALID_HOUSE_NUMBER, VALID_POSTAL_CODE, VALID_CITY));
+    }
+
+    @Test
+    public void whenNameHasLeadingOrTrailingSpaces_thenValidationSucceeds() {
+        assertDoesNotThrow(()->new BillingAddress(" John ", " Doe ", VALID_STREET, VALID_HOUSE_NUMBER, VALID_POSTAL_CODE, VALID_CITY));
+    }
+
+    @Test
+    public void whenStreetNameContainsAbbreviationStr_thenValidationSucceeds() {
+        assertDoesNotThrow(()->new BillingAddress(VALID_FIRST_NAME, VALID_LAST_NAME, "Mundenheimer Str.", VALID_HOUSE_NUMBER, VALID_POSTAL_CODE, VALID_CITY));
+    }
+
+    @Test
+    public void whenLastNameHasTwoWords_thenValidationSucceeds() {
+        assertDoesNotThrow(()->new BillingAddress(VALID_FIRST_NAME, "von Gerolstein", VALID_STREET, VALID_HOUSE_NUMBER, VALID_POSTAL_CODE, VALID_CITY));
+    }
+
+    @Test
+    public void whenLastNameContainsHyphen_thenValidationSucceeds() {
+        assertDoesNotThrow(()->new BillingAddress(VALID_FIRST_NAME, "Müller-Ingelheim", VALID_STREET, VALID_HOUSE_NUMBER, VALID_POSTAL_CODE, VALID_CITY));
+    }
+    @Test
     public void whenAllFieldsAreNull_thenValidationFails() {
         assertThrows(IllegalArgumentException.class, ()->new BillingAddress(null, null, null, null, null, null));
     }

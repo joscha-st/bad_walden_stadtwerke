@@ -7,8 +7,8 @@ import java.util.ResourceBundle;
 
 public class BillingAddressValidator {
     public static final String ALPHABETIC_PATTERN = "[a-zA-Z]+";
-    public static final String ALPHABETIC_SPACE_DASH_PATTERN = "[a-zA-Z\\s\\-]+";
-    public static final String ALPHABETIC_SPACE_DASH_DOT_PATTERN = "[a-zA-Z\\s\\-\\.]+";
+    public static final String ALPHABETIC_SPACE_DASH_PATTERN = "[a-zA-Z\\s\\-'äöüßÄÖÜéàè]+";
+    public static final String ALPHABETIC_SPACE_DASH_DOT_PATTERN = "[a-zA-Z\\s\\-.'äöüßÄÖÜéàè]+";
     public static final String HOUSE_NUMBER_PATTERN = "^\\d+[a-z]?$";
     public static final String POSTAL_CODE_PATTERN = "\\d{5}(-\\d{4})?";
     public static final int MIN_FIRSTNAME_LASTNAME_CITY_STREET_LENGTH  = 2;
