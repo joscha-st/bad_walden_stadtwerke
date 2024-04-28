@@ -13,6 +13,7 @@ public class MockHttpClient {
 
     public static boolean mockConnectionError = false;
     public static boolean mockServerSideError = false;
+    private int mockServerSideErrorCounter = -5;
 
     public static MockHttpClient newMockHttpClient() {
         return new MockHttpClient();
@@ -20,6 +21,9 @@ public class MockHttpClient {
 
     public <T> HttpResponse<T> send(HttpRequest request, BodyHandler<T> responseBodyHandler) throws IOException, InterruptedException {
         HttpResponse<T> mockResponse = mock(HttpResponse.class);
+
+        mockServerSideErrorCounter++;
+        mockServerSideError = mockServerSideErrorCounter == 0;
 
         if (mockConnectionError) {
             throw new IOException(new ConnectException());
