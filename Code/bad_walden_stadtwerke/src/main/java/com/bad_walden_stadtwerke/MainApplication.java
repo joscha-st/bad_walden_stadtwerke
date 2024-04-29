@@ -1,8 +1,8 @@
 package com.bad_walden_stadtwerke;
 
-import com.bad_walden_stadtwerke.ui.controller.LanguageChangeObserver;
-import com.bad_walden_stadtwerke.ui.controller.LanguageController;
-import com.bad_walden_stadtwerke.ui.controller.SignUpManager;
+import com.bad_walden_stadtwerke.model.types.language.LanguageChangeObserver;
+import com.bad_walden_stadtwerke.controller.language.LanguageController;
+import com.bad_walden_stadtwerke.model.initialSignUp.SignUpManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -25,7 +25,7 @@ public class MainApplication extends Application implements LanguageChangeObserv
 	@Override
 	public void start(Stage stage) throws IOException {
 		this.stage = stage;
-		SignUpManager signUpController = new SignUpManager(new Stage(), new FXMLLoader(), new LanguageController());
+		SignUpManager signUpController = new SignUpManager(new Stage(), new FXMLLoader());
 		switchScene(this.stage);
 		this.stage.setTitle(bundle.getString("mainApplicationTitle"));
 
@@ -37,7 +37,7 @@ public class MainApplication extends Application implements LanguageChangeObserv
 	public void switchScene(Stage stage) throws IOException {
 		ResourceBundle languageBundle = ResourceBundle.getBundle("Bundle", LanguageController.getLanguage());
 
-		FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("mainApplication/main-application.fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("/com/bad_walden_stadtwerke/view/mainApplication/main-application.fxml"));
 
 		fxmlLoader.setResources(languageBundle);
 

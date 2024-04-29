@@ -15,17 +15,12 @@ public class MockActiveSession {
 	public static void refreshCurrentSessionDataFromWebServer() {
 	}
 
-	;
 
 	public static class SessionUser {
 		private int userId = 57782;
 		private String friendlyDisplayName = "Paul Peter";
 
 		private boolean hasDoneInitialSignUp = false;
-
-		public int getUserId() {
-			return userId;
-		}
 
 		public String getFriendlyDisplayName() {
 			return friendlyDisplayName;
