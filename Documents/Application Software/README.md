@@ -19,7 +19,7 @@ This process shows the classification of a customer into the basic supply.
 
 #### Tariff changes
 This process shows what will happen, if the customer wants to change their tariff.
-![Tariff changes](GC_Tarifwechsel)
+![Tariff changes](GC_Tarifwechsel.png)
 
 
 #### Relocation
@@ -29,7 +29,18 @@ This process shows what will happen, if the customer relocates and therefore is 
 ### User Interface
 
 #### Customer: Inital Sign Up
+This process is for when the user logs in for the first time ever. In this process users fill in their billing address and select their tariff. A more detailed description follows:
 
+1. Distribution of Initial Access Credentials:
+Customers receive their initial access credentials via postal mail to log in for the first time.
+2. Add Billing Address:
+Customers fill in their billing address through the website for electricity and heating.
+3. Tariff Selection:
+Customers can choose from a variety of tariffs that meet their needs.
+4. Data Storage:
+Secure storage of customer data after successful registration.
+5. Redirect to Home Screen:
+After logging in, customers are redirected to the regular home screen of the website.
 ![Customer: Inital Sign Up](Sign_Up_Server_BPMN.png)
 
 #### Customer: Login process
@@ -48,9 +59,9 @@ This process gives the user a closer look at their gas consumption and they have
 This process gives the user a closer look at their water consumption and they have the possibility to view their tariff and change their water tariff.
 ![Customer: Tariff details water](UI_Kunde_Tarifdetails_WASSER.png)
 
-#### Customer: Tariff details electrictiy
+#### Customer: Tariff details electricity
 This process gives the user a closer look at their electrictiy consumption and they have the possibility to view their tariff and change their electrictiy tariff.
-![Customer: Tariff details electricity](UI_Kunde_Vertragsdetails_STROM.png)
+![Customer: Tariff details electricity](UI_Kunde_Tarifdetails_STROM.png)
 
 #### Poweruser: Tariff details gas
 We modeled this process exemplary for gas, since it is the same process for every segment. This process gives the poweruser a closer look at all tariffs relating to gas. Poweruser can change, add and delete the documents.
