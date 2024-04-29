@@ -9,8 +9,14 @@ public class ExceptionPopup {
         Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("Error");
         alert.setHeaderText(title);
-        alert.setContentText(message);
+        alert.setContentText(processMessage(message));
         alert.showAndWait();
     }
-
+    // Make the Message more User friendly
+    public static String processMessage(String message) {
+        if (message.contains(":")) {
+            return message.substring(message.indexOf(':') + 1).trim();
+        }
+        return message;
+    }
 }
