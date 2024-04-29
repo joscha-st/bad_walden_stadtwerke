@@ -3,7 +3,9 @@ package com.bad_walden_stadtwerke.components.errorHandling;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+/**
+ * Unit test {@link ExceptionPopup}
+ */
 public class ExceptionPopupTest {
 
 	@Test

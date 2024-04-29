@@ -5,12 +5,13 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
 
-
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-class SignUpManagerTest {
-
+/**
+ * Unit test {@link SignUpManager}
+ */
+public class SignUpManagerTest {
 
 	@Test
 	void whenInitializeDialogStage_thenStageIsConfiguredCorrectly() {

@@ -1,11 +1,15 @@
 package com.bad_walden_stadtwerke.model.types.billingAdress;
 
 import com.bad_walden_stadtwerke.model.types.billingAddress.BillingAddress;
+import com.bad_walden_stadtwerke.model.types.billingAddress.BillingAddressValidator;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+/**
+ * Unit test {@link BillingAddressValidator}
+ */
 public class BillingAddressValidatorTest {
 
 	private static final String VALID_FIRST_NAME = "John";
