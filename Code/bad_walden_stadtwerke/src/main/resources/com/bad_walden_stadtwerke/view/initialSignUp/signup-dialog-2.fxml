@@ -17,7 +17,7 @@
         <VBox fx:id="headerElectricity"/>
         <ScrollPane prefHeight="300" fx:id="scrollPaneElectricity"/>
     </VBox>
-    <CheckBox fx:id="checkboxElectricity" text="%signUpElectricityTariffCheckBoxText"
+    <CheckBox fx:id="checkboxElectricity" text="%signUpElectricityTariffCheckBoxText" onAction="#onElectricityCheckBoxClicked"
               style="-fx-font-size: 18px; -fx-font-family: 'Arial'; -fx-text-fill: #000000;"/>
     <HBox alignment="BOTTOM_RIGHT" VBox.vgrow="ALWAYS">
         <Button text="%signUpNextButton" onAction="#next"
