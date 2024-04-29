@@ -7,43 +7,43 @@ import com.bad_walden_stadtwerke.ui.controller.LanguageController;
 import com.bad_walden_stadtwerke.ui.controller.SignUpManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.TextField;
 
 import java.util.ResourceBundle;
 
 import static com.bad_walden_stadtwerke.ui.components.errorHandling.ExceptionPopup.showErrorPopup;
 
-public class InitialSignUpControllerStep1  {
+public class InitialSignUpControllerStep1 {
 
-    private static final String FXML_PATH = "/com/bad_walden_stadtwerke/initialSignUp/signup-dialog-2.fxml";
-    private static final String BUNDLE_NAME = SignUpManager.BUNDLE_NAME;
-    private ResourceBundle bundle = ResourceBundle.getBundle(BUNDLE_NAME, LanguageController.getLanguage());
+	private static final String FXML_PATH = "/com/bad_walden_stadtwerke/initialSignUp/signup-dialog-2.fxml";
+	private static final String BUNDLE_NAME = SignUpManager.BUNDLE_NAME;
+	private ResourceBundle bundle = ResourceBundle.getBundle(BUNDLE_NAME, LanguageController.getLanguage());
 
-    @FXML
-    private TextField firstName;
-    @FXML
-    private TextField lastName;
-    @FXML
-    private TextField street;
-    @FXML
-    private TextField houseNumber;
-    @FXML
-    private TextField postalCode;
-    @FXML
-    private TextField city;
+	@FXML
+	private TextField firstName;
+	@FXML
+	private TextField lastName;
+	@FXML
+	private TextField street;
+	@FXML
+	private TextField houseNumber;
+	@FXML
+	private TextField postalCode;
+	@FXML
+	private TextField city;
 
 
-    @FXML
-    public void next(ActionEvent event) {
-        try{
-            BillingAddress billingAddress = new BillingAddress(firstName.getText(), lastName.getText(), street.getText(), houseNumber.getText(), postalCode.getText(), city.getText());
-            StandardOutboundRequestHandler.makeUpdateBillingAddressForUserOutboundRequest(billingAddress);
-        }catch(Exception e){
-            showErrorPopup(bundle.getString("signUpErrorTitle"), String.valueOf(e));
-            return;
-        }
+	@FXML
+	public void next(ActionEvent event) {
+		try {
+			BillingAddress billingAddress = new BillingAddress(firstName.getText(), lastName.getText(), street.getText(), houseNumber.getText(), postalCode.getText(), city.getText());
+			StandardOutboundRequestHandler.makeUpdateBillingAddressForUserOutboundRequest(billingAddress);
+		} catch (Exception e) {
+			showErrorPopup(bundle.getString("signUpErrorTitle"), String.valueOf(e));
+			return;
+		}
 
-        FXMLUtility fxmlUtility = new FXMLUtility(FXML_PATH, BUNDLE_NAME, event);
-        fxmlUtility.loadAndSetScene();
-    }
+		FXMLUtility fxmlUtility = new FXMLUtility(FXML_PATH, BUNDLE_NAME, event);
+		fxmlUtility.loadAndSetScene();
+	}
 }

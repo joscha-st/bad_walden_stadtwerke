@@ -8,11 +8,11 @@ import javafx.fxml.FXML;
 import javafx.stage.Stage;
 
 public class InitialSignUpControllerStep4 {
-    @FXML
-    public void close(ActionEvent event) {
-        StandardOutboundRequestHandler.makeStandardPostOutboundRequest("{\"initialSignUpComplete\": true}", "https://request-handling.int.bad-walden-stadtwerke.com/user-data/");
-        MockActiveSession.refreshCurrentSessionDataFromWebServer();
-        Stage stage = FXMLUtility.getStageFromEvent(event);
-        stage.close();
-    }
+	@FXML
+	public void close(ActionEvent event) {
+		StandardOutboundRequestHandler.makeStandardPostOutboundRequest("{\"initialSignUpComplete\": true}", "https://request-handling.int.bad-walden-stadtwerke.com/user-data/");
+		MockActiveSession.refreshCurrentSessionDataFromWebServer();
+		Stage stage = FXMLUtility.getStageFromEvent(event);
+		stage.close();
+	}
 }
