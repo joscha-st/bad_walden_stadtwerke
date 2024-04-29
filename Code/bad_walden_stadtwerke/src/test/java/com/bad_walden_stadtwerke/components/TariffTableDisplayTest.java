@@ -2,7 +2,10 @@ package com.bad_walden_stadtwerke.components;
 
 import com.bad_walden_stadtwerke.model.types.Tariff;
 import javafx.application.Platform;
+import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,8 +13,11 @@ import org.mockito.Mockito;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Unit test {@link TariffTableDisplay}
+ */
 public class TariffTableDisplayTest {
 	static {
 		Platform.startup(() -> {
@@ -28,6 +34,34 @@ public class TariffTableDisplayTest {
 		tariffs = new ArrayList<>();
 		header = new VBox();
 		tariffTableDisplay = Mockito.mock(TariffTableDisplay.class);
+	}
+
+	@Test
+	public void whenHideSelectButtonIsFalse_thenSelectButtonIsVisible() {
+		tariffs.add(new Tariff(1, "Test", "Test Description", 100, "€", 12, 1, "electricity"));
+
+		scrollPane = new ScrollPane();
+		tariffTableDisplay = new TariffTableDisplay(scrollPane, tariffs, header, false);
+
+		VBox content = (VBox) scrollPane.getContent();
+		Node tariffNode = content.getChildren().get(0);
+		HBox tariffRow = (HBox) tariffNode;
+		StackPane selectButtonStackPane = (StackPane) tariffRow.getChildren().get(5);
+		assertFalse(selectButtonStackPane.getChildren().isEmpty());
+	}
+
+	@Test
+	public void whenHideSelectButtonIsTrue_thenSelectButtonIsHidden() {
+		tariffs.add(new Tariff(1, "Test", "Test Description", 100, "€", 12, 1, "electricity"));
+
+		scrollPane = new ScrollPane();
+		tariffTableDisplay = new TariffTableDisplay(scrollPane, tariffs, header, true);
+
+		VBox content = (VBox) scrollPane.getContent();
+		Node tariffNode = content.getChildren().get(0);
+		HBox tariffRow = (HBox) tariffNode;
+		StackPane selectButtonStackPane = (StackPane) tariffRow.getChildren().get(5);
+		assertTrue(selectButtonStackPane.getChildren().isEmpty());
 	}
 
 	@Test
