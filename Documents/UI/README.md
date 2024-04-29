@@ -17,7 +17,7 @@ The general layout of the pages is 1000 x 720px. The sidebar has a 280px width. 
 
 #### Color Scheme
 
-We decided to keep the colors minimalistic. The UI is mainly in black and white. There are some exceptions where we used colors to highlight something. Grey buttons mean, that they cannot be used to prevent the user from using them when we don't want them to. For example, when not every field is filled in.
+We decided to keep the colors minimalistic. The UI is mainly in black and white. There are some exceptions where we used colors to highlight something.
 Red arrows show to which page or state the user interaction leads to. There might be notes next to the arrows. These are conditions. Orange lines lead to further notes about the page or state.
 
 ---
