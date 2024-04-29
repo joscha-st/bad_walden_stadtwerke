@@ -83,7 +83,9 @@ public class InitialSignUpControllerStep0 {
 
 	private void displayTariffs() {
 		water = (ArrayList<Tariff>) StandardOutboundRequestHandler.makeTariffOutboundRequest("water");
-		waterDisplay = new TariffTableDisplay(scrollPaneWater, water, headerWater, true);
+		if (water != null) {
+			waterDisplay = new TariffTableDisplay(scrollPaneWater, water, headerWater, true);
+		}
 	}
 
 	private void updateTexts() {

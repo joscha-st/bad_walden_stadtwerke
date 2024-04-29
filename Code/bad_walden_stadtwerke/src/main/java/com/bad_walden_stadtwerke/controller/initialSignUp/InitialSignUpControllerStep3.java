@@ -51,26 +51,29 @@ public class InitialSignUpControllerStep3 {
 
 	@FXML
 	public void next(ActionEvent event) {
-		if (isFirstTabSelected()) {
-			loadNextStep(event);
-			StandardOutboundRequestHandler.makeStandardPostOutboundRequest("{\"externalElectricityTariff\": true}", "https://request-handling.int.bad-walden-stadtwerke.com/user-data/");
-		} else {
-			int tabIndex = getSelectedTabIndex();
-			if (tabIndex == 1) {
-				tariff = gasDisplay.getSelectedTariff();
-				StandardOutboundRequestHandler.makeTariffSelectionForUserOutboundRequest(tariff);
-			} else if (tabIndex == 2) {
-				tariff = heatingDisplay.getSelectedTariff();
-				StandardOutboundRequestHandler.makeTariffSelectionForUserOutboundRequest(tariff);
+		boolean successOfRequest = false;
+		try {
+			if (isFirstTabSelected()) {
+				successOfRequest = StandardOutboundRequestHandler.makeStandardUpdateRequest("{\"externalHeatingTariff\": true}", "https://request-handling.int.bad-walden-stadtwerke.com/user-data/");
+			} else {
+				int tabIndex = getSelectedTabIndex();
+				if (tabIndex == 1) {
+					tariff = gasDisplay.getSelectedTariff();
+					checkTariffIsSelected();
+					successOfRequest = StandardOutboundRequestHandler.makeTariffSelectionForUserOutboundRequest(tariff);
+				} else if (tabIndex == 2) {
+					tariff = heatingDisplay.getSelectedTariff();
+					checkTariffIsSelected();
+					successOfRequest = StandardOutboundRequestHandler.makeTariffSelectionForUserOutboundRequest(tariff);
+				}
 			}
-			try {
-				checkTariffIsSelected();
-				loadNextStep(event);
-			} catch (IllegalArgumentException e) {
-				ExceptionPopup.showErrorPopup(bundle.getString("signUpErrorTitle"), String.valueOf(e));
+			if (successOfRequest){
+					loadNextStep(event);
 			}
+		} catch (IllegalArgumentException e) {
+			ExceptionPopup.showErrorPopup(bundle.getString("signUpErrorTitle"), String.valueOf(e));
 		}
-	}
+}
 
 	private void displayTariffs() {
 		gasDisplay = new TariffTableDisplay(scrollPaneGas, gas, headerGas);

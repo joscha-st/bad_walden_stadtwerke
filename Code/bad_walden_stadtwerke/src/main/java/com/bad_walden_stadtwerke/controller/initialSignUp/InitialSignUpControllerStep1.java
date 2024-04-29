@@ -34,15 +34,18 @@ public class InitialSignUpControllerStep1 {
 
 	@FXML
 	public void next(ActionEvent event) {
+		boolean successOfRequest = false;
 		try {
 			BillingAddress billingAddress = new BillingAddress(firstName.getText(), lastName.getText(), street.getText(), houseNumber.getText(), postalCode.getText(), city.getText());
-			StandardOutboundRequestHandler.makeUpdateBillingAddressForUserOutboundRequest(billingAddress);
+			successOfRequest = StandardOutboundRequestHandler.makeUpdateBillingAddressForUserOutboundRequest(billingAddress);
 		} catch (Exception e) {
 			ExceptionPopup.showErrorPopup(bundle.getString("signUpErrorTitle"), String.valueOf(e));
 			return;
 		}
-
+		if (successOfRequest){
 		FXMLUtility fxmlUtility = new FXMLUtility(FXML_PATH, BUNDLE_NAME, event);
 		fxmlUtility.loadAndSetScene();
+		}
+
 	}
 }
