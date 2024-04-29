@@ -61,7 +61,7 @@ public class TariffDisplay {
         row.getChildren().addAll(
                 createLabel(tariff.getName(), COLUMN_WIDTH_MEDIUM),
                 createLabel(tariff.getDescription(), COLUMN_WIDTH_LARGE, MAX_HEIGHT),
-                createLabel(tariff.getPrice() + " " + tariff.getUnit(), COLUMN_WIDTH_SMALL),
+                createLabel(tariff.getPrice() + " ct / " + tariff.getUnit(), COLUMN_WIDTH_SMALL),
                 createLabel(tariff.getMinDuration() + " " + bundle.getString("months"), COLUMN_WIDTH_MEDIUM),
                 createLabel(tariff.getCancellationPeriod() + " " +  bundle.getString("months"), COLUMN_WIDTH_MEDIUM),
                 createSelectButton(tariff, content),
@@ -161,7 +161,7 @@ public class TariffDisplay {
         grid.add(createTariffLabel(bundle.getString("tariffName"), tariff.getName()), 0, 0);
         grid.add(createTariffLabel(bundle.getString("tariffDescription"), tariff.getDescription()), 0, 1);
         grid.add(createTariffLabel(bundle.getString("tariffPrice"), Integer.toString(tariff.getPrice())), 0, 2);
-        grid.add(createTariffLabel(bundle.getString("tariffUnit"), tariff.getUnit()), 0, 3);
+        grid.add(createTariffLabel(bundle.getString("tariffUnit"), "ct / "+tariff.getUnit()), 0, 3);
         grid.add(createTariffLabel(bundle.getString("tariffMinDuration"), Integer.toString(tariff.getMinDuration())), 0, 4);
         grid.add(createTariffLabel(bundle.getString("tariffCancellationPeriod"), Integer.toString(tariff.getMinDuration())), 0, 5);
 
