@@ -1,5 +1,6 @@
 package com.bad_walden_stadtwerke.ui.controller.initialSignUp;
 
+import com.bad_walden_stadtwerke.communication.StandardOutboundRequestHandler;
 import com.bad_walden_stadtwerke.sales.types.Tariff;
 import com.bad_walden_stadtwerke.ui.controller.FXMLUtility;
 import com.bad_walden_stadtwerke.ui.controller.LanguageController;
@@ -43,22 +44,24 @@ public class InitialSignUpControllerStep3 {
 
     @FXML
     public void initialize() {
-        //TODO: remove mock later @joscha-st
-        setupMock();
+        gas = (ArrayList<Tariff>) StandardOutboundRequestHandler.makeTariffOutboundRequest("gas");
+        heating = (ArrayList<Tariff>) StandardOutboundRequestHandler.makeTariffOutboundRequest("heatpump");
         displayTariffs();
-
     }
 
     @FXML
     public void next(ActionEvent event) {
         if (isFirstTabSelected()) {
             loadNextStep(event);
+            StandardOutboundRequestHandler.makeStandardPostOutboundRequest("{\"externalElectricityTariff\": true}", "https://request-handling.int.bad-walden-stadtwerke.com/user-data/");
         } else {
             int tabIndex = getSelectedTabIndex();
             if (tabIndex == 1) {
                 tariff = gasDisplay.getSelectedTariff();
+                StandardOutboundRequestHandler.makeTariffSelectionForUserOutboundRequest(tariff);
             } else if (tabIndex == 2) {
                 tariff = heatingDisplay.getSelectedTariff();
+                StandardOutboundRequestHandler.makeTariffSelectionForUserOutboundRequest(tariff);
             }
             try {
                 checkTariffIsSelected();

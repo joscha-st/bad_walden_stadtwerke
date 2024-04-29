@@ -19,9 +19,16 @@ import com.bad_walden_stadtwerke.sales.types.Tariff;
 public class StandardOutboundRequestHandlerTest {
 
     @Test
-    void testMakeStandardOutboundRequest() {
+    void testMakeStandardPostOutboundRequest() {
         String expectedResponse = "{\"Hello World\"}";
-        String actualResponse = StandardOutboundRequestHandler.makeStandardOutboundRequest("test", "https://request-handling.int.bad-walden-stadtwerke.com/test");
+        String actualResponse = StandardOutboundRequestHandler.makeStandardPostOutboundRequest("test", "https://request-handling.int.bad-walden-stadtwerke.com/test");
+        assertEquals(expectedResponse, actualResponse);
+    }
+
+    @Test
+    void testMakeStandardGetOutboundRequest() {
+        String expectedResponse = "{\"Hello World\"}";
+        String actualResponse = StandardOutboundRequestHandler.makeStandardGetOutboundRequest("https://request-handling.int.bad-walden-stadtwerke.com/test");
         assertEquals(expectedResponse, actualResponse);
     }
 
