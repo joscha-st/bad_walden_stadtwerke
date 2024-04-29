@@ -19,7 +19,7 @@ public class TariffDisplay {
     private static final String BUTTON_BACKGROUND_COLOR = "-fx-background-color: #ffffff";
     private static final String BUTTON_SELECTED_BACKGROUND_COLOR = "-fx-background-color: #ffcc00";
     private static final double COLUMN_WIDTH_SMALL = 80;
-    private static final double COLUMN_WIDTH_MEDIUM = 120;
+    private static final double COLUMN_WIDTH_MEDIUM = 125;
     private static final double COLUMN_WIDTH_LARGE = 175;
     private static final int SPACING = 10;
     private static final int PADDING = 10;
@@ -31,6 +31,7 @@ public class TariffDisplay {
     private Tariff selectedTariff;
     private final ResourceBundle bundle;
     private VBox content;
+    private boolean hideSelectButton = false;
 
 
     public TariffDisplay(ScrollPane scrollPane, ArrayList<Tariff> tariffs, VBox header) {
@@ -39,6 +40,18 @@ public class TariffDisplay {
         this.header = header;
         this.selectedTariff = null;
         this.bundle = ResourceBundle.getBundle("bundle", LanguageController.getLanguage());
+
+        setupHeader();
+        displayTariffs();
+    }
+
+    public TariffDisplay(ScrollPane scrollPane, ArrayList<Tariff> tariffs, VBox header, boolean hideSelectButton) {
+        this.scrollPane = scrollPane;
+        this.tariffs = tariffs;
+        this.header = header;
+        this.selectedTariff = null;
+        this.bundle = ResourceBundle.getBundle("bundle", LanguageController.getLanguage());
+        this.hideSelectButton = hideSelectButton;
 
         setupHeader();
         displayTariffs();
@@ -87,6 +100,9 @@ public class TariffDisplay {
     }
 
     private StackPane createSelectButton(Tariff tariff, VBox content) {
+        if (hideSelectButton) {
+            return new StackPane();
+        }
         Button button = new Button(bundle.getString("tariffSelectButton"));
         button.setStyle(BUTTON_BACKGROUND_COLOR + "; -fx-font-family: " + FONT_FAMILY + "; -fx-font-size: " + FONT_SIZE + ";");
         button.setOnAction(event -> {
