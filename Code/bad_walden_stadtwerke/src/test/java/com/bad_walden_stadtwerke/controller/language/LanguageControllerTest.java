@@ -22,7 +22,10 @@ class TestObserver implements LanguageChangeObserver {
 	}
 }
 
-class LanguageControllerTest {
+/**
+ * Unit test {@link LanguageController}
+ */
+public class LanguageControllerTest {
 
 	private static final Locale DEFAULT_LANGUAGE = Locale.GERMAN;
 	private static final Locale SUPPORTED_LANGUAGE = Locale.ENGLISH;

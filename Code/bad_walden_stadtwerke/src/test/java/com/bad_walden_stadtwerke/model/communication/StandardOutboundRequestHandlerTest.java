@@ -1,8 +1,8 @@
 package com.bad_walden_stadtwerke.model.communication;
 
 
-import com.bad_walden_stadtwerke.model.types.billingAddress.BillingAddress;
 import com.bad_walden_stadtwerke.model.types.Tariff;
+import com.bad_walden_stadtwerke.model.types.billingAddress.BillingAddress;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
