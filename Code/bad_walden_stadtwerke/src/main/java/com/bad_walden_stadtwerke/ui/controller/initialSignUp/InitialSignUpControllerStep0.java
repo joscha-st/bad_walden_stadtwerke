@@ -1,14 +1,19 @@
 package com.bad_walden_stadtwerke.ui.controller.initialSignUp;
 
+import com.bad_walden_stadtwerke.communication.StandardOutboundRequestHandler;
 import com.bad_walden_stadtwerke.mock.MockActiveSession;
+import com.bad_walden_stadtwerke.sales.types.Tariff;
 import com.bad_walden_stadtwerke.ui.controller.FXMLUtility;
 import com.bad_walden_stadtwerke.ui.controller.LanguageController;
 import com.bad_walden_stadtwerke.ui.controller.SignUpManager;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.VBox;
 
 
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -16,6 +21,9 @@ public class InitialSignUpControllerStep0 {
 
     private static final String SIGN_UP_DIALOG_PATH = "/com/bad_walden_stadtwerke/initialSignUp/signup-dialog-1.fxml";
     private static final String BUNDLE_NAME = SignUpManager.BUNDLE_NAME;
+    private ArrayList<Tariff> water = new ArrayList<>();
+    private TariffDisplay waterDisplay;
+
 
     @FXML
     private javafx.scene.control.Label signUpWelcomeLabel;
@@ -39,6 +47,13 @@ public class InitialSignUpControllerStep0 {
 
     @FXML
     private javafx.scene.control.Label signUpLanguageLabel;
+
+    @FXML
+    private javafx.scene.layout.VBox headerWater;
+
+    @FXML
+    private javafx.scene.control.ScrollPane scrollPaneWater;
+
 
     private ResourceBundle messages;
 
@@ -64,6 +79,11 @@ public class InitialSignUpControllerStep0 {
         updateTexts();
     }
 
+    private void displayTariffs() {
+        water = (ArrayList<Tariff>) StandardOutboundRequestHandler.makeTariffOutboundRequest("electricity");
+        waterDisplay = new TariffDisplay(scrollPaneWater, water, headerWater, true);
+    }
+
     private void updateTexts() {
         Platform.runLater(() -> {
             String welcomeText = messages.getString("signUpWelcomeLabel");
@@ -76,6 +96,7 @@ public class InitialSignUpControllerStep0 {
             changeLanguageToGermanButton.setText(messages.getString("languageGerman"));
             changeLanguageToEnglishButton.setText(messages.getString("languageEnglish"));
             signUpLanguageLabel.setText(messages.getString("signUpLanguageLabel"));
+            displayTariffs();
         });
     }
 
