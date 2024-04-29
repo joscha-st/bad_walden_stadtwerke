@@ -37,7 +37,6 @@ public class InitialSignUpControllerStep1  {
     public void next(ActionEvent event) {
         try{
             BillingAddress billingAddress = new BillingAddress(firstName.getText(), lastName.getText(), street.getText(), houseNumber.getText(), postalCode.getText(), city.getText());
-            //TODO: implement logic to save billing address @joscha-st
             StandardOutboundRequestHandler.makeUpdateBillingAddressForUserOutboundRequest(billingAddress);
         }catch(Exception e){
             showErrorPopup(bundle.getString("signUpErrorTitle"), String.valueOf(e));

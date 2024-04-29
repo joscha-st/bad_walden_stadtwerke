@@ -53,7 +53,6 @@ public class InitialSignUpControllerStep2 {
         selectedTariff = electricityDisplay.getSelectedTariff();
         try {
             checkSelectedTariff();
-            //TODO: implement logic to save tariff @joscha-st
             StandardOutboundRequestHandler.makeTariffSelectionForUserOutboundRequest(selectedTariff);
             loadNextStep(event);
         } catch (IllegalArgumentException e) {
