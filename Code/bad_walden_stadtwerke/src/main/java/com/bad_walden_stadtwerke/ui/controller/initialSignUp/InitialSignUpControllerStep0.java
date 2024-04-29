@@ -80,7 +80,7 @@ public class InitialSignUpControllerStep0 {
     }
 
     private void displayTariffs() {
-        water = (ArrayList<Tariff>) StandardOutboundRequestHandler.makeTariffOutboundRequest("electricity");
+        water = (ArrayList<Tariff>) StandardOutboundRequestHandler.makeTariffOutboundRequest("water");
         waterDisplay = new TariffDisplay(scrollPaneWater, water, headerWater, true);
     }
 
