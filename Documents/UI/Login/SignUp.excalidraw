@@ -18535,8 +18535,8 @@
     },
     {
       "type": "text",
-      "version": 1893,
-      "versionNonce": 1400907811,
+      "version": 2005,
+      "versionNonce": 1059906275,
       "isDeleted": false,
       "id": "GEwtFEQmfFPy9XrL_1ScS",
       "fillStyle": "solid",
@@ -18545,12 +18545,12 @@
       "roughness": 1,
       "opacity": 100,
       "angle": 0,
-      "x": -984.1904324531437,
-      "y": 2923.8391207239806,
+      "x": -984.0655138333522,
+      "y": 2924.0141390345275,
       "strokeColor": "#1e1e1e",
       "backgroundColor": "#fff",
-      "width": 230.125244140625,
-      "height": 60.37730301853324,
+      "width": 342.6400146484375,
+      "height": 150.9432575463331,
       "seed": 54753836,
       "groupIds": [
         "eqmNe4M3EtH33V2ZKqfgR"
@@ -18558,18 +18558,18 @@
       "frameId": null,
       "roundness": null,
       "boundElements": [],
-      "updated": 1714381454232,
+      "updated": 1714382066586,
       "link": null,
       "locked": false,
       "fontSize": 24.150921207413287,
       "fontFamily": 1,
-      "text": "You can only have 1\nHeiz Tarif",
+      "text": "Tabs that you can always\nswitch between while choosing\nthe tariff\nBUT you can only have one\nHeiztarif",
       "textAlign": "left",
       "verticalAlign": "top",
       "containerId": null,
-      "originalText": "You can only have 1\nHeiz Tarif",
+      "originalText": "Tabs that you can always\nswitch between while choosing\nthe tariff\nBUT you can only have one\nHeiztarif",
       "lineHeight": 1.2500000000000004,
-      "baseline": 51
+      "baseline": 142
     },
     {
       "type": "line",
@@ -33142,50 +33142,6 @@
       ]
     },
     {
-      "type": "line",
-      "version": 219,
-      "versionNonce": 905257059,
-      "isDeleted": false,
-      "id": "gwoedjwB7TUdhQqkLfRBf",
-      "fillStyle": "solid",
-      "strokeWidth": 4,
-      "strokeStyle": "dashed",
-      "roughness": 0,
-      "opacity": 100,
-      "angle": 0,
-      "x": -8529.742666585555,
-      "y": 3385.2987335537664,
-      "strokeColor": "#f08c00",
-      "backgroundColor": "transparent",
-      "width": 187.5879164525105,
-      "height": 381.0791650644478,
-      "seed": 474091367,
-      "groupIds": [],
-      "frameId": null,
-      "roundness": {
-        "type": 2
-      },
-      "boundElements": [],
-      "updated": 1714381454241,
-      "link": null,
-      "locked": false,
-      "startBinding": null,
-      "endBinding": null,
-      "lastCommittedPoint": null,
-      "startArrowhead": null,
-      "endArrowhead": null,
-      "points": [
-        [
-          0,
-          0
-        ],
-        [
-          187.5879164525105,
-          -381.0791650644478
-        ]
-      ]
-    },
-    {
       "type": "rectangle",
       "version": 1439,
       "versionNonce": 666225485,
@@ -40191,8 +40147,8 @@
     },
     {
       "type": "frame",
-      "version": 1826,
-      "versionNonce": 1698070947,
+      "version": 1827,
+      "versionNonce": 1837652589,
       "isDeleted": false,
       "id": "08BXqb3szyYPRryVotljm",
       "fillStyle": "solid",
@@ -40211,8 +40167,13 @@
       "groupIds": [],
       "frameId": null,
       "roundness": null,
-      "boundElements": null,
-      "updated": 1714381459669,
+      "boundElements": [
+        {
+          "id": "_9Iki_HbiayG0WmGft3W1",
+          "type": "arrow"
+        }
+      ],
+      "updated": 1714381643784,
       "link": null,
       "locked": false,
       "customData": {
@@ -47060,8 +47021,8 @@
     },
     {
       "type": "text",
-      "version": 1938,
-      "versionNonce": 476782637,
+      "version": 1939,
+      "versionNonce": 942912771,
       "isDeleted": false,
       "id": "V77UJQuBdW2BtaPe_TxHB",
       "fillStyle": "solid",
@@ -47074,8 +47035,8 @@
       "y": 2839.6274307472745,
       "strokeColor": "#1e1e1e",
       "backgroundColor": "#fff",
-      "width": 230.125244140625,
-      "height": 60.37730301853324,
+      "width": 342.6400146484375,
+      "height": 150.9432575463331,
       "seed": 1853505575,
       "groupIds": [
         "-Lzqp8rhWPWwgpYLnEdGE"
@@ -47083,18 +47044,18 @@
       "frameId": null,
       "roundness": null,
       "boundElements": [],
-      "updated": 1714381454249,
+      "updated": 1714382078256,
       "link": null,
       "locked": false,
       "fontSize": 24.150921207413287,
       "fontFamily": 1,
-      "text": "You can only have 1\nHeiz Tarif",
+      "text": "Tabs that you can always\nswitch between while choosing\nthe tariff\nBUT you can only have one\nHeiztarif",
       "textAlign": "left",
       "verticalAlign": "top",
       "containerId": null,
-      "originalText": "You can only have 1\nHeiz Tarif",
+      "originalText": "Tabs that you can always\nswitch between while choosing\nthe tariff\nBUT you can only have one\nHeiztarif",
       "lineHeight": 1.2500000000000004,
-      "baseline": 51
+      "baseline": 142
     },
     {
       "type": "line",
@@ -55745,11 +55706,11 @@
         "type": 2
       },
       "seed": 130114755,
-      "version": 161,
-      "versionNonce": 1167266637,
+      "version": 167,
+      "versionNonce": 1607810029,
       "isDeleted": false,
       "boundElements": null,
-      "updated": 1714381643267,
+      "updated": 1714381644276,
       "link": null,
       "locked": false,
       "points": [
@@ -55765,12 +55726,60 @@
       "lastCommittedPoint": null,
       "startBinding": {
         "elementId": "UcM7910wzWS-Kyu2UBWz6",
-        "focus": -0.2944653538506406,
+        "focus": 0.7749827209741602,
         "gap": 12.394174012045369
       },
-      "endBinding": null,
+      "endBinding": {
+        "elementId": "08BXqb3szyYPRryVotljm",
+        "focus": 0.011586309940006305,
+        "gap": 23.528188517987473
+      },
       "startArrowhead": null,
       "endArrowhead": "arrow"
+    },
+    {
+      "type": "line",
+      "version": 220,
+      "versionNonce": 197904749,
+      "isDeleted": false,
+      "id": "gwoedjwB7TUdhQqkLfRBf",
+      "fillStyle": "solid",
+      "strokeWidth": 4,
+      "strokeStyle": "dashed",
+      "roughness": 0,
+      "opacity": 100,
+      "angle": 0,
+      "x": -8529.742666585555,
+      "y": 3385.2987335537664,
+      "strokeColor": "#f08c00",
+      "backgroundColor": "transparent",
+      "width": 187.5879164525105,
+      "height": 381.0791650644478,
+      "seed": 474091367,
+      "groupIds": [],
+      "frameId": null,
+      "roundness": {
+        "type": 2
+      },
+      "boundElements": [],
+      "updated": 1714382106981,
+      "link": null,
+      "locked": false,
+      "startBinding": null,
+      "endBinding": null,
+      "lastCommittedPoint": null,
+      "startArrowhead": null,
+      "endArrowhead": null,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          187.5879164525105,
+          -381.0791650644478
+        ]
+      ]
     }
   ],
   "appState": {
