@@ -13,6 +13,8 @@ public class MockActiveSession {
         return bearerToken;
     }
 
+    public static void refreshCurrentSessionDataFromWebServer() {};
+
     public static class SessionUser {
         private int userId = 57782;
         private String friendlyDisplayName = "Paul Peter";

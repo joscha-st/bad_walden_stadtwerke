@@ -26,9 +26,8 @@ public class StandardOutboundRequestHandler {
 
     private static ResourceBundle messages;
 
-    public static String makeStandardOutboundRequest(String jsonPayload, String endpointUrl) {
+    public static String makeStandardPostOutboundRequest(String jsonPayload, String endpointUrl) {
         CreateNewClientIfNoneExists();
-
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(endpointUrl))
                 .header("Content-Type", "application/json")
@@ -36,24 +35,42 @@ public class StandardOutboundRequestHandler {
                 .header("Accept-Language", getActiveLanguageAndCountryForHeader())
                 .POST(BodyPublishers.ofString(jsonPayload))
                 .build();
-        System.out.println("Communication: StandardOutboundRequest prepared: " + request.toString());
+        System.out.println("Communication: StandardPostOutboundRequest prepared: " + request.toString());
 
         HttpResponse<String> response = sendRequestToServer(request);
 
         return response != null ? response.body() : null;
     }
 
-    public static List<Tariff> makeTariffOutboundRequest(String category) {
-        return BadWJsonParser.parseJson(makeStandardOutboundRequest("category: " + category, "https://request-handling.int.bad-walden-stadtwerke.com/tariff-data/" + category), Tariff::new);
+    public static String makeStandardGetOutboundRequest(String endpointUrl) {
+        CreateNewClientIfNoneExists();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(endpointUrl))
+                .header("Content-Type", "application/json")
+                .header("Authorization", "Basic " + MockActiveSession.getBearerToken())
+                .header("Accept-Language", getActiveLanguageAndCountryForHeader())
+                .GET()
+                .build();
+        System.out.println("Communication: StandardGetOutboundRequest prepared: " + request.toString());
+
+        HttpResponse<String> response = sendRequestToServer(request);
+
+        return response != null ? response.body() : null;
     }
 
+
+    public static List<Tariff> makeTariffOutboundRequest(String category) {
+        return BadWJsonParser.parseJson(makeStandardGetOutboundRequest("https://request-handling.int.bad-walden-stadtwerke.com/tariff-data/" + category), Tariff::new);
+    }
+
+
     public static boolean makeUpdateBillingAddressForUserOutboundRequest(BillingAddress billingAddress) {
-        String response = makeStandardOutboundRequest(billingAddress.toJson(), "https://request-handling.int.bad-walden-stadtwerke.com/user-data/billing-address");
+        String response = makeStandardPostOutboundRequest(billingAddress.toJson(), "https://request-handling.int.bad-walden-stadtwerke.com/user-data/billing-address");
         return Objects.equals(response, "{\"status\": \"success\"}");
     }
 
     public static boolean makeTariffSelectionForUserOutboundRequest(Tariff tariff) {
-        String response = makeStandardOutboundRequest(tariff.idToJson(), "https://request-handling.int.bad-walden-stadtwerke.com/user-data/tariff-selection");
+        String response = makeStandardPostOutboundRequest(tariff.idToJson(), "https://request-handling.int.bad-walden-stadtwerke.com/user-data/tariff-selection");
         return Objects.equals(response, "{\"status\": \"success\"}");
     }
 
