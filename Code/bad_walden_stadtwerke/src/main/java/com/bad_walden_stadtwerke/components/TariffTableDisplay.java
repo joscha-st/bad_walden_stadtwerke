@@ -61,6 +61,13 @@ public class TariffTableDisplay {
 		return selectedTariff;
 	}
 
+	public void setHideSelectButton(boolean hideSelectButton) {
+		this.selectedTariff = null;
+		this.hideSelectButton = hideSelectButton;
+
+		this.displayTariffs();
+	}
+
 	private void displayTariffs() {
 		VBox content = new VBox(SPACING);
 		scrollPane.setContent(content);

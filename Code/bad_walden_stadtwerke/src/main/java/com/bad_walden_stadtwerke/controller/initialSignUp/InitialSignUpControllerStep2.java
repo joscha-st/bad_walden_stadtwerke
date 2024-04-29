@@ -62,7 +62,6 @@ public class InitialSignUpControllerStep2 {
 
 	private void checkSelectedTariff() {
 		if (selectedTariff == null) {
-			//check if checkbox is selected
 			if (!checkboxElectricity.isSelected()) {
 				throw new IllegalArgumentException(bundle.getString("signUpElectricityTariffText"));
 			}
@@ -71,5 +70,14 @@ public class InitialSignUpControllerStep2 {
 
 	private void displayElectricityTariffs() {
 		electricityDisplay = new TariffTableDisplay(scrollPaneElectricity, electricity, headerElectricity);
+	}
+
+	@FXML
+	public void onElectricityCheckBoxClicked() {
+		if (checkboxElectricity.isSelected()) {
+			electricityDisplay.setHideSelectButton(true);
+		} else {
+			electricityDisplay.setHideSelectButton(false);
+		}
 	}
 }
