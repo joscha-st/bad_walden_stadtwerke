@@ -12,12 +12,12 @@ public class BillingAddress {
     private String city;
 
     public BillingAddress(String firstName, String lastName, String street,String houseNumber, String postalCode, String city){
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.street = street;
-        this.houseNumber = houseNumber;
-        this.postalCode = postalCode;
-        this.city = city;
+        this.firstName = (firstName != null) ? firstName.trim() : "";
+        this.lastName = (lastName != null) ? lastName.trim() : "";
+        this.street = (street != null) ? street.trim() : "";
+        this.houseNumber = (houseNumber != null) ? houseNumber.trim() : "";
+        this.postalCode = (postalCode != null) ? postalCode.trim() : "";
+        this.city = (city != null) ? city.trim() : "";
 
         validate();
     }
