@@ -1,7 +1,7 @@
 package com.bad_walden_stadtwerke.components.mainApplication;
 
-import com.bad_walden_stadtwerke.model.types.language.LanguageChangeObserver;
 import com.bad_walden_stadtwerke.controller.language.LanguageController;
+import com.bad_walden_stadtwerke.model.types.language.LanguageChangeObserver;
 import javafx.beans.value.ChangeListener;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
@@ -44,7 +44,7 @@ public class SidebarItems extends KeyedTreeItem implements LanguageChangeObserve
 	}
 
 	private KeyedTreeItem createCityServicesItem() {
-		return createTreeItem("sidebarCityServices", createServiceItems("sidebarWater", "sidebarElectricity", "sidebarGas", "sidebarBills"));
+		return createTreeItem("sidebarCityServices", createServiceItems("sidebarWater", "sidebarElectricity", "sidebarHeatpump", "sidebarGas", "sidebarBills"));
 	}
 
 	private KeyedTreeItem createAdminItem() {
@@ -56,7 +56,7 @@ public class SidebarItems extends KeyedTreeItem implements LanguageChangeObserve
 	}
 
 	private KeyedTreeItem createContractsItem() {
-		return createTreeItem("sidebarTariff", createServiceItems("sidebarWater", "sidebarElectricity", "sidebarGas"));
+		return createTreeItem("sidebarTariff", createServiceItems("sidebarWater", "sidebarElectricity", "sidebarHeatpump", "sidebarGas"));
 	}
 
 	private KeyedTreeItem createTreeItem(String key, List<KeyedTreeItem> children) {
