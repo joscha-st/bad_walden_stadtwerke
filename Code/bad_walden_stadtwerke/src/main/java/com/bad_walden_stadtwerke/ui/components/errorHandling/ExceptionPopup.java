@@ -9,6 +9,9 @@ public class ExceptionPopup {
         Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("Error");
         alert.setHeaderText(title);
+        if (message.contains(":")) { //make the message more user friendly and less technical.
+            message = message.substring(message.indexOf(':') + 1).trim();
+        }
         alert.setContentText(message);
         alert.showAndWait();
     }
