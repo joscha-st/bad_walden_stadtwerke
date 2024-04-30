@@ -8,6 +8,8 @@ Lecturers: *Dr. Britta Jung and Patrick Gutgesell*
 Group Members: *Hakon Rosenberger, Samuel Sonnenwald, Joscha Stähle, Lisa Sterner, Lukas Strickler, Leo Waigel*
 
 ---
+![Stadtwerke2](https://github.com/joscha-st/bad_walden_stadtwerke/assets/149787964/2bb7f47d-668d-4e84-b8e9-a89fd3b257cd)
+
   
 ## Modelling
 
