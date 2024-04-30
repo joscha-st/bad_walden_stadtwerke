@@ -38,7 +38,30 @@ In this folder are files that to you need to be able to run the code. Further ex
 This folder contains 2 subfolders. One of them contains the main code [Code/bad_walden_stadtwerke/src/main](Code/bad_walden_stadtwerke/src/main) and the other one contains the tests [Code/bad_walden_stadtwerke/src/test](Code/bad_walden_stadtwerke/src/test). Please read the README.md file in the Code folder for further explanation of the code. <br>
 
 
-### How to run the code?
+### How to run the programm and see our code?
+
+1. **Install an IDE** - We recommend **IntelliJ IDEA**. This tutorial will be for IntelliJ.  
+   Download it from [IntelliJ IDEA Download](https://www.jetbrains.com/idea/download/?fromIDE=&section=windows).
+
+2. **Navigate through the IntelliJ Install Wizard** - Keep the preselected options during installation.
+
+3. **Launch IntelliJ** - After installation, launch IntelliJ. Skip the initial setup until you see "Welcome to IntelliJ IDEA." You should have three options: "New Project," "Open," and "Get from VCS."
+
+4. **Choose "Get from VCS"** - VCS stands for Version Control System.
+
+5. **Clone the Repository** - Paste this URL (https://github.com/joscha-st/bad_walden_stadtwerke) into the URL field. **Select a desired folder location**.
+
+6. **Click on "Clone"** -in the bottom right corner.
+
+7. **Click on "Trust the Project"** - in the popup that appears.
+
+8. **Load Maven Build Script** - You should now see the project opened in IntelliJ. In the bottom right corner, there will be a popup saying: "Maven build script found." **Click "Load"** and wait until the loading bar in the bottom right corner disappears.
+
+9. **Navigate to the launcher class** - Go to the Project structure on the right of the screen. Expand the folder "Code" then "bad_walden_stadtwerke" then "src" then "main" then "java" then "com.bad_walden_stadtwerke" and then double click the "Launcher" class.
+
+10. **Set Up the Project JDK** - At the top of the class, there will be a yellow warning saying "Project JDK is not defined". Click "Setup SDK" and select "22 Oracle Open JDK 22" (Or the first choice you get recomended by IntelliJ). Wait for it to load. Refresh by double-clicking on another class (for example the "Main" class) and then double-clicking "Launcher" again in the project structure.
+
+11. **Run the Application** - Press the green triangle on the top right of the screen to start the application.
 
 
 
