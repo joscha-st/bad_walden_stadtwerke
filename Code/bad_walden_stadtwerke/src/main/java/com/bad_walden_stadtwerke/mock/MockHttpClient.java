@@ -13,7 +13,7 @@ public class MockHttpClient {
 
 	public static boolean mockConnectionError = false;
 	public static boolean mockServerSideError = false;
-	private int mockServerSideErrorCounter = -6;
+	private int mockServerSideErrorCounter = -2;
 
 	public static MockHttpClient newMockHttpClient() {
 		return new MockHttpClient();

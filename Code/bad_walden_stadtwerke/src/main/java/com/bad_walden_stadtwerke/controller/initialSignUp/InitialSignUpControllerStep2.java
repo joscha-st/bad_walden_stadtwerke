@@ -40,18 +40,27 @@ public class InitialSignUpControllerStep2 {
 	@FXML
 	public void initialize() {
 		electricity = (ArrayList<Tariff>) StandardOutboundRequestHandler.makeTariffOutboundRequest("electricity");
-		displayElectricityTariffs();
+		if (electricity != null) {
+			displayElectricityTariffs();
+		}
 	}
 
 	@FXML
 	public void next(ActionEvent event) {
-		selectedTariff = electricityDisplay.getSelectedTariff();
-		try {
-			checkSelectedTariff();
-			StandardOutboundRequestHandler.makeTariffSelectionForUserOutboundRequest(selectedTariff);
+		boolean successOfRequest = false;
+		if (checkboxElectricity.isSelected()){
+			successOfRequest = StandardOutboundRequestHandler.makeStandardUpdateRequest("{\"externalHeatingTariff\": true}", "https://request-handling.int.bad-walden-stadtwerke.com/user-data/");
+		} else {
+			selectedTariff = electricityDisplay.getSelectedTariff();
+			try {
+				checkSelectedTariff();
+				successOfRequest = StandardOutboundRequestHandler.makeTariffSelectionForUserOutboundRequest(selectedTariff);
+			} catch (IllegalArgumentException e) {
+				ExceptionPopup.showErrorPopup(bundle.getString("signUpErrorTitle"), String.valueOf(e));
+			}
+		}
+		if (successOfRequest){
 			loadNextStep(event);
-		} catch (IllegalArgumentException e) {
-			ExceptionPopup.showErrorPopup(bundle.getString("signUpErrorTitle"), String.valueOf(e));
 		}
 	}
 

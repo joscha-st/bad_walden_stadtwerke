@@ -44,9 +44,20 @@ public class StandardOutboundRequestHandler {
 		return response != null ? response.body() : null;
 	}
 
+	public static boolean makeStandardUpdateRequest(String jsonPayload, String endpointUrl) {
+		String response = makeStandardPostOutboundRequest(jsonPayload, endpointUrl);
+		return Objects.equals(response, "{\"status\": \"success\"}");
+	}
+
 
 	public static List<Tariff> makeTariffOutboundRequest(String category) {
-		return JsonParserUtility.parseJson(makeStandardGetOutboundRequest("https://request-handling.int.bad-walden-stadtwerke.com/tariff-data/" + category), Tariff::new);
+		String request = makeStandardGetOutboundRequest("https://request-handling.int.bad-walden-stadtwerke.com/tariff-data/" + category);
+		if (request != null){
+		return JsonParserUtility.parseJson(request, Tariff::new);
+		}
+		else {
+			return null;
+		}
 	}
 
 

@@ -10,9 +10,11 @@ import javafx.stage.Stage;
 public class InitialSignUpControllerStep4 {
 	@FXML
 	public void close(ActionEvent event) {
-		StandardOutboundRequestHandler.makeStandardPostOutboundRequest("{\"initialSignUpComplete\": true}", "https://request-handling.int.bad-walden-stadtwerke.com/user-data/");
+		boolean successOfRequest = StandardOutboundRequestHandler.makeStandardUpdateRequest("{\"initialSignUpComplete\": true}", "https://request-handling.int.bad-walden-stadtwerke.com/user-data/");
 		MockActiveSession.refreshCurrentSessionDataFromWebServer();
+		if (successOfRequest){
 		Stage stage = FXMLUtility.getStageFromEvent(event);
 		stage.close();
+		}
 	}
 }
