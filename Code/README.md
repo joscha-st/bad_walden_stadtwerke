@@ -32,7 +32,7 @@ We used following method for coding:<br>
 The main programm invokes a FXML loader that parses a FXML document and builds the scene graph. The FXML document defines the user interface and the FXML controller. The FXML controller handles mouse and keyboard events. This controller is instantiated by the FXML loader which also performs field injection and calls controller's initialize() method.
 
 
-## How to run the programm and see our code?
+## How to run the program and see our code?
 
 1. **Install an IDE** - We recommend **IntelliJ IDEA**. This tutorial will be for IntelliJ.  
    Download it from [IntelliJ IDEA Download](https://www.jetbrains.com/idea/download/?fromIDE=&section=windows).
