@@ -53,7 +53,7 @@ The main programm invokes a FXML loader that parses a FXML document and builds t
 
 9. **Navigate to the launcher class** - Use this Link: [Launcher.java](Code/bad_walden_stadtwerke/src/main/java/com/bad_walden_stadtwerke/Launcher.java). Alternatively navigate manually in the project structure on the right of the screen: Expand the folder "Code" then "bad_walden_stadtwerke" then "src" then "main" then "java" then "com.bad_walden_stadtwerke" and then double click the "Launcher" class.
 
-10. **Set Up the Project JDK** - At the top of the class, there will be a yellow warning saying "Project JDK is not defined". Click "Setup SDK" and select "22 Oracle Open JDK 22" (Or the first choice you get recomended by IntelliJ). Wait for it to load. Refresh by double-clicking on another class (for example the "Main" class) and then double-clicking "Launcher" again in the project structure.
+10. **Set Up the Project JDK** - At the top of the class, there will be a yellow warning saying "Project JDK is not defined". Click "Setup JDK" and select "22 Oracle Open JDK 22" (Or the first choice you get recomended by IntelliJ). Wait for it to load. Refresh by double-clicking on another class (for example the "Main" class) and then double-clicking "Launcher" again in the project structure.
 
 11. **Run the Application** - Press the green triangle on the top right of the screen to start the application.
 
