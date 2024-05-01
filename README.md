@@ -63,8 +63,6 @@ This folder contains 2 subfolders. One of them contains the main code [Code/bad_
 
 11. **Run the Application** - Press the green triangle on the top right of the screen to start the application.
 
-
-
 ---
 
 ## Any questions left?
