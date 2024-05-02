@@ -12,10 +12,10 @@ import static org.mockito.Mockito.when;
 
 public class MockHttpClient {
 
-    public static boolean mockConnectionError = false;
-    public static boolean mockServerSideError = false;
-    private final List<Integer> mockServerSideErrorCodes = java.util.Arrays.asList(4, 6, 10);
-    private int mockServerSideRequestCounter = 0;
+	public static boolean mockConnectionError = false;
+	public static boolean mockServerSideError = false;
+	private final List<Integer> mockServerSideErrorCodes = java.util.Arrays.asList(4, 10);
+	private int mockServerSideRequestCounter = 0;
 
     public static MockHttpClient newMockHttpClient() {
         return new MockHttpClient();
@@ -64,14 +64,14 @@ public class MockHttpClient {
                 return "{\"status\": \"Category not recognized\"}";
             }
 
-        }
+		}
 
         if (uri.startsWith("https://request-handling.int.bad-walden-stadtwerke.com/user-data/")) {
             return "{\"status\": \"success\"}";
         }
 
-        return "{\"status\": \"connected\"}";
-    }
+		return "{\"status\": \"connected\"}";
+	}
 
     public <T> HttpResponse<T> send(HttpRequest request, BodyHandler<T> responseBodyHandler) throws IOException, InterruptedException {
         HttpResponse<T> mockResponse = mock(HttpResponse.class);
@@ -79,15 +79,16 @@ public class MockHttpClient {
         mockServerSideRequestCounter++;
         mockServerSideError = mockServerSideErrorCodes.contains(mockServerSideRequestCounter);
 
-        if (mockConnectionError) {
-            throw new IOException(new ConnectException());
-        } else if (mockServerSideError) {
-            when(mockResponse.statusCode()).thenReturn(503);
-        } else {
-            when(mockResponse.statusCode()).thenReturn(200);
-            T mockResponseBody = (T) mockResponseBodySupplier(request);
-            when(mockResponse.body()).thenReturn(mockResponseBody);
-        }
+
+		if (mockConnectionError) {
+			throw new IOException(new ConnectException());
+		} else if (mockServerSideError) {
+			when(mockResponse.statusCode()).thenReturn(503);
+		} else {
+			when(mockResponse.statusCode()).thenReturn(200);
+			T mockResponseBody = (T) mockResponseBodySupplier(request);
+			when(mockResponse.body()).thenReturn(mockResponseBody);
+		}
 
         return mockResponse;
     }

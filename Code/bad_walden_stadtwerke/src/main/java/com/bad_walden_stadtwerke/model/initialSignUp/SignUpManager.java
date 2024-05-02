@@ -23,13 +23,13 @@ public class SignUpManager implements LanguageChangeObserver {
 	private static final int SCENE_WIDTH = 1000;
 	private static final int SCENE_HEIGHT = 550;
 
-	private final Stage dialogStage;
+	private static Stage dialogStage = null;
 	private final FXMLLoader fxmlLoader;
 	private ResourceBundle bundle;
 
 	public SignUpManager(Stage stage, FXMLLoader fxmlLoader) {
 		LanguageController.addObserver(this);
-		this.dialogStage = stage;
+		dialogStage = stage;
 		this.fxmlLoader = fxmlLoader;
 		bundle = ResourceBundle.getBundle(BUNDLE_NAME, LanguageController.getLanguage());
 		fxmlLoader.setResources(ResourceBundle.getBundle(BUNDLE_NAME, LanguageController.getLanguage()));
@@ -80,5 +80,9 @@ public class SignUpManager implements LanguageChangeObserver {
 		fxmlLoader.setResources(ResourceBundle.getBundle(BUNDLE_NAME, LanguageController.getLanguage()));
 		bundle = ResourceBundle.getBundle(BUNDLE_NAME, LanguageController.getLanguage());
 		dialogStage.setTitle(bundle.getString("signUpPopUpTitle"));
+	}
+
+	public static Stage getDialogStage() {
+		return dialogStage;
 	}
 }
