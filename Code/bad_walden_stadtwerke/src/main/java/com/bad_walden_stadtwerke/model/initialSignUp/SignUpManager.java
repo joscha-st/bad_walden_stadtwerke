@@ -1,8 +1,8 @@
 package com.bad_walden_stadtwerke.model.initialSignUp;
 
+import com.bad_walden_stadtwerke.controller.language.LanguageController;
 import com.bad_walden_stadtwerke.mock.MockActiveSession;
 import com.bad_walden_stadtwerke.model.types.language.LanguageChangeObserver;
-import com.bad_walden_stadtwerke.controller.language.LanguageController;
 import com.bad_walden_stadtwerke.utility.CentralLoggingUtility;
 
 import javafx.fxml.FXMLLoader;
@@ -40,6 +40,7 @@ public class SignUpManager implements LanguageChangeObserver {
 		dialogStage.initModality(Modality.APPLICATION_MODAL);
 		dialogStage.initStyle(StageStyle.UNDECORATED);
 		dialogStage.setTitle(bundle.getString("signUpPopUpTitle"));
+		dialogStage.setResizable(false);
 	}
 
 	public void checkAndOpenForSignUp() {
@@ -65,7 +66,6 @@ public class SignUpManager implements LanguageChangeObserver {
 		try {
 			return fxmlLoader.load();
 		} catch (IOException e) {
-			CentralLoggingUtility.handleException("UI", e);
 			e.printStackTrace();
 			return null;
 		}
