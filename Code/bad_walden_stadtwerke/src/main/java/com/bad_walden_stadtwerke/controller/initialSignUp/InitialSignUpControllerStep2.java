@@ -1,5 +1,6 @@
 package com.bad_walden_stadtwerke.controller.initialSignUp;
 
+import com.bad_walden_stadtwerke.components.TariffSelectionConfirmationPopUp;
 import com.bad_walden_stadtwerke.components.TariffTableDisplay;
 import com.bad_walden_stadtwerke.components.errorHandling.ExceptionPopup;
 import com.bad_walden_stadtwerke.controller.language.LanguageController;
@@ -48,20 +49,35 @@ public class InitialSignUpControllerStep2 {
 	@FXML
 	public void next(ActionEvent event) {
 		boolean successOfRequest = false;
-		if (checkboxElectricity.isSelected()){
+		boolean acceptTariff = false;
+		if (checkboxElectricity.isSelected()) {
+			acceptTariff = openConfirmationPopUp(null);
+			if (!acceptTariff) {
+				return;
+			}
 			successOfRequest = StandardOutboundRequestHandler.makeStandardUpdateRequest("{\"externalHeatingTariff\": true}", "https://request-handling.int.bad-walden-stadtwerke.com/user-data/");
 		} else {
 			selectedTariff = electricityDisplay.getSelectedTariff();
 			try {
 				checkSelectedTariff();
+				acceptTariff = openConfirmationPopUp(selectedTariff);
+				if (!acceptTariff) {
+					return;
+				}
 				successOfRequest = StandardOutboundRequestHandler.makeTariffSelectionForUserOutboundRequest(selectedTariff);
 			} catch (IllegalArgumentException e) {
 				ExceptionPopup.showErrorPopup(bundle.getString("signUpErrorTitle"), String.valueOf(e));
 			}
 		}
-		if (successOfRequest){
+		if (successOfRequest) {
 			loadNextStep(event);
 		}
+	}
+
+	public boolean openConfirmationPopUp(Tariff tariff) {
+		TariffSelectionConfirmationPopUp tariffSelectionConfirmationPopUp = new TariffSelectionConfirmationPopUp(tariff);
+		tariffSelectionConfirmationPopUp.show();
+		return tariffSelectionConfirmationPopUp.getCheckboxValue();
 	}
 
 	private void loadNextStep(ActionEvent event) {
