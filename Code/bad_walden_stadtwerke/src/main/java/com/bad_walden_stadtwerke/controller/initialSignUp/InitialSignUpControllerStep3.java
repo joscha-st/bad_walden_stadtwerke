@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -19,6 +20,7 @@ import java.util.ResourceBundle;
 public class InitialSignUpControllerStep3 {
 
 	private static final String FXML_PATH = "/com/bad_walden_stadtwerke/view/initialSignUp/signup-dialog-4.fxml";
+	private static final String CURRENT_FXML_PATH = "/com/bad_walden_stadtwerke/view/initialSignUp/signup-dialog-3.fxml";
 	private static final String BUNDLE_NAME = SignUpManager.BUNDLE_NAME;
 	private final ResourceBundle bundle = ResourceBundle.getBundle(BUNDLE_NAME, LanguageController.getLanguage());
 	private Tariff tariff = null;
@@ -47,6 +49,12 @@ public class InitialSignUpControllerStep3 {
 		gas = (ArrayList<Tariff>) StandardOutboundRequestHandler.makeTariffOutboundRequest("gas");
 		heating = (ArrayList<Tariff>) StandardOutboundRequestHandler.makeTariffOutboundRequest("heatpump");
 		displayTariffs();
+
+		if (gas == null || heating == null) {
+			ExceptionPopup.showRefreshPopup(bundle.getString("signUpErrorTitle"), bundle.getString("signUpErrorText"));
+			FXMLUtility fxmlUtility = new FXMLUtility(CURRENT_FXML_PATH, BUNDLE_NAME, (Stage) tabPane.getScene().getWindow());
+			fxmlUtility.loadAndSetScene();
+		}
 	}
 
 	@FXML

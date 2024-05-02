@@ -23,6 +23,12 @@ public class FXMLUtility {
 		this.stage = getStageFromEvent(event);
 	}
 
+	public FXMLUtility(String fxmlPath, String bundleName, Stage stage) {
+		this.fxmlPath = fxmlPath;
+		this.bundleName = bundleName;
+		this.stage = stage;
+	}
+
 	public static Stage getStageFromEvent(Event event) {
 		return (Stage) ((Node) event.getSource()).getScene().getWindow();
 	}
