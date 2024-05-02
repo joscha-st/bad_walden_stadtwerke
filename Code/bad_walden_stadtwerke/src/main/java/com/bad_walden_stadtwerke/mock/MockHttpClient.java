@@ -14,8 +14,9 @@ public class MockHttpClient {
 
 	public static boolean mockConnectionError = false;
 	public static boolean mockServerSideError = false;
-	private final List<Integer> mockServerSideErrorCodes = java.util.Arrays.asList(4, 6, 10);
+	private final List<Integer> mockServerSideErrorCodes = java.util.Arrays.asList(1, 6);
 	private int mockServerSideRequestCounter = 0;
+	public static boolean doMockIssues = false;
 
 	public static MockHttpClient newMockHttpClient() {
 		return new MockHttpClient();
@@ -53,8 +54,10 @@ public class MockHttpClient {
 	public <T> HttpResponse<T> send(HttpRequest request, BodyHandler<T> responseBodyHandler) throws IOException, InterruptedException {
 		HttpResponse<T> mockResponse = mock(HttpResponse.class);
 
-		mockServerSideRequestCounter++;
-		mockServerSideError = mockServerSideErrorCodes.contains(mockServerSideRequestCounter);
+		if (doMockIssues) {
+			mockServerSideRequestCounter++;
+			mockServerSideError = mockServerSideErrorCodes.contains(mockServerSideRequestCounter);
+		}
 
 		if (mockConnectionError) {
 			throw new IOException(new ConnectException());

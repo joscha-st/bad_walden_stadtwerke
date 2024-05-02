@@ -2,6 +2,7 @@ package com.bad_walden_stadtwerke.controller.initialSignUp;
 
 import com.bad_walden_stadtwerke.components.errorHandling.ExceptionPopup;
 import com.bad_walden_stadtwerke.controller.language.LanguageController;
+import com.bad_walden_stadtwerke.mock.MockHttpClient;
 import com.bad_walden_stadtwerke.model.communication.StandardOutboundRequestHandler;
 import com.bad_walden_stadtwerke.model.initialSignUp.SignUpManager;
 import com.bad_walden_stadtwerke.model.types.billingAddress.BillingAddress;
@@ -39,6 +40,7 @@ public class InitialSignUpControllerStep1 {
 		try {
 			BillingAddress billingAddress = new BillingAddress(firstName.getText(), lastName.getText(), street.getText(), houseNumber.getText(), postalCode.getText(), city.getText());
 			successOfRequest = StandardOutboundRequestHandler.makeUpdateBillingAddressForUserOutboundRequest(billingAddress);
+			doNotMockIssueOnPaul(billingAddress);
 		} catch (Exception e) {
 			CentralLoggingUtility.handleException("Controller", e);
 			ExceptionPopup.showErrorPopup(bundle.getString("signUpErrorTitle"), String.valueOf(e));
@@ -48,6 +50,10 @@ public class InitialSignUpControllerStep1 {
 		FXMLUtility fxmlUtility = new FXMLUtility(FXML_PATH, BUNDLE_NAME, event);
 		fxmlUtility.loadAndSetScene();
 		}
+	}
 
+	// This method is used to demonstrate the issue with the MockHttpClient remove for production
+	private void doNotMockIssueOnPaul(BillingAddress billingAddress) {
+		MockHttpClient.doMockIssues = true;
 	}
 }
