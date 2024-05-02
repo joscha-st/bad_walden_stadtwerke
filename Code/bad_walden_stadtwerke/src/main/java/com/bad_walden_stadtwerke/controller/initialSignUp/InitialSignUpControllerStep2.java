@@ -9,9 +9,9 @@ import com.bad_walden_stadtwerke.model.initialSignUp.SignUpManager;
 import com.bad_walden_stadtwerke.model.types.Tariff;
 import com.bad_walden_stadtwerke.utility.CentralLoggingUtility;
 import com.bad_walden_stadtwerke.utility.FXMLUtility;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
@@ -50,8 +50,10 @@ public class InitialSignUpControllerStep2 {
 		}
 		if (electricity == null) {
 			ExceptionPopup.showRefreshPopup(bundle.getString("signUpErrorTitle"), bundle.getString("signUpErrorText"));
-			FXMLUtility fxmlUtility = new FXMLUtility(CURRENT_FXML_PATH, BUNDLE_NAME, (Stage) scrollPaneElectricity.getScene().getWindow());
-			fxmlUtility.loadAndSetScene();
+			Platform.runLater(() -> {
+				FXMLUtility fxmlUtility = new FXMLUtility(CURRENT_FXML_PATH, BUNDLE_NAME, (Stage) checkboxElectricity.getScene().getWindow());
+				fxmlUtility.loadAndSetScene();
+			});
 		}
 	}
 

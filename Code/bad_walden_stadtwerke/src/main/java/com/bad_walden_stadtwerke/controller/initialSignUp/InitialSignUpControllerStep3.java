@@ -8,6 +8,7 @@ import com.bad_walden_stadtwerke.model.communication.StandardOutboundRequestHand
 import com.bad_walden_stadtwerke.model.initialSignUp.SignUpManager;
 import com.bad_walden_stadtwerke.model.types.Tariff;
 import com.bad_walden_stadtwerke.utility.FXMLUtility;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ScrollPane;
@@ -49,13 +50,16 @@ public class InitialSignUpControllerStep3 {
 	public void initialize() {
 		gas = (ArrayList<Tariff>) StandardOutboundRequestHandler.makeTariffOutboundRequest("gas");
 		heating = (ArrayList<Tariff>) StandardOutboundRequestHandler.makeTariffOutboundRequest("heatpump");
-		displayTariffs();
 
 		if (gas == null || heating == null) {
 			ExceptionPopup.showRefreshPopup(bundle.getString("signUpErrorTitle"), bundle.getString("signUpErrorText"));
-			FXMLUtility fxmlUtility = new FXMLUtility(CURRENT_FXML_PATH, BUNDLE_NAME, (Stage) tabPane.getScene().getWindow());
-			fxmlUtility.loadAndSetScene();
+			Platform.runLater(() -> {
+				FXMLUtility fxmlUtility = new FXMLUtility(CURRENT_FXML_PATH, BUNDLE_NAME, (Stage) tabPane.getScene().getWindow());
+				fxmlUtility.loadAndSetScene();
+			});
 		}
+
+		displayTariffs();
 	}
 
 	@FXML
