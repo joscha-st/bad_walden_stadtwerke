@@ -42,7 +42,32 @@ JavaFXML, used with JavaFX, separates the UI design from application logic using
 This structure helps maintain a clean separation between the UI and the underlying logic, enhancing maintainability and scalability.
 
 ### Codestyle and Conventions
-We decided to use the typical camel case java conventions with Classes starting with a capital letter and variables etc. starting with a lower case letter. Additionally, we agreed to use .this when referring to the current instant of a class. For documentation, we utilize JavaDoc to ensure that all code elements are adequately described, facilitating easier maintenance and understanding. We employ JUnit for writing and executing unit tests, ensuring that our codebase remains robust and error-free.
+We decided to use the typical **camel case** java conventions with Classes starting with a capital letter and variables etc. starting with a lower case letter. Additionally, we agreed to use **.this** when referring to the current instant of a class. For documentation, we utilize **JavaDoc** to ensure that all code elements are adequately described, facilitating easier maintenance and understanding. We employ **JUnit** for writing and executing unit tests, ensuring that our codebase remains robust and error-free.
+
+### Restrictive use of dependencies
+We used dependencies very restrictively only including:
+**JavaFX Controls**
+Group ID: org.openjfx
+Artifact ID: javafx-controls
+Version: 17.0.6
+**JavaFX FXML**
+Group ID: org.openjfx
+Artifact ID: javafx-fxml
+Version: 17.0.6
+**JUnit Jupiter API**
+Group ID: org.junit.jupiter
+Artifact ID: junit-jupiter-api
+Version: Defined by the property ${junit.version}, which is 5.10.0
+Scope: test
+**JUnit Jupiter Engine**
+Group ID: org.junit.jupiter
+Artifact ID: junit-jupiter-engine
+Version: Defined by the property ${junit.version}, which is 5.10.0
+Scope: test
+**Mockito Core**
+Group ID: org.mockito
+Artifact ID: mockito-core
+Version: 5.11.0
 
 
 
