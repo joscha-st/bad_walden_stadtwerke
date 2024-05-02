@@ -54,10 +54,7 @@ public class InitialSignUpControllerStep3 {
 		if (gas == null || heating == null) {
 			ExceptionPopup.showRefreshPopup(bundle.getString("signUpErrorTitle"), bundle.getString("signUpErrorText"));
 			Platform.runLater(() -> {
-				Stage stage = (Stage) tabPane.getScene().getWindow();
-				if (stage == null) {
-					return;
-				}
+				Stage stage = SignUpManager.getDialogStage();
 				FXMLUtility fxmlUtility = new FXMLUtility(CURRENT_FXML_PATH, BUNDLE_NAME,stage);
 				fxmlUtility.loadAndSetScene();
 			});

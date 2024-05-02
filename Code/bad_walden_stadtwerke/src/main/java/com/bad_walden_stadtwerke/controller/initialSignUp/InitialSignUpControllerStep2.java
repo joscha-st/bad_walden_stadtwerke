@@ -51,11 +51,7 @@ public class InitialSignUpControllerStep2 {
 		if (electricity == null) {
 			ExceptionPopup.showRefreshPopup(bundle.getString("signUpErrorTitle"), bundle.getString("signUpErrorText"));
 			Platform.runLater(() -> {
-				Stage stage = (Stage) checkboxElectricity.getScene().getWindow();
-				if (stage == null) {
-					CentralLoggingUtility.handleEvent("Controller", "Stage is null");
-					return;
-				}
+				Stage stage = SignUpManager.getDialogStage();
 				FXMLUtility fxmlUtility = new FXMLUtility(CURRENT_FXML_PATH, BUNDLE_NAME, stage);
 				fxmlUtility.loadAndSetScene();
 			});

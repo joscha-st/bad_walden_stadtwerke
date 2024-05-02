@@ -2,6 +2,7 @@ package com.bad_walden_stadtwerke.controller.initialSignUp;
 
 import com.bad_walden_stadtwerke.components.errorHandling.ExceptionPopup;
 import com.bad_walden_stadtwerke.controller.language.LanguageController;
+import com.bad_walden_stadtwerke.mock.MockHttpClient;
 import com.bad_walden_stadtwerke.model.communication.StandardOutboundRequestHandler;
 import com.bad_walden_stadtwerke.model.initialSignUp.SignUpManager;
 import com.bad_walden_stadtwerke.model.types.billingAddress.BillingAddress;
@@ -44,10 +45,9 @@ public class InitialSignUpControllerStep1 {
 			ExceptionPopup.showErrorPopup(bundle.getString("signUpErrorTitle"), String.valueOf(e));
 			return;
 		}
-		if (successOfRequest){
-		FXMLUtility fxmlUtility = new FXMLUtility(FXML_PATH, BUNDLE_NAME, event);
-		fxmlUtility.loadAndSetScene();
+		if (successOfRequest) {
+			FXMLUtility fxmlUtility = new FXMLUtility(FXML_PATH, BUNDLE_NAME, event);
+			fxmlUtility.loadAndSetScene();
 		}
-
 	}
 }
