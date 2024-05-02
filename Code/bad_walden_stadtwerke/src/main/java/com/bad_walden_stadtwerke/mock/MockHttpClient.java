@@ -5,6 +5,7 @@ import java.net.ConnectException;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandler;
+import java.util.List;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -13,7 +14,8 @@ public class MockHttpClient {
 
 	public static boolean mockConnectionError = false;
 	public static boolean mockServerSideError = false;
-	private int mockServerSideErrorCounter = -4;
+	private final List<Integer> mockServerSideErrorCodes = java.util.Arrays.asList(4, 6, 10);
+	private int mockServerSideRequestCounter = 0;
 
 	public static MockHttpClient newMockHttpClient() {
 		return new MockHttpClient();
@@ -51,8 +53,8 @@ public class MockHttpClient {
 	public <T> HttpResponse<T> send(HttpRequest request, BodyHandler<T> responseBodyHandler) throws IOException, InterruptedException {
 		HttpResponse<T> mockResponse = mock(HttpResponse.class);
 
-		mockServerSideErrorCounter++;
-		mockServerSideError = mockServerSideErrorCounter == 0;
+		mockServerSideRequestCounter++;
+		mockServerSideError = mockServerSideErrorCodes.contains(mockServerSideRequestCounter);
 
 		if (mockConnectionError) {
 			throw new IOException(new ConnectException());
