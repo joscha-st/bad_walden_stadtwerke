@@ -10,7 +10,7 @@ public class CentralLoggingUtility {
 	private static final String logFilePath = System.getProperty("user.dir") + "/log.txt";
 
 	public static void handleException(String category, Exception e) {
-		logAction("Error ("+category+"): " + e.getCause().toString());
+		logAction("Error ("+category+"): " + e);
 	}
 
 	public static void handleEvent(String category, String event) {
