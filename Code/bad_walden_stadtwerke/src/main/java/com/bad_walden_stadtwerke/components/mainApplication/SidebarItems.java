@@ -2,6 +2,8 @@ package com.bad_walden_stadtwerke.components.mainApplication;
 
 import com.bad_walden_stadtwerke.controller.language.LanguageController;
 import com.bad_walden_stadtwerke.model.types.language.LanguageChangeObserver;
+import com.bad_walden_stadtwerke.utility.CentralLoggingUtility;
+
 import javafx.beans.value.ChangeListener;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
@@ -93,7 +95,7 @@ public class SidebarItems extends KeyedTreeItem implements LanguageChangeObserve
 	private void logSelectedPage(TreeItem<String> newValue) {
 		String selectedPage = newValue.getValue();
 		String typePage = isAdminPage(newValue) ? "Admin" : "User";
-		System.out.println("Selected Page: " + typePage + " - " + selectedPage);
+		CentralLoggingUtility.handleEvent("UI", "Selected Page: " + typePage + " - " + selectedPage );
 	}
 
 	@Override

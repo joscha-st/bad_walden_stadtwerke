@@ -5,6 +5,7 @@ import com.bad_walden_stadtwerke.controller.language.LanguageController;
 import com.bad_walden_stadtwerke.model.communication.StandardOutboundRequestHandler;
 import com.bad_walden_stadtwerke.model.initialSignUp.SignUpManager;
 import com.bad_walden_stadtwerke.model.types.billingAddress.BillingAddress;
+import com.bad_walden_stadtwerke.utility.CentralLoggingUtility;
 import com.bad_walden_stadtwerke.utility.FXMLUtility;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -39,6 +40,7 @@ public class InitialSignUpControllerStep1 {
 			BillingAddress billingAddress = new BillingAddress(firstName.getText(), lastName.getText(), street.getText(), houseNumber.getText(), postalCode.getText(), city.getText());
 			successOfRequest = StandardOutboundRequestHandler.makeUpdateBillingAddressForUserOutboundRequest(billingAddress);
 		} catch (Exception e) {
+			CentralLoggingUtility.handleException("Controller", e);
 			ExceptionPopup.showErrorPopup(bundle.getString("signUpErrorTitle"), String.valueOf(e));
 			return;
 		}

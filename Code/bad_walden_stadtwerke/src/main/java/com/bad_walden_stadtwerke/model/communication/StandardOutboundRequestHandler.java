@@ -1,5 +1,6 @@
 package com.bad_walden_stadtwerke.model.communication;
 
+import com.bad_walden_stadtwerke.utility.CentralLoggingUtility;
 import com.bad_walden_stadtwerke.utility.JsonParserUtility;
 import com.bad_walden_stadtwerke.model.types.billingAddress.BillingAddress;
 import com.bad_walden_stadtwerke.mock.MockActiveSession;
@@ -27,7 +28,7 @@ public class StandardOutboundRequestHandler {
 	public static String makeStandardPostOutboundRequest(String jsonPayload, String endpointUrl) {
 		CreateNewClientIfNoneExists();
 		HttpRequest request = HttpRequest.newBuilder().uri(URI.create(endpointUrl)).header("Content-Type", "application/json").header("Authorization", "Basic " + MockActiveSession.getBearerToken()).header("Accept-Language", getActiveLanguageAndCountryForHeader()).POST(BodyPublishers.ofString(jsonPayload)).build();
-		System.out.println("Communication: StandardPostOutboundRequest prepared: " + request.toString());
+		CentralLoggingUtility.handleEvent("Communication", "StandardPostOutboundRequest prepared: " + request.toString());
 
 		HttpResponse<String> response = sendRequestToServer(request);
 
@@ -37,7 +38,7 @@ public class StandardOutboundRequestHandler {
 	public static String makeStandardGetOutboundRequest(String endpointUrl) {
 		CreateNewClientIfNoneExists();
 		HttpRequest request = HttpRequest.newBuilder().uri(URI.create(endpointUrl)).header("Content-Type", "application/json").header("Authorization", "Basic " + MockActiveSession.getBearerToken()).header("Accept-Language", getActiveLanguageAndCountryForHeader()).GET().build();
-		System.out.println("Communication: StandardGetOutboundRequest prepared: " + request.toString());
+		CentralLoggingUtility.handleEvent("Communication", "StandardGetOutboundRequest prepared: " + request.toString());
 
 		HttpResponse<String> response = sendRequestToServer(request);
 
@@ -75,8 +76,9 @@ public class StandardOutboundRequestHandler {
 		HttpResponse<String> response;
 		try {
 			response = client.send(request, BodyHandlers.ofString());
-			System.out.println("Communication: response code: " + response.statusCode());
+			CentralLoggingUtility.handleEvent("Communication", "response code: " + response.statusCode());
 		} catch (IOException | InterruptedException e) {
+			CentralLoggingUtility.handleException("Communication", e);
 			displayNetworkError(e.getCause().toString());
 			return null;
 		}
@@ -84,6 +86,7 @@ public class StandardOutboundRequestHandler {
 		if (response.statusCode() >= 200 && response.statusCode() < 300) {
 			return response;
 		} else {
+			CentralLoggingUtility.handleEvent("Communication", getStatusCodeErrorDescription(response.statusCode()));
 			displayNetworkError(getStatusCodeErrorDescription(response.statusCode()));
 			return null;
 		}
@@ -92,7 +95,7 @@ public class StandardOutboundRequestHandler {
 	private static void CreateNewClientIfNoneExists() {
 		if (client == null) {
 			client = MockHttpClient.newMockHttpClient();
-			System.out.println("Communication: New client initialized");
+			CentralLoggingUtility.handleEvent("Communication", "New client initialized");
 		}
 	}
 
@@ -102,7 +105,6 @@ public class StandardOutboundRequestHandler {
 	}
 
 	private static void displayNetworkError(String error) {
-		System.out.println("Communication: Error: " + error);
 		updateResourceBundleToCurrentLanguage();
 		ExceptionPopup.showErrorPopup(messages.getString("webRequestsErrorTitle"), error);
 	}
