@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.bad_walden_stadtwerke.controller.initialSignUp.PopupController"
+      prefWidth="400" prefHeight="500">
+    <ScrollPane VBox.vgrow="ALWAYS">
+        <VBox>
+            <Text text="%tariffSelectionConfirmationTitle" wrappingWidth="375" style="-fx-font-family: Arial; -fx-font-size: 20;">
+            </Text>
+            <Text text="%tariffSelectionConfirmationText" wrappingWidth="375" style="-fx-font-family: Arial; -fx-font-size: 13;">
+            </Text>
+            <GridPane fx:id="gridPane" VBox.vgrow="ALWAYS"/>
+        </VBox>
+    </ScrollPane>
+    <CheckBox fx:id="checkBox" text="%tariffSelectionConfirmationCheckboxText" VBox.vgrow="NEVER" HBox.hgrow="ALWAYS" alignment="CENTER"
+              wrapText="true" style="-fx-padding: 10 0 10 5;"/>
+    <HBox spacing="10" VBox.vgrow="NEVER">
+        <Button text="%tariffSelectionConfirmationCancelButton" onAction="#cancel"/>
+        <Pane HBox.hgrow="ALWAYS"/>
+        <Button text="%tariffSelectionConfirmationButton" onAction="#confirm"/>
+    </HBox>
+</VBox>
