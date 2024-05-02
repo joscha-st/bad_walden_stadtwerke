@@ -159,9 +159,16 @@ public class TariffTableDisplay {
 
 	public DialogPane getDialogPane(Tariff tariff) {
 		DialogPane dialogPane = new DialogPane();
-		ResourceBundle bundle = ResourceBundle.getBundle("bundle", LanguageController.getLanguage());
 
+		GridPane grid = getGridPane(tariff);
+		dialogPane.setContent(grid);
+
+		return dialogPane;
+	}
+
+	public static GridPane getGridPane(Tariff tariff) {
 		GridPane grid = createTariffGridPane();
+		ResourceBundle bundle = ResourceBundle.getBundle("bundle", LanguageController.getLanguage());
 
 		grid.add(createTariffLabel(bundle.getString("tariffName"), tariff.getName()), 0, 0);
 		grid.add(createTariffLabel(bundle.getString("tariffDescription"), tariff.getDescription()), 0, 1);
@@ -170,12 +177,10 @@ public class TariffTableDisplay {
 		grid.add(createTariffLabel(bundle.getString("tariffMinDuration"), Integer.toString(tariff.getMinDuration())), 0, 4);
 		grid.add(createTariffLabel(bundle.getString("tariffCancellationPeriod"), Integer.toString(tariff.getMinDuration())), 0, 5);
 
-		dialogPane.setContent(grid);
-
-		return dialogPane;
+		return grid;
 	}
 
-	private GridPane createTariffGridPane() {
+	private static GridPane createTariffGridPane() {
 		GridPane grid = new GridPane();
 		grid.setHgap(10);
 		grid.setVgap(10);
@@ -183,7 +188,7 @@ public class TariffTableDisplay {
 		return grid;
 	}
 
-	private HBox createTariffLabel(String labelText, String valueText) {
+	private static HBox createTariffLabel(String labelText, String valueText) {
 		Label label = new Label(labelText);
 		label.setWrapText(true);
 		label.setPrefWidth(120);
