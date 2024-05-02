@@ -27,7 +27,9 @@ The test folder contains all JUnit tests that we did. We have 4 different classe
 
 ## Programming Decisions
 
-After trying JavaFX and finding it too complex, we changed our programming language to JavaFXML as it is easier to integrate and there is a clear separation between logic and design.<br>
+### Usage of JavaFXML
+We decided to use JavaFXML instead of JavaFX because it offerd us the possibility to clearly seperate our UI from our Logic. In JavaFXML we have an FXML file that contains the UI and a so called "controller File" that handles the UI-Events and the logic behind the UI. As a result we have a clear separation between logic and design.
+
 We used following method for coding:<br>
 The main programm invokes a FXML loader that parses a FXML document and builds the scene graph. The FXML document defines the user interface and the FXML controller. The FXML controller handles mouse and keyboard events. This controller is instantiated by the FXML loader which also performs field injection and calls controller's initialize() method.
 
