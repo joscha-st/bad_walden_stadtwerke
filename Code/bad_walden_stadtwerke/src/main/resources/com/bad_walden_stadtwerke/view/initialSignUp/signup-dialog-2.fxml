@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.bad_walden_stadtwerke.controller.initialSignUp.InitialSignUpControllerStep2"
+      prefWidth="1000" prefHeight="550" style="-fx-background-color: #f0f0f0;">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+    <Label text="%signUpHeadlineLabel"
+           style="-fx-font-size: 36px; -fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-text-fill: #000000;"/>
+    <Label text="%signUpElectricityTariffText"
+           style="-fx-font-size: 28px; -fx-font-family: 'Arial'; -fx-text-fill: #333333;"/>
+    <VBox>
+        <VBox fx:id="headerElectricity"/>
+        <ScrollPane prefHeight="300" fx:id="scrollPaneElectricity"/>
+    </VBox>
+    <CheckBox fx:id="checkboxElectricity" text="%signUpElectricityTariffCheckBoxText" onAction="#onElectricityCheckBoxClicked"
+              style="-fx-font-size: 18px; -fx-font-family: 'Arial'; -fx-text-fill: #000000;"/>
+    <HBox alignment="BOTTOM_RIGHT" VBox.vgrow="ALWAYS">
+        <Button text="%signUpNextButton" onAction="#next"
+                style="-fx-font-size: 16px; -fx-font-family: 'Arial'; -fx-background-color: #007bff; -fx-text-fill: #ffffff; -fx-padding: 10px 20px; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-min-width: 150px; -fx-max-width: 150px;"/>
+    </HBox>
+</VBox>

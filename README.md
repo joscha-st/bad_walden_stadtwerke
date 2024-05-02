@@ -8,6 +8,8 @@ Lecturers: *Dr. Britta Jung and Patrick Gutgesell*
 Group Members: *Hakon Rosenberger, Samuel Sonnenwald, Joscha Stähle, Lisa Sterner, Lukas Strickler, Leo Waigel*
 
 ---
+![Stadtwerke2](https://github.com/joscha-st/bad_walden_stadtwerke/assets/149787964/2bb7f47d-668d-4e84-b8e9-a89fd3b257cd)
+
   
 ## Modelling
 
@@ -23,22 +25,25 @@ All of those documents will serve as the foundation for the development process.
 
 We want to give you a directory to the files that build the base for what we implemented. We decided to implement the SignUp process. This process is for data collection of customers that log into their account for the first time. Here they can enter their information and choose the tariffs that they want. Further information regarding the modelling can be found in the README files that are mentioned above.
 
-BPMN: [Documents/Application Software/SignUp Process BPMN_Final.png](Documents/Application%20Software/SignUp%20Process%20BPMN_Final.png) <br>
-UI: [Documents/UI/PNGs/Login/SignUp.png](Documents/UI/PNGs/Login/SignUp.png) <br>
-Datamodel: [Documents/Datamodel/db_EER_markup.png](Documents/Datamodel/db_EER_markup.png) and  [Documents/Datamodel/db_structure.plantuml](Documents/Datamodel/db_structure.plantuml) <br>
+BPMN: [Documents/Application Software/SignUp Process BPMN_Final.png](Documents/Application%20Software/SignUp%20Process%20BPMN_Final.png)<br>
+UI: [Documents/UI/PNGs/Login/SignUp.png](Documents/UI/PNGs/Login/SignUp.png)<br>
+Datamodel: [Documents/Datamodel/db_EER_markup.png](Documents/Datamodel/db_EER_markup.png) and  [Documents/Datamodel/db_structure.plantuml](Documents/Datamodel/db_structure.plantuml)<br>
 
 ---
 
-## Coding of the SIGNUP PROCESS
+## Coding
 
 ### Finding the code and understanding the file structure
 
-The code can be found in the code folder for "Stadtwerke Bad Walden": [Code/bad_walden_stadtwerke](Code/bad_walden_stadtwerke) <br>
-In this folder are files that to you need to be able to run the code. Further explanation on how to run the code can be found below. And there is also a file with further explanations of the code [Code/bad_walden/stadtwerke/README.md](Code/bad_walden_stadtwerke/README.md), as well as a "src" folder. <br>
-This folder contains 2 subfolders. One of them contains the main code [Code/bad_walden_stadtwerke/src/main](Code/bad_walden_stadtwerke/src/main) and the other one contains the tests [Code/bad_walden_stadtwerke/src/test](Code/bad_walden_stadtwerke/src/test). Please read the README.md file in the Code folder for further explanation of the code. <br>
+The code can be found in the code folder for "Stadtwerke Bad Walden": [Code/bad_walden_stadtwerke](Code/bad_walden_stadtwerke/)<br>
+In this folder are files that to you need to be able to run the code. Further explanation on how to run the code can be found below. And there is also a file with further explanations of the code [Code/bad_walden/stadtwerke/README.md](Code/bad_walden_stadtwerke/README.md), as well as a "src" folder.<br>
+This folder contains 2 subfolders. One of them contains the code [Code/bad_walden_stadtwerke/src/main](Code/bad_walden_stadtwerke/src/main) and the other one contains the tests [Code/bad_walden_stadtwerke/src/test](Code/bad_walden_stadtwerke/src/test). Please read the README.md file in the Code folder for further explanation of the code.<br>
 
+### Our scope
 
-### How to run the programm and see our code?
+For the signup process we only coded the client. We mocked the server and it's http request with mockito. Also, our signup process starts with the first pop up after the first login. We decided that the login itself, that happens beforehand, is out of scope.
+
+### How to run the programm and see our code
 
 1. **Install an IDE** - We recommend **IntelliJ IDEA**. This tutorial will be for IntelliJ.  
    Download it from [IntelliJ IDEA Download](https://www.jetbrains.com/idea/download/?fromIDE=&section=windows).
@@ -59,12 +64,19 @@ This folder contains 2 subfolders. One of them contains the main code [Code/bad_
 
 9. **Navigate to the launcher class** - Use this Link: [Launcher.java](Code/bad_walden_stadtwerke/src/main/java/com/bad_walden_stadtwerke/Launcher.java). Alternatively navigate manually in the project structure on the right of the screen: Expand the folder "Code" then "bad_walden_stadtwerke" then "src" then "main" then "java" then "com.bad_walden_stadtwerke" and then double click the "Launcher" class.
 
-10. **Set Up the Project JDK** - At the top of the class, there will be a yellow warning saying "Project JDK is not defined". Click "Setup SDK" and select "22 Oracle Open JDK 22" (Or the first choice you get recomended by IntelliJ). Wait for it to load. Refresh by double-clicking on another class (for example the "Main" class) and then double-clicking "Launcher" again in the project structure.
+10. **Set Up the Project JDK** - At the top of the class, there will be a yellow warning saying "Project JDK is not defined". Click "Setup JDK" and select "22 Oracle Open JDK 22" (Or the first choice you get recomended by IntelliJ). Wait for it to load. Refresh by double-clicking on another class (for example the "Main" class) and then double-clicking "Launcher" again in the project structure.
 
 11. **Run the Application** - Press the green triangle on the top right of the screen to start the application.
+
+---
+
+## Presentation
+
+The presentation can be found here: [Documents/Stadtwerke_Bad_Walden.pdf](Documents/Stadtwerke_Bad_Walden.pdf)
 
 ---
 
 ## Any questions left?
 
 Please contact us directly in case of further questions: *hakon.rosenberger@studmail.hwg-lu.de, samuel.sonnenwald@studmail.hwg-lu.de, joscha.staehle@studmail.hwg-lu.de, lisa.sterner@studmail.hwg-lu.de, lukas.strickler@studmail.hwg-lu.de, leo.waigel@studmail.hwg-lu.de*
+
