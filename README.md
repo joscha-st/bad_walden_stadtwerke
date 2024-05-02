@@ -79,3 +79,4 @@ The presentation can be found here: [Documents/Stadtwerke_Bad_Walden.pdf](Docume
 ## Any questions left?
 
 Please contact us directly in case of further questions: *hakon.rosenberger@studmail.hwg-lu.de, samuel.sonnenwald@studmail.hwg-lu.de, joscha.staehle@studmail.hwg-lu.de, lisa.sterner@studmail.hwg-lu.de, lukas.strickler@studmail.hwg-lu.de, leo.waigel@studmail.hwg-lu.de*
+
