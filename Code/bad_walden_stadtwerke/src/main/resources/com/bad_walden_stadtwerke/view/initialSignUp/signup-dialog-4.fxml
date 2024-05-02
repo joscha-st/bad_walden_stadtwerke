@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <VBox xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.bad_walden_stadtwerke.controller.initialSignUp.InitialSignUpControllerStep4"
-      prefWidth="1000" prefHeight="550" style="-fx-background-color: #f0f0f0;">
+      prefWidth="1000" prefHeight="550" style="-fx-background-color: #f0f0f0;-fx-border-color: #000000; -fx-border-width: 1px;">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
