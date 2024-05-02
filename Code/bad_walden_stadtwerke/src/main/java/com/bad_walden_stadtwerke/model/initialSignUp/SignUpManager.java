@@ -44,6 +44,7 @@ public class SignUpManager implements LanguageChangeObserver {
 
 	public void checkAndOpenForSignUp() {
 		if (!hasUserSignedUp()) {
+			CentralLoggingUtility.handleEvent("UI", "User has not completed initial signup. Opening SignUp dialogue.");
 			openSignUpDialog();
 		}
 	}
