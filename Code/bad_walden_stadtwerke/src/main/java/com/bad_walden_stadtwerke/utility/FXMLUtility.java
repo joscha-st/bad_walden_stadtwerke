@@ -33,6 +33,7 @@ public class FXMLUtility {
 			setSceneToStage(root);
 			stage.show();
 		} catch (Exception e) {
+			CentralLoggingUtility.handleException("UI", e);
 			e.printStackTrace();
 		}
 	}

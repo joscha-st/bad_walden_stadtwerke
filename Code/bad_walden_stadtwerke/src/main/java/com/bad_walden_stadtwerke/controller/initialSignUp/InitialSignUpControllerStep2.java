@@ -7,6 +7,7 @@ import com.bad_walden_stadtwerke.controller.language.LanguageController;
 import com.bad_walden_stadtwerke.model.communication.StandardOutboundRequestHandler;
 import com.bad_walden_stadtwerke.model.initialSignUp.SignUpManager;
 import com.bad_walden_stadtwerke.model.types.Tariff;
+import com.bad_walden_stadtwerke.utility.CentralLoggingUtility;
 import com.bad_walden_stadtwerke.utility.FXMLUtility;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -66,6 +67,7 @@ public class InitialSignUpControllerStep2 {
 				}
 				successOfRequest = StandardOutboundRequestHandler.makeTariffSelectionForUserOutboundRequest(selectedTariff);
 			} catch (IllegalArgumentException e) {
+				CentralLoggingUtility.handleException("Controller", e);
 				ExceptionPopup.showErrorPopup(bundle.getString("signUpErrorTitle"), String.valueOf(e));
 			}
 		}
