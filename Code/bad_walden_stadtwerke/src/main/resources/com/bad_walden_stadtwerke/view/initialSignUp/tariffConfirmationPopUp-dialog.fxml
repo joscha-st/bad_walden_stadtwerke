@@ -7,12 +7,12 @@
 <?import javafx.scene.text.Text?>
 <VBox xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.bad_walden_stadtwerke.controller.initialSignUp.PopupController"
-      prefWidth="400" prefHeight="500">
+      prefWidth="600" prefHeight="500">
     <ScrollPane VBox.vgrow="ALWAYS">
         <VBox>
-            <Text text="%tariffSelectionConfirmationTitle" wrappingWidth="375" style="-fx-font-family: Arial; -fx-font-size: 20;">
+            <Text text="%tariffSelectionConfirmationTitle" wrappingWidth="575" style="-fx-font-family: Arial; -fx-font-size: 20;">
             </Text>
-            <Text text="%tariffSelectionConfirmationText" wrappingWidth="375" style="-fx-font-family: Arial; -fx-font-size: 13;">
+            <Text text="%tariffSelectionConfirmationText" wrappingWidth="575" style="-fx-font-family: Arial; -fx-font-size: 13;">
             </Text>
             <GridPane fx:id="gridPane" VBox.vgrow="ALWAYS"/>
         </VBox>
