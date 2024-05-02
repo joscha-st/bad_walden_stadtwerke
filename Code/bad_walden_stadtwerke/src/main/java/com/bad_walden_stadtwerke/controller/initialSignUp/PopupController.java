@@ -42,7 +42,7 @@ public class PopupController {
 	public void confirm() {
 		if (!checkBox.isSelected()) {
 			ResourceBundle bundle = ResourceBundle.getBundle(BUNDLE_NAME, LanguageController.getLanguage());
-			ExceptionPopup.showErrorPopup(bundle.getString("tariffSelectionConfirmationErrorLabel"), bundle.getString("tariffSelectionConfirmationNoCheckoxErrorLabel"));
+			ExceptionPopup.showErrorPopup(bundle.getString("tariffSelectionConfirmationErrorLabel"), bundle.getString("tariffSelectionConfirmationNoCheckboxErrorLabel"));
 		}
 		Stage stage = (Stage) checkBox.getScene().getWindow();
 		stage.close();
