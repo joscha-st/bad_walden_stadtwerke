@@ -1,0 +1,353 @@
+@startuml
+
+package com.bad_walden_stadtwerke.components.errorHandling {
+    class ExceptionPopup {
+        + showErrorPopup(title: String, message: String): void
+        + showRefreshPopup(title: String, message: String): void
+        + processMessage(message: String): String
+    }
+}
+
+package com.bad_walden_stadtwerke.components.mainApplication {
+    class KeyedTreeItem {
+        - key: String
+        + KeyedTreeItem(key: String, messages: ResourceBundle)
+        + getKey(): String
+    }
+
+    class SidebarItems {
+        - messages: ResourceBundle
+        + SidebarItems()
+        + updateLanguage(): void
+        - updateTreeItem(item: KeyedTreeItem): void
+        - createHomeItem(): KeyedTreeItem
+        - createCityServicesItem(): KeyedTreeItem
+        - createAdminItem(): KeyedTreeItem
+        - createCityServicesAdminItem(): KeyedTreeItem
+        - createContractsItem(): KeyedTreeItem
+        - createTreeItem(key: String, children: List<KeyedTreeItem>): KeyedTreeItem
+        - createServiceItems(keys: String...): List<KeyedTreeItem>
+        - isAdminPage(item: TreeItem<String>): boolean
+        + setTreeViewActionListener(treeView: TreeView<String>): ChangeListener<TreeItem<String>>
+        - logSelectedPage(newValue: TreeItem<String>): void
+        + onLanguageChange(newLocale: Locale): void
+    }
+}
+
+package com.bad_walden_stadtwerke.components {
+    class TariffSelectionConfirmationPopUp {
+        - FXML_PATH: String
+        - BUNDLE_NAME: String
+        - checkBox: CheckBox
+        - dialogStage: Stage
+        - controller: PopupController
+        - bundle: ResourceBundle
+        + TariffSelectionConfirmationPopUp(tariff: Tariff)
+        + show(): void
+        + getCheckboxValue(): boolean
+    }
+
+    class TariffTableDisplay {
+        - FONT_SIZE: String
+        - FONT_FAMILY: String
+        - BUTTON_BACKGROUND_COLOR: String
+        - BUTTON_SELECTED_BACKGROUND_COLOR: String
+        - COLUMN_WIDTH_SMALL: double
+        - COLUMN_WIDTH_MEDIUM: double
+        - COLUMN_WIDTH_LARGE: double
+        - SPACING: int
+        - PADDING: int
+        - MAX_HEIGHT: int
+        - scrollPane: ScrollPane
+        - tariffs: ArrayList<Tariff>
+        - header: VBox
+        - bundle: ResourceBundle
+        - selectedTariff: Tariff
+        - hideSelectButton: boolean
+        + TariffTableDisplay(scrollPane: ScrollPane, tariffs: ArrayList<Tariff>, header: VBox)
+        + TariffTableDisplay(scrollPane: ScrollPane, tariffs: ArrayList<Tariff>, header: VBox, hideSelectButton: boolean)
+        + getSelectedTariff(): Tariff
+        + setHideSelectButton(hideSelectButton: boolean): void
+        - displayTariffs(): void
+        - createTariffRow(tariff: Tariff, content: VBox): HBox
+        - createLabel(text: String, width: double): Label
+        - createLabel(text: String, width: double, maxHeight: double): Label
+        - createSelectButton(tariff: Tariff, content: VBox): StackPane
+        - resetNodeStyle(node: Node): void
+        - createMoreButton(tariff: Tariff): StackPane
+        - showAlert(tariff: Tariff): void
+        - setupHeader(): void
+        + getDialogPane(tariff: Tariff): DialogPane
+        + getGridPane(tariff: Tariff): GridPane
+        - createTariffGridPane(): GridPane
+        - createTariffLabel(labelText: String, valueText: String): HBox
+    }
+}
+
+package com.bad_walden_stadtwerke.controller.initialSignUp {
+    class InitialSignUpControllerStep0 {
+        - SIGN_UP_DIALOG_PATH: String
+        - BUNDLE_NAME: String
+        - water: ArrayList<Tariff>
+        - waterDisplay: TariffTableDisplay
+        - signUpWelcomeLabel: Label
+        - changeLanguageToGermanButton: Button
+        - changeLanguageToEnglishButton: Button
+        - signUpNextButton: Button
+        - signUpWelcomeText: Label
+        - signUpWelcomeText2: Label
+        - signUpHeadlineLabel: Label
+        - signUpLanguageLabel: Label
+        - headerWater: VBox
+        - scrollPaneWater: ScrollPane
+        - messages: ResourceBundle
+        + initialize(): void
+        + changeLanguageToGerman(): void
+        + changeLanguageToEnglish(): void
+        - refreshUI(): void
+        - displayTariffs(): void
+        - updateTexts(): void
+        + next(event: ActionEvent): void
+    }
+
+    class InitialSignUpControllerStep1 {
+        - FXML_PATH: String
+        - BUNDLE_NAME: String
+        - bundle: ResourceBundle
+        + firstName: TextField
+        + lastName: TextField
+        + street: TextField
+        + houseNumber: TextField
+        + postalCode: TextField
+        + city: TextField
+        - next(event: ActionEvent): void
+    }
+
+    class InitialSignUpControllerStep2 {
+        - FXML_PATH: String = "/com/bad_walden_stadtwerke/view/initialSignUp/signup-dialog-3.fxml"
+        - CURRENT_FXML_PATH: String = "/com/bad_walden_stadtwerke/view/initialSignUp/signup-dialog-2.fxml"
+        - BUNDLE_NAME: String = SignUpManager.BUNDLE_NAME
+        - bundle: ResourceBundle
+        - electricity: ArrayList<Tariff>
+        - electricityDisplay: TariffTableDisplay
+        - selectedTariff: Tariff
+        + scrollPaneElectricity: ScrollPane
+        + headerElectricity: VBox
+        + checkboxElectricity: CheckBox
+        + initialize(): void
+        + next(event: ActionEvent): void
+        + openConfirmationPopUp(tariff: Tariff): boolean
+        + loadNextStep(event: ActionEvent): void
+        + checkSelectedTariff(): void
+        + displayElectricityTariffs(): void
+        + onElectricityCheckBoxClicked(): void
+    }
+
+    class InitialSignUpControllerStep3 {
+        - FXML_PATH: String = "/com/bad_walden_stadtwerke/view/initialSignUp/signup-dialog-4.fxml"
+        - CURRENT_FXML_PATH: String = "/com/bad_walden_stadtwerke/view/initialSignUp/signup-dialog-3.fxml"
+        - BUNDLE_NAME: String = SignUpManager.BUNDLE_NAME
+        - bundle: ResourceBundle
+        - tariff: Tariff
+        - gas: ArrayList<Tariff>
+        - heating: ArrayList<Tariff>
+        - gasDisplay: TariffTableDisplay
+        - heatingDisplay: TariffTableDisplay
+        + tabPane: TabPane
+        + scrollPaneGas: ScrollPane
+        + headerGas: VBox
+        + scrollPaneHeatPump: ScrollPane
+        + headerHeatPump: VBox
+        + initialize(): void
+        + next(event: ActionEvent): void
+        + openConfirmationPopUp(tariff: Tariff): boolean
+        + displayTariffs(): void
+        + checkTariffIsSelected(): void
+        + loadNextStep(event: ActionEvent): void
+        + isFirstTabSelected(): boolean
+        + getSelectedTabIndex(): int
+    }
+
+    class InitialSignUpControllerStep4 {
+        + close(event: ActionEvent): void
+    }
+
+    class PopupController {
+        - BUNDLE_NAME: String
+        + getCheckBox(): CheckBox
+        + setGridPane(gridPane: GridPane): void
+        + cancel(): void
+        + confirm(): void
+    }
+}
+
+package com.bad_walden_stadtwerke.mock {
+    class MockActiveSession {
+        - user: SessionUser
+        - bearerToken: String
+        + getActiveUser(): SessionUser
+        + getBearerToken(): String
+        + refreshCurrentSessionDataFromWebServer(): void
+    }
+
+    class SessionUser {
+        - userId: int
+        - friendlyDisplayName: String
+        - hasDoneInitialSignUp: boolean
+        + getFriendlyDisplayName(): String
+        + getHasDoneInitialSignUp(): boolean
+    }
+
+    class MockHttpClient {
+        - mockConnectionError: boolean
+        - mockServerSideError: boolean
+        - mockServerSideErrorCodes: List<Integer>
+        - mockServerSideRequestCounter: int
+        + newMockHttpClient(): MockHttpClient
+        + send(HttpRequest, BodyHandler<T>): HttpResponse<T>
+    }
+}
+
+package com.bad_walden_stadtwerke.model.communication {
+    class StandardOutboundRequestHandler {
+        - client: MockHttpClient
+        - messages: ResourceBundle
+        + makeStandardPostOutboundRequest(String, String): String
+        + makeStandardGetOutboundRequest(String): String
+        + makeStandardUpdateRequest(String, String): boolean
+        + makeTariffOutboundRequest(String): List<Tariff>
+        + makeUpdateBillingAddressForUserOutboundRequest(BillingAddress): boolean
+        + makeTariffSelectionForUserOutboundRequest(Tariff): boolean
+        - sendRequestToServer(HttpRequest): HttpResponse<String>
+        - CreateNewClientIfNoneExists(): void
+        - getActiveLanguageAndCountryForHeader(): String
+        - displayNetworkError(String): void
+        - getStatusCodeErrorDescription(int): String
+        - updateResourceBundleToCurrentLanguage(): void
+    }
+}
+
+package com.bad_walden_stadtwerke.model.initialSignUp {
+    class SignUpManager {
+        - dialogStage: Stage
+        - fxmlLoader: FXMLLoader
+        - bundle: ResourceBundle
+        + BUNDLE_NAME: String
+        + SIGN_UP_DIALOG_PATH: String
+        + SCENE_WIDTH: int
+        + SCENE_HEIGHT: int
+        + SignUpManager(Stage, FXMLLoader)
+        + checkAndOpenForSignUp(): void
+        - initializeDialogStage(): void
+        - openSignUpDialog(): void
+        - loadFXML(): Parent
+        - hasUserSignedUp(): boolean
+        + onLanguageChange(Locale): void
+    }
+}
+
+class CentralLoggingUtility {
+    - logFilePath: String
+    + handleException(category: String, e: Exception): void
+    + handleEvent(category: String, event: String): void
+    - logAction(action: String): void
+    - writeLogMessageToFile(logMessage: String): void
+}
+
+class FXMLUtility {
+    - fxmlPath: String
+    - bundleName: String
+    - stage: Stage
+    + FXMLUtility(fxmlPath: String, bundleName: String, event: Event)
+    + FXMLUtility(fxmlPath: String, bundleName: String, stage: Stage)
+    + getStageFromEvent(event: Event): Stage
+    + loadAndSetScene(): void
+    - loadFXML(): Parent
+    - setSceneToStage(root: Parent): void
+}
+
+class JsonParserUtility {
+    + parseJson(json: String, supplier: Supplier<T>): List<T>
+    - trimJson(json: String): String
+    + trimPart(key: String): String
+    + extractKeyValuePairs(json: String): String[]
+    + createJsonPair(key: String, value: String): String
+}
+
+class Launcher {
+    + main(args: String[]): void
+}
+
+interface LanguageChangeObserver {
+    + onLanguageChange(newLocale: Locale): void
+}
+
+class LanguageController {
+    + addObserver(observer: LanguageChangeObserver): void
+    + getLanguage(): Locale
+}
+
+class MainApplicationController {
+    - sidebarTreeView: TreeView<String>
+    - logoutButton: Button
+    - germanButton: Button
+    - englishButton: Button
+    - welcomeHeadLineLabel: Label
+    - sidebarListener: ChangeListener<TreeItem<String>>
+    + MainApplicationController()
+    + initialize(): void
+    + setupWelcomeHeadLine(): void
+    + setupSidebar(): void
+    + setupLogoutButton(): void
+    + setupLanguageButtons(): void
+    + onButtonDeutschClick(): void
+    + onButtonEnglishClick(): void
+    + onLanguageChange(newLocale: Locale): void
+    + updateUI(): void
+}
+
+class LanguageChangeObserver {
+    + onLanguageChange(newLocale: Locale): void
+}
+
+MainApplicationController -- LanguageChangeObserver : implements
+
+MainApplicationController -- Button : has
+MainApplicationController -- Label : has
+
+LanguageChangeObserver <|.. MainApplicationController
+
+MainApplicationController --> LanguageController
+
+ExceptionPopup --> ResourceBundle
+KeyedTreeItem --> ResourceBundle
+SidebarItems --> ResourceBundle
+TariffSelectionConfirmationPopUp --> ResourceBundle
+TariffTableDisplay --> ResourceBundle
+InitialSignUpControllerStep0 --> ResourceBundle
+InitialSignUpControllerStep1 --> ResourceBundle
+InitialSignUpControllerStep2 --> ResourceBundle
+InitialSignUpControllerStep3 --> ResourceBundle
+PopupController --> ResourceBundle
+SignUpManager --> ResourceBundle
+StandardOutboundRequestHandler --> ResourceBundle
+
+ExceptionPopup --> javafx.scene.control : <<import>>
+ExceptionPopup --> javafx.scene.control.Alert : <<import>>
+ExceptionPopup --> javafx.scene.control.AlertType : <<import>>
+KeyedTreeItem --> javafx.scene.control : <<import>>
+SidebarItems --> javafx.scene.control : <<import>>
+TariffSelectionConfirmationPopUp --> javafx.scene.control : <<import>>
+TariffTableDisplay --> javafx.scene.control : <<import>>
+InitialSignUpControllerStep0 --> javafx.scene.control : <<import>>
+InitialSignUpControllerStep1 --> javafx.scene.control : <<import>>
+InitialSignUpControllerStep2 --> javafx.scene.control : <<import>>
+InitialSignUpControllerStep3 --> javafx.scene.control : <<import>>
+PopupController --> javafx.scene.control : <<import>>
+MainApplicationController --> javafx.scene.control : <<import>>
+FXMLUtility --> javafx.stage : <<import>>
+FXMLUtility --> javafx.event : <<import>>
+JsonParserUtility --> java.util.function.Supplier : <<import>>
+Launcher --> MainApplication : <<import>>
+
+@enduml
