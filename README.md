@@ -43,7 +43,7 @@ This folder contains 2 subfolders. One of them contains the code [Code/bad_walde
 
 For the signup process we only coded the client. We mocked the server and it's http request with mockito. Also, our signup process starts with the first pop up after the first login. We decided that the login itself, that happens beforehand, is out of scope.
 
-### How to run the programm and see our code?
+### How to run the programm and see our code
 
 1. **Install an IDE** - We recommend **IntelliJ IDEA**. This tutorial will be for IntelliJ.  
    Download it from [IntelliJ IDEA Download](https://www.jetbrains.com/idea/download/?fromIDE=&section=windows).
@@ -72,6 +72,7 @@ For the signup process we only coded the client. We mocked the server and it's h
 
 ## Presentation
 
+The presentation can be found here: [Documents/Stadtwerke_Bad_Walden.pdf](Documents/Stadtwerke_Bad_Walden.pdf)
 
 ---
 
