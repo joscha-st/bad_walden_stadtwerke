@@ -70,7 +70,7 @@ In an expanded feature, we aim to include the ability to load a previous state i
 
 
 
-## How to run the program and see our code?
+## How to open our repository and run our program
 
 1. **Install an IDE** - We recommend **IntelliJ IDEA**. This tutorial will be for IntelliJ.  
    Download it from [IntelliJ IDEA Download](https://www.jetbrains.com/idea/download/?fromIDE=&section=windows).
@@ -89,9 +89,10 @@ In an expanded feature, we aim to include the ability to load a previous state i
 
 8. **Load Maven Build Script** - You should now see the project opened in IntelliJ. In the bottom right corner, there will be a popup saying: "Maven build script found." **Click "Load"** and wait until the loading bar in the bottom right corner disappears.
 
-9. **Navigate to the launcher class** - Use this Link: [Launcher.java](Code/bad_walden_stadtwerke/src/main/java/com/bad_walden_stadtwerke/Launcher.java). Alternatively navigate manually in the project structure on the right of the screen: Expand the folder "Code" then "bad_walden_stadtwerke" then "src" then "main" then "java" then "com.bad_walden_stadtwerke" and then double click the "Launcher" class.
+9. **Set Up the Project JDK**
+Click on the three bars in the top left corner of the screen and select "Project Structure...". A pop-up should appear showing you a tab called "Project". There you need to expand (click on the downward-facing arrowhead) the "SDK:" field. Click "Download JDK". A pop-up should appear. Expand "Vendor:" and select "SAP SapMachine". Click "Download". Then click "OK" to leave the Project Structure settings.
 
-10. **Set Up the Project JDK** - At the top of the screen, there will be a yellow warning saying "Project JDK is not defined". Click "Setup JDK" and select "22 Oracle Open JDK 22" (Or the first choice you get recomended by IntelliJ). Wait for it to load. Refresh by double-clicking on another class (for example the "Main" class) and then double-clicking "Launcher" again in the project structure.
+10. **Navigate to the launcher class** - Use this Link: [Launcher.java](Code/bad_walden_stadtwerke/src/main/java/com/bad_walden_stadtwerke/Launcher.java). Alternatively navigate manually in the project structure on the right of the screen: Expand the folder "Code" then "bad_walden_stadtwerke" then "src" then "main" then "java" then "com.bad_walden_stadtwerke" and then double click the "Launcher" class.
 
 11. **Run the Application** - Press the green triangle on the top right of the screen to start the application.
 
