@@ -2,26 +2,15 @@
 
 This directory contains all the code files for the utility service management software SignUp process for the city of Bad Walden. [Code](bad_walden_stadtwerke)
 
-## Main file structure
+## File structure
 
-The file [Code/bad_walden_stadtwerke/pom.xml](bad_walden_stadtwerke/pom.xml) is needed for starting the program. <br>
-In the folder [Code/bad_walden_stadtwerke/src/main](bad_walden_stadtwerke/src/main) is the main code of the program. <br>
-In the folder [Code/bad_walden_stadtwerke/src/test](bad_walden_stadtwerke/src/test) are the JUnit tests. 
+### The [java](Code/bad_walden_stadtwerke/src/main/java) folder
+Contains the code, categorized into components, controllers, mock, model and utility. It also contains the [Launcher Class](Code/bad_walden_stadtwerke/src/main/java/com/bad_walden_stadtwerke/Launcher.java) and the [MainApplication Class](Code/bad_walden_stadtwerke/src/main/java/com/bad_walden_stadtwerke/MainApplication.java) that are needed to run the programm.
 
-## Main folder
+### The [resources](Code/bad_walden_stadtwerke/src/main/resources) foulder
+Contains all used images as well as the language bundles that enable the multilingual nature of the program. Furthermore, it contains all FXML files, separating the UI from the rest of the code.
 
-The main folder contains a [Code/bad_walden_stadtwerke/main/java](bad_walden_stadtwerke/main/java) folder and a [Code/bad_walden_stadtwerke/main/resources](bad_walden_stadtwerke/main/resources) folder. <br>
-The resources folder contains all used images as well as the language bundles that enable the multilingual nature of the program. Furthermore, it contains all FXML files, separating the UI from the rest of the code.
-The main folder contains several folders: <br>
-[xxx] for the components folder for error handling as well as the main application and for the controller folder<br>
-[xxx] for the sales folder that contains the class for the tariffs <br>
-[xxx] for everything that we mocked<br>
-[xxx] for the logic of our program<br>
-[xxx] for the communication between ???<br>
-
-
-## Test folder
-
+### Test folder
 The [test folder](Code/bad_walden_stadtwerke/src/test) contains all JUnit tests that we did.
 
 
