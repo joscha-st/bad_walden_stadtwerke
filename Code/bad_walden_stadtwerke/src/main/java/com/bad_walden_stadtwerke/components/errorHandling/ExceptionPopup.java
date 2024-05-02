@@ -13,6 +13,14 @@ public class ExceptionPopup {
 		alert.showAndWait();
 	}
 
+	public static void showRefreshPopup(String title, String message) {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Information");
+		alert.setHeaderText(title);
+		alert.setContentText(processMessage(message));
+		alert.showAndWait();
+	}
+
 	public static String processMessage(String message) {
 		if (message.contains(":")) {
 			return message.substring(message.indexOf(':') + 1).trim();

@@ -11,9 +11,11 @@ import com.bad_walden_stadtwerke.utility.CentralLoggingUtility;
 import com.bad_walden_stadtwerke.utility.FXMLUtility;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -22,6 +24,7 @@ import java.util.ResourceBundle;
 public class InitialSignUpControllerStep2 {
 
 	private static final String FXML_PATH = "/com/bad_walden_stadtwerke/view/initialSignUp/signup-dialog-3.fxml";
+	private static final String CURRENT_FXML_PATH = "/com/bad_walden_stadtwerke/view/initialSignUp/signup-dialog-2.fxml";
 	private static final String BUNDLE_NAME = SignUpManager.BUNDLE_NAME;
 	private static final ResourceBundle bundle = ResourceBundle.getBundle(BUNDLE_NAME, LanguageController.getLanguage());
 
@@ -44,6 +47,11 @@ public class InitialSignUpControllerStep2 {
 		electricity = (ArrayList<Tariff>) StandardOutboundRequestHandler.makeTariffOutboundRequest("electricity");
 		if (electricity != null) {
 			displayElectricityTariffs();
+		}
+		if (electricity == null) {
+			ExceptionPopup.showRefreshPopup(bundle.getString("signUpErrorTitle"), bundle.getString("signUpErrorText"));
+			FXMLUtility fxmlUtility = new FXMLUtility(CURRENT_FXML_PATH, BUNDLE_NAME, (Stage) scrollPaneElectricity.getScene().getWindow());
+			fxmlUtility.loadAndSetScene();
 		}
 	}
 
