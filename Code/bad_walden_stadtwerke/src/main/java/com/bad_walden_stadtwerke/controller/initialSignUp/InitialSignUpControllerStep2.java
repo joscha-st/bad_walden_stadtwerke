@@ -75,8 +75,8 @@ public class InitialSignUpControllerStep2 {
 				}
 				successOfRequest = StandardOutboundRequestHandler.makeTariffSelectionForUserOutboundRequest(selectedTariff);
 			} catch (IllegalArgumentException e) {
-				CentralLoggingUtility.handleException("Controller", e);
 				ExceptionPopup.showErrorPopup(bundle.getString("signUpErrorTitle"), String.valueOf(e));
+				CentralLoggingUtility.handleException("Controller", e);
 			}
 		}
 		if (successOfRequest) {
