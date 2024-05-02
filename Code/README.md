@@ -44,6 +44,10 @@ This structure helps maintain a clean separation between the UI and the underlyi
 ### Codestyle and Conventions
 We decided to use the typical **camel case** java conventions with Classes starting with a capital letter and variables etc. starting with a lower case letter. Additionally, we agreed to use **.this** when referring to the current instant of a class. For documentation, we utilize **JavaDoc** to ensure that all code elements are adequately described, facilitating easier maintenance and understanding. We employ **JUnit** for writing and executing unit tests, ensuring that our codebase remains robust and error-free.
 
+### Use of Maven ###
+We decidet to use maven in our project.
+[Maven](https://maven.apache.org/) is a powerful project management and  build automation tool that is widely used in Java projects. It simplifies the build process like compiling code, packaging binaries, and managing dependencies through a central piece of configuration called the Project Object Model (POM) file.
+
 ### Restrictive use of dependencies
 We used dependencies very restrictively only including:
 **JavaFX Controls**
