@@ -53,7 +53,6 @@ public class SignUpManager implements LanguageChangeObserver {
 		if (dialogRoot != null) {
 			Scene dialogScene = new Scene(dialogRoot, SCENE_WIDTH, SCENE_HEIGHT);
 			dialogStage.setScene(dialogScene);
-			dialogStage.getScene().getRoot().setStyle("-fx-border-color: black; -fx-border-width: 1px;");
 			dialogStage.showAndWait();
 			dialogStage.requestFocus();
 		}
