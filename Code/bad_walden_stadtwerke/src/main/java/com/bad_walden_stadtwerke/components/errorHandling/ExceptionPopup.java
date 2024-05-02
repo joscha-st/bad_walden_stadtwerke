@@ -1,5 +1,7 @@
 package com.bad_walden_stadtwerke.components.errorHandling;
 
+import com.bad_walden_stadtwerke.utility.CentralLoggingUtility;
+
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 

@@ -1,5 +1,6 @@
 package com.bad_walden_stadtwerke.model.communication;
 
+import com.bad_walden_stadtwerke.utility.CentralLoggingUtility;
 import com.bad_walden_stadtwerke.utility.JsonParserUtility;
 import com.bad_walden_stadtwerke.model.types.billingAddress.BillingAddress;
 import com.bad_walden_stadtwerke.mock.MockActiveSession;
@@ -77,6 +78,7 @@ public class StandardOutboundRequestHandler {
 			response = client.send(request, BodyHandlers.ofString());
 			System.out.println("Communication: response code: " + response.statusCode());
 		} catch (IOException | InterruptedException e) {
+			CentralLoggingUtility.handleException("Network", e);
 			displayNetworkError(e.getCause().toString());
 			return null;
 		}
@@ -84,6 +86,7 @@ public class StandardOutboundRequestHandler {
 		if (response.statusCode() >= 200 && response.statusCode() < 300) {
 			return response;
 		} else {
+			CentralLoggingUtility.handleEvent("Network", getStatusCodeErrorDescription(response.statusCode()));
 			displayNetworkError(getStatusCodeErrorDescription(response.statusCode()));
 			return null;
 		}
@@ -102,7 +105,6 @@ public class StandardOutboundRequestHandler {
 	}
 
 	private static void displayNetworkError(String error) {
-		System.out.println("Communication: Error: " + error);
 		updateResourceBundleToCurrentLanguage();
 		ExceptionPopup.showErrorPopup(messages.getString("webRequestsErrorTitle"), error);
 	}
