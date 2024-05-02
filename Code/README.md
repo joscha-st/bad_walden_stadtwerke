@@ -22,7 +22,7 @@ The main folder contains several folders: <br>
 
 ## Test folder
 
-The test folder contains all JUnit tests that we did. We have 4 different classes:<br>
+The [test folder](Code/bad_walden_stadtwerke/src/test) contains all JUnit tests that we did.
 
 
 ## Programming Decisions
