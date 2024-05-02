@@ -30,14 +30,14 @@ Red arrows show to which page or state the user interaction leads to. There migh
 
 When logging in for the first time, the user has to enter some information and choose their tariffs first. 
 Here is an overview over the pages which we implemented in German and in English:
-![SignUp whole process](Login/Exports/SignUp.svg)
-After the Welcome Page and choosing a language, the user can input their data: Name, Street, House Number, City and Postal Code. If every field is filled in, the button will be activated so that the user can go on. Before going to the next page, the business logic checks that the information is valid. 
-![SignUp Data Collection](Login/Exports/SignUp_DataCollection.svg)
-Then, the user can choose their tariffs. First, the "Stromtarif" where the user can choose a tariff or choose to not buy electricity from the utility service of Bad Walden:
-![SignUp "Stromtarif"](Login/Exports/SignUp/SignUp_Stromtarif.svg)
-After that, the user can choose a "Heiztarif", starting with a selection of "Andere" (user does not want to buy from utility service of Bad Walden), "Gas" or "Wärmepumpe":
-![SignUp "Heiztarif"](Login/Exports/SignUp/SignUp_Heiztarif.svg)
-As water is the basic tariff that every citizen has to have, they cannot choose this tariff. Therefore, there is only the ending page left:
+![SignUp whole process](Login/Exports/SignUp/SignUp.svg)
+After the Welcome Page where the user is shown their water tariff and choosing a language, the user can input their data: Name, Street, House Number, City and Postal Code. If every field is filled in and the information entered are checked and valid, the user goes to the next page. There is also the option to view more details about the tariff. This page is shown in every tariff when a user wants to see more details: 
+![SignUp Welcome and Water and data collection](Login/Exports/SignUp/SignUp_WelcomeAndWaterAndData.svg)
+Then, the user can choose their tariffs. First, the "Stromtarif" where the user can choose a tariff or choose to not buy electricity from the utility service of Bad Walden. After choosing a tariff the user has to confirm their choice. This pop up comes again after every time the user choose a tariff:
+![SignUp "Stromtarif"](Login/Exports/SignUp/SignUp_Electricity.svg)
+After that, the user can choose a "Heiztarif", starting with a selection of "Andere" (user does not want to buy from utility service of Bad Walden), "Gas" or "Wärmepumpe". In the following, the example of the gas tariff:
+![SignUp "Heiztarif"](Login/Exports/SignUp/SignUp_Gas.svg)
+The last step after choosing a "Heiztarif" is the last page. After that, the user can close the pop up and will get to the Home Page of the programm.
 ![SignUp End](Login/Exports/SignUp/SignUp_End.svg)
 
 ##### Login Page
