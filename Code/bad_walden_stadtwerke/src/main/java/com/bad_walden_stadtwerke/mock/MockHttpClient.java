@@ -23,6 +23,7 @@ public class MockHttpClient {
 
 	private static String mockResponseBodySupplier(HttpRequest request) {
 		String uri = request.uri().toString();
+		String acceptLanguage = request.headers().allValues("Accept-Language").toString();
 
 		if (uri.equals("https://request-handling.int.bad-walden-stadtwerke.com/test")) {
 			return "{\"Hello World\"}";
@@ -36,7 +37,12 @@ public class MockHttpClient {
 			} else if (uri.contains("/heatpump")) {
 				return "[{\"id\": 7, \"name\": \"Grundversorgung\", \"description\": \"Dieser Tarif bietet eine effiziente Wärmepumpenversorgung, 100% umweltfreundlich.\", \"price\": 10, \"unit\": \"kWh\", \"category\": \"heat pump\"}, {\"id\": 8, \"name\": \"Komfort Tarif\", \"description\": \"Unser Komfort Tarif bietet Ihnen zusätzliche Dienstleistungen und Vorteile, 100% umweltfreundlich.\", \"price\": 15, \"unit\": \"kWh\", \"category\": \"heat pump\"}, {\"id\": 9, \"name\": \"Super Sparsamer Tarif\", \"description\": \"Unser Super Saver Tarif bietet Ihnen die niedrigsten Preise und ist freundlich für Ihr Budget, 100% umweltfreundlich.\", \"price\": 5, \"unit\": \"kWh\", \"cancellationPeriod\": 3, \"minDuration\": 12, \"category\": \"heat pump\"}]";
 			} else if (uri.contains("/water")) {
-				return "[{\"id\": 0, \"name\": \"Grundversorgung\", \"description\": \"Wir bieten eine sichere und zuverlässige Wasserversorgung für Ihren Haushalt.\", \"price\": 2, \"unit\": \"m3\", \"category\": \"water\"}]";
+				if (acceptLanguage != null && acceptLanguage.toLowerCase().contains("de")) {
+					return "[{\"id\": 0, \"name\": \"Grundversorgung\", \"description\": \"Wir bieten eine sichere und zuverlässige Wasserversorgung für Ihren Haushalt.\", \"price\": 2, \"unit\": \"m3\", \"category\": \"water\"}]";
+				} else {
+					return "[{\"id\": 0, \"name\": \"Basic Service\", \"description\": \"We provide a secure and reliable water supply for your household.\", \"price\": 2, \"unit\": \"m3\", \"category\": \"water\"}]\n";
+				}
+
 			} else {
 				return "{\"status\": \"Category not recognized\"}";
 			}
