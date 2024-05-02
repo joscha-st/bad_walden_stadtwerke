@@ -27,6 +27,9 @@ The [test folder](Code/bad_walden_stadtwerke/src/test) contains all JUnit tests 
 
 ## Programming Decisions
 
+### Architectural decisions
+We decided to implement the client side of the sign-up process while mocking the server using Mockito. Our client sends out real working requests and is also able to receive and handle the mocked server inputs.
+
 ### Usage of JavaFXML
 We decided to use JavaFXML instead of JavaFX because it offers us the possibility to clearly separate our UI from our logic. In JavaFXML, we have an FXML file that contains the UI, and a so-called "controller file" that handles UI events and the logic behind the UI. As a result, we have a clear separation between logic and design.
 We also used JavaFx for some custom components like the Side Bar because in these special cases it was much faster to implement.
@@ -44,7 +47,7 @@ This structure helps maintain a clean separation between the UI and the underlyi
 ### Codestyle and Conventions
 We decided to use the typical **camel case** java conventions with Classes starting with a capital letter and variables etc. starting with a lower case letter. Additionally, we agreed to use **.this** when referring to the current instant of a class. For documentation, we utilize **JavaDoc** to ensure that all code elements are adequately described, facilitating easier maintenance and understanding. We employ **JUnit** for writing and executing unit tests, ensuring that our codebase remains robust and error-free.
 
-### Use of Maven ###
+### Use of Maven
 We decidet to use maven in our project.
 [Maven](https://maven.apache.org/) is a powerful project management and  build automation tool that is widely used in Java projects. It simplifies the build process like compiling code, packaging binaries, and managing dependencies through a central piece of configuration called the Project Object Model (POM) file.
 
@@ -73,6 +76,8 @@ Group ID: org.mockito
 Artifact ID: mockito-core
 Version: 5.11.0
 
+### Further Plans: 
+In an expanded feature, we aim to include the ability to load a previous state into the signup process. As data is saved on the server to minimize loss, users should be able to retrieve their data when signing up again. We were previously unable to implement this due to time constraints.
 
 
 
@@ -100,6 +105,4 @@ Version: 5.11.0
 10. **Set Up the Project JDK** - At the top of the screen, there will be a yellow warning saying "Project JDK is not defined". Click "Setup JDK" and select "22 Oracle Open JDK 22" (Or the first choice you get recomended by IntelliJ). Wait for it to load. Refresh by double-clicking on another class (for example the "Main" class) and then double-clicking "Launcher" again in the project structure.
 
 11. **Run the Application** - Press the green triangle on the top right of the screen to start the application.
-
-
 
