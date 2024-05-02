@@ -1,3 +1,33 @@
+/**
+ * The TariffTableDisplay class provides methods to display tariffs in a table format with JavaFX.
+ * It includes methods to create a table with tariff details, select tariffs, and show more details about each tariff.
+ * <p>
+ * Example usage:
+ * <pre>
+ *     ArrayList<Tariff> tariffs = new ArrayList<>();
+ *     VBox header = new VBox();
+ *     ScrollPane scrollPane = new ScrollPane();
+ *     TariffTableDisplay tariffTableDisplay = new TariffTableDisplay(scrollPane, tariffs, header);
+ * </pre>
+ * </p>
+ * <p>
+ * This class depends on the {@link com.bad_walden_stadtwerke.model.types.Tariff} class
+ * to represent tariff objects and the {@link com.bad_walden_stadtwerke.controller.language.LanguageController}
+ * class to retrieve localized messages.
+ * </p>
+ * <p>
+ * It provides methods to create a table of tariffs, handle tariff selection, and display more details about each tariff.
+ * The table is displayed within a scroll pane, and each tariff is represented as a row in the table.
+ * </p>
+ * <p>
+ * The class also provides options to customize the appearance of the table, such as hiding the select button.
+ * </p>
+ * <p>
+ * This class supports internationalization by using resource bundles to retrieve localized messages.
+ * </p>
+ * @author com.bad_walden_stadtwerke.components
+ * @version 1.0
+ */
 package com.bad_walden_stadtwerke.components;
 
 import com.bad_walden_stadtwerke.model.types.Tariff;
@@ -33,7 +63,13 @@ public class TariffTableDisplay {
 	private Tariff selectedTariff;
 	private boolean hideSelectButton = false;
 
-
+/**
+     * Constructs a TariffTableDisplay object with the specified parameters.
+     *
+     * @param scrollPane the scroll pane to contain the tariff table
+     * @param tariffs    the list of tariffs to display in the table
+     * @param header     the header containing column labels for the table
+     */
 	public TariffTableDisplay(ScrollPane scrollPane, ArrayList<Tariff> tariffs, VBox header) {
 		this.scrollPane = scrollPane;
 		this.tariffs = tariffs;
@@ -45,6 +81,14 @@ public class TariffTableDisplay {
 		displayTariffs();
 	}
 
+	/**
+     * Constructs a TariffTableDisplay object with the specified parameters and hides the select button if specified.
+     *
+     * @param scrollPane       the scroll pane to contain the tariff table
+     * @param tariffs          the list of tariffs to display in the table
+     * @param header           the header containing column labels for the table
+     * @param hideSelectButton true to hide the select button, false otherwise
+     */
 	public TariffTableDisplay(ScrollPane scrollPane, ArrayList<Tariff> tariffs, VBox header, boolean hideSelectButton) {
 		this.scrollPane = scrollPane;
 		this.tariffs = tariffs;
@@ -57,10 +101,20 @@ public class TariffTableDisplay {
 		displayTariffs();
 	}
 
+	/**
+     * Retrieves the currently selected tariff.
+     *
+     * @return the currently selected tariff
+     */
 	public Tariff getSelectedTariff() {
 		return selectedTariff;
 	}
 
+	/**
+     * Sets whether to hide the select button for tariffs in the table.
+     *
+     * @param hideSelectButton true to hide the select button, false otherwise
+     */
 	public void setHideSelectButton(boolean hideSelectButton) {
 		this.selectedTariff = null;
 		this.hideSelectButton = hideSelectButton;

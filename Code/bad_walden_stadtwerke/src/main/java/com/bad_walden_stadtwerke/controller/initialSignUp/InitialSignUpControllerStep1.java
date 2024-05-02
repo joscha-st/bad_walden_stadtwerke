@@ -1,3 +1,22 @@
+/**
+ * The InitialSignUpControllerStep1 class is the controller responsible for handling the initial sign-up step 1 in the application.
+ * It manages the user interface elements and actions related to providing billing address information and navigating to the next step.
+ * <p>
+ * This controller interacts with the {@link com.bad_walden_stadtwerke.model.communication.StandardOutboundRequestHandler}
+ * for sending billing address information to the backend, the {@link com.bad_walden_stadtwerke.controller.language.LanguageController}
+ * for language localization, and the {@link com.bad_walden_stadtwerke.utility.FXMLUtility} for loading FXML files.
+ * </p>
+ * <p>
+ * It validates and sends the billing address information to the server when the user clicks the "Next" button.
+ * In case of any exceptions during the process, it displays an error popup using {@link com.bad_walden_stadtwerke.components.errorHandling.ExceptionPopup}.
+ * </p>
+ * <p>
+ * This class supports internationalization through resource bundles to retrieve localized messages.
+ * </p>
+ *
+ * @version 1.0
+ * @since 1.0
+ */
 package com.bad_walden_stadtwerke.controller.initialSignUp;
 
 import com.bad_walden_stadtwerke.components.errorHandling.ExceptionPopup;
@@ -31,7 +50,11 @@ public class InitialSignUpControllerStep1 {
 	@FXML
 	private TextField city;
 
-
+ /**
+     * Handles the action when the "Next" button is clicked.
+     *
+     * @param event The ActionEvent triggered by clicking the "Next" button.
+     */
 	@FXML
 	public void next(ActionEvent event) {
 		boolean successOfRequest = false;

@@ -1,3 +1,24 @@
+/**
+ * The InitialSignUpControllerStep3 class is the controller responsible for handling the initial sign-up step 3 in the application.
+ * It manages the user interface elements and actions related to selecting gas and heating tariffs and navigating to the next step.
+ * <p>
+ * This controller interacts with the {@link com.bad_walden_stadtwerke.components.TariffTableDisplay} to display gas and heating tariffs,
+ * the {@link com.bad_walden_stadtwerke.model.communication.StandardOutboundRequestHandler} for sending tariff selection information to the backend,
+ * the {@link com.bad_walden_stadtwerke.controller.language.LanguageController} for language localization, and the
+ * {@link com.bad_walden_stadtwerke.utility.FXMLUtility} for loading FXML files.
+ * </p>
+ * <p>
+ * It initializes by retrieving gas and heating tariffs from the server and displays them using the respective tariff table displays.
+ * </p>
+ * <p>
+ * It allows the user to select either a gas or a heating tariff based on the selected tab. When the "Next" button is clicked,
+ * it validates the selected tariff option and sends the relevant information to the server. In case of any exceptions during the process,
+ * it displays an error popup using {@link com.bad_walden_stadtwerke.components.errorHandling.ExceptionPopup}.
+ * </p>
+ *
+ * @version 1.0
+ * @since 1.0
+ */
 package com.bad_walden_stadtwerke.controller.initialSignUp;
 
 import com.bad_walden_stadtwerke.components.TariffTableDisplay;
@@ -42,6 +63,9 @@ public class InitialSignUpControllerStep3 {
 	@FXML
 	private VBox headerHeatPump;
 
+	/**
+     * Initializes the controller by retrieving gas and heating tariffs from the server and displaying them.
+     */
 	@FXML
 	public void initialize() {
 		gas = (ArrayList<Tariff>) StandardOutboundRequestHandler.makeTariffOutboundRequest("gas");
@@ -49,6 +73,12 @@ public class InitialSignUpControllerStep3 {
 		displayTariffs();
 	}
 
+
+	/**
+     * Handles the action when the "Next" button is clicked.
+     *
+     * @param event The ActionEvent triggered by clicking the "Next" button.
+     */
 	@FXML
 	public void next(ActionEvent event) {
 		boolean successOfRequest = false;
@@ -75,28 +105,48 @@ public class InitialSignUpControllerStep3 {
 		}
 }
 
+/**
+     * Displays the gas and heating tariffs in their respective tariff table displays.
+     */
 	private void displayTariffs() {
 		gasDisplay = new TariffTableDisplay(scrollPaneGas, gas, headerGas);
 		heatingDisplay = new TariffTableDisplay(scrollPaneHeatPump, heating, headerHeatPump);
 	}
 
-
+/**
+     * Checks if a tariff is selected before proceeding to the next step.
+     * If no tariff is selected, it throws an IllegalArgumentException.
+     */
 	private void checkTariffIsSelected() {
 		if (tariff == null) {
 			throw new IllegalArgumentException(bundle.getString("signUpHeatingText"));
 		}
 	}
 
-
+/**
+     * Loads the next step of the sign-up process.
+     *
+     * @param event The ActionEvent triggered by clicking the "Next" button.
+     */
 	private void loadNextStep(ActionEvent event) {
 		FXMLUtility fxmlUtility = new FXMLUtility(FXML_PATH, BUNDLE_NAME, event);
 		fxmlUtility.loadAndSetScene();
 	}
 
+	/**
+     * Checks if the first tab is selected.
+     *
+     * @return true if the first tab is selected, false otherwise.
+     */
 	private boolean isFirstTabSelected() {
 		return getSelectedTabIndex() == 0;
 	}
 
+	/**
+     * Gets the index of the currently selected tab.
+     *
+     * @return The index of the selected tab.
+     */
 	private int getSelectedTabIndex() {
 		return tabPane.getSelectionModel().getSelectedIndex();
 	}

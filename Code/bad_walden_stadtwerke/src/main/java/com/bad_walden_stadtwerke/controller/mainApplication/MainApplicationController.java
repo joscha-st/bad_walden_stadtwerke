@@ -1,3 +1,19 @@
+/**
+ * The MainApplicationController class manages the main application interface, including the sidebar,
+ * language settings, and user logout functionality.
+ * <p>
+ * It implements {@link com.bad_walden_stadtwerke.model.types.language.LanguageChangeObserver} to listen for language changes
+ * and update the UI accordingly.
+ * </p>
+ * <p>
+ * This controller interacts with {@link com.bad_walden_stadtwerke.mock.MockActiveSession} to retrieve active user data,
+ * {@link com.bad_walden_stadtwerke.components.mainApplication.SidebarItems} to populate the sidebar items,
+ * and {@link com.bad_walden_stadtwerke.controller.language.LanguageController} to manage language settings.
+ * </p>
+ *
+ * @version 1.0
+ * @since 1.0
+ */
 package com.bad_walden_stadtwerke.controller.mainApplication;
 
 import com.bad_walden_stadtwerke.mock.MockActiveSession;
@@ -34,10 +50,19 @@ public class MainApplicationController implements LanguageChangeObserver {
 
 	private ChangeListener<TreeItem<String>> sidebarListener;
 
+
+	/**
+     * Constructor for MainApplicationController.
+     * Registers this controller as an observer of language changes.
+     */
 	public MainApplicationController() {
 		LanguageController.addObserver(this);
 	}
 
+	/**
+     * Initializes the main application interface.
+     * Called after the FXML file has been loaded.
+     */
 	@FXML
 	public void initialize() {
 		setupSidebar();
@@ -76,21 +101,39 @@ public class MainApplicationController implements LanguageChangeObserver {
 		System.out.println("Logout button pressed");
 	}
 
+	/**
+     * Handles the action when the "Deutsch" button is clicked.
+     * Sets the language to German.
+     */
 	@FXML
 	public void onButtonDeutschClick() {
 		LanguageController.setLanguage(Locale.GERMAN);
 	}
 
+	 /**
+     * Handles the action when the "English" button is clicked.
+     * Sets the language to English.
+     */
 	@FXML
 	public void onButtonEnglishClick() {
 		LanguageController.setLanguage(Locale.ENGLISH);
 	}
 
+	/**
+     * Called when the language changes.
+     * Updates the UI elements with new language settings.
+     *
+     * @param newLocale The new locale representing the language change.
+     */
 	@Override
 	public void onLanguageChange(Locale newLocale) {
 		updateUI();
 	}
 
+	/**
+     * Updates the UI elements with the current language settings.
+     * Called after a language change.
+     */
 	public void updateUI() {
 		setupLogoutButton();
 		setupLanguageButtons();

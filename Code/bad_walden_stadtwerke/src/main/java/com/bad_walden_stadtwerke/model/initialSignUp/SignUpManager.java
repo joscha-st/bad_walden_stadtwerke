@@ -1,3 +1,13 @@
+/**
+ * The SignUpManager class manages the sign-up process for new users.
+ * <p>
+ * It initializes and displays the sign-up dialog, listens for language changes,
+ * and handles the opening of the sign-up dialog based on whether the user has already signed up.
+ * </p>
+ *
+ * @version 1.0
+ * @since 1.0
+ */
 package com.bad_walden_stadtwerke.model.initialSignUp;
 
 import com.bad_walden_stadtwerke.mock.MockActiveSession;
@@ -25,6 +35,13 @@ public class SignUpManager implements LanguageChangeObserver {
 	private final FXMLLoader fxmlLoader;
 	private ResourceBundle bundle;
 
+
+	/**
+     * Constructs a SignUpManager with the specified stage and FXMLLoader.
+     *
+     * @param stage      The stage to display the sign-up dialog.
+     * @param fxmlLoader The FXMLLoader for loading FXML files.
+     */
 	public SignUpManager(Stage stage, FXMLLoader fxmlLoader) {
 		LanguageController.addObserver(this);
 		this.dialogStage = stage;
@@ -40,6 +57,9 @@ public class SignUpManager implements LanguageChangeObserver {
 		dialogStage.setTitle(bundle.getString("signUpPopUpTitle"));
 	}
 
+	/**
+     * Checks if the user has already signed up and opens the sign-up dialog if not.
+     */
 	public void checkAndOpenForSignUp() {
 		if (!hasUserSignedUp()) {
 			openSignUpDialog();

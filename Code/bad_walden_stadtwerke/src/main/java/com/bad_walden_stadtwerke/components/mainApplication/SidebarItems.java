@@ -1,3 +1,16 @@
+/**
+ * The SidebarItems class represents the sidebar items displayed in the main application.
+ * It provides methods to create and manage the sidebar tree items dynamically based on the selected language.
+ * It extends the KeyedTreeItem class and implements the LanguageChangeObserver interface.
+ * <p>
+ * Example usage:
+ * <pre>
+ *    SidebarItems sidebarItems = new SidebarItems();
+ * </pre>
+ * </p>
+ * @author com.bad_walden_stadtwerke.components.mainApplication
+ * @version 1.0
+ */
 package com.bad_walden_stadtwerke.components.mainApplication;
 
 import com.bad_walden_stadtwerke.controller.language.LanguageController;
@@ -18,6 +31,9 @@ public class SidebarItems extends KeyedTreeItem implements LanguageChangeObserve
 
 	private static ResourceBundle messages = ResourceBundle.getBundle("Bundle", LanguageController.getLanguage());
 
+ /**
+     * Constructs a SidebarItems object with default root item and initializes the sidebar items.
+     */
 	public SidebarItems() {
 		super("Root", messages);
 		this.getChildren().addAll(Arrays.asList(createHomeItem(), createCityServicesItem(), createAdminItem()));
@@ -25,12 +41,20 @@ public class SidebarItems extends KeyedTreeItem implements LanguageChangeObserve
 		LanguageController.addObserver(this);
 
 	}
-
+/**
+     * Updates the language of the sidebar items when the language changes.
+     */
 	public void updateLanguage() {
 		messages = ResourceBundle.getBundle("Bundle", LanguageController.getLanguage());
 		updateTreeItem(this);
 	}
 
+
+/**
+     * Updates the text of the tree item and its children recursively based on the new language.
+     *
+     * @param item the tree item to update
+     */
 	private void updateTreeItem(KeyedTreeItem item) {
 		String newText = messages.getString(item.getKey());
 		item.setValue(newText);
@@ -39,6 +63,11 @@ public class SidebarItems extends KeyedTreeItem implements LanguageChangeObserve
 		}
 	}
 
+	/**
+     * Creates the "Home" tree item.
+     *
+     * @return the "Home" tree item
+     */
 	private KeyedTreeItem createHomeItem() {
 		return createTreeItem("sidebarHome", List.of());
 	}
@@ -70,6 +99,13 @@ public class SidebarItems extends KeyedTreeItem implements LanguageChangeObserve
 		return Stream.of(keys).map(key -> new KeyedTreeItem(key, messages)).collect(Collectors.toList());
 	}
 
+	
+/**
+     * Checks if the selected page is an admin page.
+     *
+     * @param item the selected tree item
+     * @return true if the selected page is an admin page, false otherwise
+     */
 	private boolean isAdminPage(TreeItem<String> item) {
 		while (item != null) {
 			if (item.getValue().equals(messages.getString("sidebarAdmin"))) {
@@ -80,6 +116,12 @@ public class SidebarItems extends KeyedTreeItem implements LanguageChangeObserve
 		return false;
 	}
 
+	/**
+     * Sets the action listener for the tree view to log the selected page.
+     *
+     * @param treeView the tree view to set the listener on
+     * @return the change listener for the tree view
+     */
 	public ChangeListener<TreeItem<String>> setTreeViewActionListener(TreeView<String> treeView) {
 		ChangeListener<TreeItem<String>> listener = (observable, oldValue, newValue) -> {
 			if (newValue != null) {
@@ -90,6 +132,11 @@ public class SidebarItems extends KeyedTreeItem implements LanguageChangeObserve
 		return listener;
 	}
 
+	/**
+     * Logs the selected page in the sidebar.
+     *
+     * @param newValue the newly selected tree item
+     */
 	private void logSelectedPage(TreeItem<String> newValue) {
 		String selectedPage = newValue.getValue();
 		String typePage = isAdminPage(newValue) ? "Admin" : "User";

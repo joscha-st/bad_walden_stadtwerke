@@ -1,3 +1,23 @@
+/**
+ * The InitialSignUpControllerStep0 class is the controller responsible for handling the initial sign-up step 0 in the application.
+ * It manages the user interface elements and actions related to selecting tariffs and changing the language.
+ * <p>
+ * This controller interacts with the {@link com.bad_walden_stadtwerke.model.communication.StandardOutboundRequestHandler}
+ * for retrieving tariff information, the {@link com.bad_walden_stadtwerke.mock.MockActiveSession} for managing user sessions,
+ * the {@link com.bad_walden_stadtwerke.utility.FXMLUtility} for loading FXML files, and the
+ * {@link com.bad_walden_stadtwerke.controller.language.LanguageController} for language localization.
+ * </p>
+ * <p>
+ * It displays tariff information in a table format using the {@link com.bad_walden_stadtwerke.components.TariffTableDisplay}.
+ * The controller also handles language change events and navigates to the next sign-up step.
+ * </p>
+ * <p>
+ * This class supports internationalization through resource bundles to retrieve localized messages.
+ * </p>
+ *
+ * @version 1.0
+ * @since 1.0
+ */
 package com.bad_walden_stadtwerke.controller.initialSignUp;
 
 import com.bad_walden_stadtwerke.model.communication.StandardOutboundRequestHandler;
@@ -59,17 +79,27 @@ public class InitialSignUpControllerStep0 {
 
 	private ResourceBundle messages;
 
+
+	/**
+     * Initializes the controller.
+     */
 	@FXML
 	public void initialize() {
 		refreshUI();
 	}
 
+	 /**
+     * Changes the language to German.
+     */
 	@FXML
 	public void changeLanguageToGerman() {
 		LanguageController.setLanguage(Locale.GERMAN);
 		refreshUI();
 	}
 
+	/**
+     * Changes the language to English.
+     */
 	@FXML
 	public void changeLanguageToEnglish() {
 		LanguageController.setLanguage(Locale.ENGLISH);
@@ -104,6 +134,11 @@ public class InitialSignUpControllerStep0 {
 		});
 	}
 
+	/**
+     * Handles the action when the "Next" button is clicked.
+     *
+     * @param event The ActionEvent triggered by clicking the "Next" button.
+     */
 	@FXML
 	public void next(ActionEvent event) {
 		FXMLUtility fxmlUtility = new FXMLUtility(SIGN_UP_DIALOG_PATH, BUNDLE_NAME, event);
