@@ -1,5 +1,6 @@
 package com.bad_walden_stadtwerke.controller.initialSignUp;
 
+import com.bad_walden_stadtwerke.components.TariffSelectionConfirmationPopUp;
 import com.bad_walden_stadtwerke.components.TariffTableDisplay;
 import com.bad_walden_stadtwerke.components.errorHandling.ExceptionPopup;
 import com.bad_walden_stadtwerke.controller.language.LanguageController;
@@ -60,28 +61,38 @@ public class InitialSignUpControllerStep3 {
 	@FXML
 	public void next(ActionEvent event) {
 		boolean successOfRequest = false;
+		boolean acceptTariff = false;
 		try {
 			if (isFirstTabSelected()) {
+				acceptTariff = openConfirmationPopUp(null);
 				successOfRequest = StandardOutboundRequestHandler.makeStandardUpdateRequest("{\"externalHeatingTariff\": true}", "https://request-handling.int.bad-walden-stadtwerke.com/user-data/");
 			} else {
 				int tabIndex = getSelectedTabIndex();
 				if (tabIndex == 1) {
 					tariff = gasDisplay.getSelectedTariff();
 					checkTariffIsSelected();
+					acceptTariff = openConfirmationPopUp(tariff);
 					successOfRequest = StandardOutboundRequestHandler.makeTariffSelectionForUserOutboundRequest(tariff);
 				} else if (tabIndex == 2) {
 					tariff = heatingDisplay.getSelectedTariff();
 					checkTariffIsSelected();
+					acceptTariff = openConfirmationPopUp(tariff);
 					successOfRequest = StandardOutboundRequestHandler.makeTariffSelectionForUserOutboundRequest(tariff);
 				}
 			}
-			if (successOfRequest){
-					loadNextStep(event);
+			if (successOfRequest && acceptTariff) {
+				loadNextStep(event);
 			}
 		} catch (IllegalArgumentException e) {
 			ExceptionPopup.showErrorPopup(bundle.getString("signUpErrorTitle"), String.valueOf(e));
 		}
-}
+	}
+
+	public boolean openConfirmationPopUp(Tariff tariff) {
+		TariffSelectionConfirmationPopUp tariffSelectionConfirmationPopUp = new TariffSelectionConfirmationPopUp(tariff);
+		tariffSelectionConfirmationPopUp.show();
+		return tariffSelectionConfirmationPopUp.getCheckboxValue();
+	}
 
 	private void displayTariffs() {
 		gasDisplay = new TariffTableDisplay(scrollPaneGas, gas, headerGas);
