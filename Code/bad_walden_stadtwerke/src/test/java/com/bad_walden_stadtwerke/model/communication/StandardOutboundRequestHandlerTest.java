@@ -3,6 +3,8 @@ package com.bad_walden_stadtwerke.model.communication;
 
 import com.bad_walden_stadtwerke.model.types.Tariff;
 import com.bad_walden_stadtwerke.model.types.billingAddress.BillingAddress;
+
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -49,4 +51,11 @@ public class StandardOutboundRequestHandlerTest {
 		boolean expectedResponse = true;
 		assertEquals(expectedResponse, actualResponse);
 	}
+
+	@AfterEach
+	void deleteClient() {
+		StandardOutboundRequestHandler.client = null;
+	}
+
+
 }
