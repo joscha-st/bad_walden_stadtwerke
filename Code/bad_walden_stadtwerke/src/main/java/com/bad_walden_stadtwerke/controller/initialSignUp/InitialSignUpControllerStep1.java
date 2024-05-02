@@ -39,8 +39,8 @@ public class InitialSignUpControllerStep1 {
 		boolean successOfRequest = false;
 		try {
 			BillingAddress billingAddress = new BillingAddress(firstName.getText(), lastName.getText(), street.getText(), houseNumber.getText(), postalCode.getText(), city.getText());
-			successOfRequest = StandardOutboundRequestHandler.makeUpdateBillingAddressForUserOutboundRequest(billingAddress);
 			doNotMockIssueOnPaul(billingAddress);
+			successOfRequest = StandardOutboundRequestHandler.makeUpdateBillingAddressForUserOutboundRequest(billingAddress);
 		} catch (Exception e) {
 			CentralLoggingUtility.handleException("Controller", e);
 			ExceptionPopup.showErrorPopup(bundle.getString("signUpErrorTitle"), String.valueOf(e));
