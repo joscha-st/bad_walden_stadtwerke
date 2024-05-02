@@ -4,6 +4,8 @@ import com.bad_walden_stadtwerke.mock.MockActiveSession;
 import com.bad_walden_stadtwerke.components.mainApplication.SidebarItems;
 import com.bad_walden_stadtwerke.model.types.language.LanguageChangeObserver;
 import com.bad_walden_stadtwerke.controller.language.LanguageController;
+import com.bad_walden_stadtwerke.utility.CentralLoggingUtility;
+
 import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -63,17 +65,13 @@ public class MainApplicationController implements LanguageChangeObserver {
 	private void setupLogoutButton() {
 		ResourceBundle messages = ResourceBundle.getBundle("Bundle", LanguageController.getLanguage());
 		logoutButton.setText(messages.getString("mainApplicationLogoutButton"));
-		logoutButton.setOnAction(event -> logLogoutAction());
+		logoutButton.setOnAction(event -> CentralLoggingUtility.handleEvent("UI","logout button pressed"));
 	}
 
 	private void setupLanguageButtons() {
 		ResourceBundle messages = ResourceBundle.getBundle("Bundle", LanguageController.getLanguage());
 		germanButton.setText(messages.getString("languageGerman"));
 		englishButton.setText(messages.getString("languageEnglish"));
-	}
-
-	private void logLogoutAction() {
-		System.out.println("Logout button pressed");
 	}
 
 	@FXML

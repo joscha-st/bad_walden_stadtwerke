@@ -3,6 +3,8 @@ package com.bad_walden_stadtwerke.model.initialSignUp;
 import com.bad_walden_stadtwerke.mock.MockActiveSession;
 import com.bad_walden_stadtwerke.model.types.language.LanguageChangeObserver;
 import com.bad_walden_stadtwerke.controller.language.LanguageController;
+import com.bad_walden_stadtwerke.utility.CentralLoggingUtility;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -62,6 +64,7 @@ public class SignUpManager implements LanguageChangeObserver {
 		try {
 			return fxmlLoader.load();
 		} catch (IOException e) {
+			CentralLoggingUtility.handleException("UI", e);
 			e.printStackTrace();
 			return null;
 		}

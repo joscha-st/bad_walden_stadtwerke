@@ -30,6 +30,7 @@ public class CentralLoggingUtility {
 			fileWriter.write(logMessage + "\n");
 			System.out.println("Logged action: " + logMessage);
 		} catch (IOException e) {
+			CentralLoggingUtility.handleException("Utility", e);
 			System.err.println("Error writing to log file: " + e.getMessage());
 		}
 	}
