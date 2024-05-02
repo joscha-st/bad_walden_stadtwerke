@@ -4,11 +4,11 @@ This directory contains all the code files for the utility service management so
 
 ## File structure
 
-### The [java](Code/bad_walden_stadtwerke/src/main/java) folder
-Contains the code, categorized into components, controllers, mock, model and utility. It also contains the [Launcher Class](Code/bad_walden_stadtwerke/src/main/java/com/bad_walden_stadtwerke/Launcher.java) and the [MainApplication Class](Code/bad_walden_stadtwerke/src/main/java/com/bad_walden_stadtwerke/MainApplication.java) that are needed to run the programm.
+### The java folder
+The [java folder](Code/bad_walden_stadtwerke/src/main/java) contains the code, categorized into components, controllers, mock, model and utility. It also contains the [Launcher Class](Code/bad_walden_stadtwerke/src/main/java/com/bad_walden_stadtwerke/Launcher.java) and the [MainApplication Class](Code/bad_walden_stadtwerke/src/main/java/com/bad_walden_stadtwerke/MainApplication.java) that are needed to run the programm.
 
-### The [resources](Code/bad_walden_stadtwerke/src/main/resources) foulder
-Contains all used images as well as the language bundles that enable the multilingual nature of the program. Furthermore, it contains all FXML files, separating the UI from the rest of the code.
+### The resources folder
+The [resources folder](Code/bad_walden_stadtwerke/src/main/resources)Contains all used images as well as the language bundles that enable the multilingual nature of the program. Furthermore, it contains all FXML files, separating the UI from the rest of the code.
 
 ### Test folder
 The [test folder](Code/bad_walden_stadtwerke/src/test) contains all JUnit tests that we did.
