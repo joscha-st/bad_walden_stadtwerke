@@ -14,9 +14,9 @@ public class MockHttpClient {
 
 	public static boolean mockConnectionError = false;
 	public static boolean mockServerSideError = false;
+	public static boolean doMockIssues = false;
 	private final List<Integer> mockServerSideErrorCodes = java.util.Arrays.asList(1, 6);
 	private int mockServerSideRequestCounter = 0;
-	public static boolean doMockIssues = false;
 
 	public static MockHttpClient newMockHttpClient() {
 		return new MockHttpClient();
