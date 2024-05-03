@@ -2,7 +2,7 @@
 Welcome to the 'Bad Walden: Stadtwerke' project! We're excited to see your contribution. Here are some guidelines to help you get started:
 
 ## Before You Start:
-**Understand the Project:** This project is a utility service management software for the fictional city of Bad Walden. Take some time to understand the project's goals and requirements.
+**Understand the Project:** This project is a utility service management software for the fictional city of Bad Walden. Take some time to understand the project's goals and requirements.  
 **Important Disclamer:** This project is part of a university assignment, it is not related to any productive use.  
 Please not due to this some parts of the project are mocked as they were out of scope (see [Code/bad_walden_stadtwerke/README.md](Code/README.md)) and following are some unusual implications such as Mockito running in compile scope. 
 
