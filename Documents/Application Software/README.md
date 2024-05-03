@@ -53,6 +53,10 @@ This process gives the user an overview of all their invoices. They can filter t
 This process gives the user a closer look at their gas consumption and they have the possibility to view their tariff and change their gas tariff.
 ![Customer: Tariff details gas](UI_Kunde_Tarifdetails_GAS.png)
 
+#### Customer: Tariff details heat pump
+This process gives the user a closer look at their gas consumption but with a heat pump and they have the possibility to view their tariff and change their heat pump tariff.
+![Customer: Tariff details gas](UI_Kunde_Tarifdetails_WÄRMEPUMPE.png)
+
 #### Customer: Tariff details water
 This process gives the user a closer look at their water consumption and they have the possibility to view their tariff and change their water tariff.
 ![Customer: Tariff details water](UI_Kunde_Tarifdetails_WASSER.png)
@@ -64,6 +68,7 @@ This process gives the user a closer look at their electrictiy consumption and t
 #### Poweruser: Tariff details gas
 We modeled this process exemplary for gas, since it is the same process for every segment. This process gives the poweruser a closer look at all tariffs relating to gas. Poweruser can change, add and delete the documents.
 ![Poweruser: Tariff details gas](UI_Poweruser_Tarifdetails_GAS.png)
+
 
 #### Poweruser: Customer management
 This process gives the poweruser an overview of all customers and their tariffs. Instead of filtering through the segments, the individual customer's tariffs are in the focus. Powerusers can change, add and delete the documents.
