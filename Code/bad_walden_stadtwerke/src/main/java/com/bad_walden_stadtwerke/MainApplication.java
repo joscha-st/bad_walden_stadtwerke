@@ -1,3 +1,12 @@
+/**
+ * The MainApplication class serves as the entry point for the application. It extends the {@link Application} class and implements the {@link LanguageChangeObserver} interface.
+ * <p>
+ * This class initializes the primary stage, sets up the initial scene, and manages language changes by observing the {@link LanguageController}.
+ * </p>
+ *
+ * @version 1.0
+ * @since 1.0
+ */
 package com.bad_walden_stadtwerke;
 
 import com.bad_walden_stadtwerke.model.types.language.LanguageChangeObserver;
@@ -13,6 +22,7 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 
+
 public class MainApplication extends Application implements LanguageChangeObserver {
 
 	private ResourceBundle bundle = ResourceBundle.getBundle("Bundle", LanguageController.getLanguage());
@@ -22,6 +32,12 @@ public class MainApplication extends Application implements LanguageChangeObserv
 		launch(args);
 	}
 
+	/**
+     * The start method of the JavaFX application, responsible for initializing the primary stage and setting up the initial scene.
+     *
+     * @param stage The primary stage for this application.
+     * @throws IOException If an error occurs while loading the FXML file.
+     */
 	@Override
 	public void start(Stage stage) throws IOException {
 		this.stage = stage;
@@ -34,6 +50,12 @@ public class MainApplication extends Application implements LanguageChangeObserv
 		signUpController.checkAndOpenForSignUp();
 	}
 
+	/**
+     * Switches the scene of the primary stage to the main application scene.
+     *
+     * @param stage The primary stage for this application.
+     * @throws IOException If an error occurs while loading the FXML file.
+     */
 	public void switchScene(Stage stage) throws IOException {
 		ResourceBundle languageBundle = ResourceBundle.getBundle("Bundle", LanguageController.getLanguage());
 
@@ -46,6 +68,11 @@ public class MainApplication extends Application implements LanguageChangeObserv
 		stage.show();
 	}
 
+	/**
+     * Callback method invoked when the language is changed. It updates the resource bundle and the stage title accordingly.
+     *
+     * @param newLocale The new locale representing the changed language.
+     */
 	@Override
 	public void onLanguageChange(Locale newLocale) {
 		bundle = ResourceBundle.getBundle("Bundle", newLocale);

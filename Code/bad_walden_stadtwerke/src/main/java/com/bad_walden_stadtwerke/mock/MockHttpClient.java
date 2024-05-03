@@ -1,3 +1,14 @@
+/**
+ * [MOCK - OOS] no real functionality
+ * The MockHttpClient class simulates an HTTP client for testing purposes.
+ * <p>
+ * It provides methods to mock responses from HTTP requests, including connection errors and server-side errors.
+ * The class allows setting up mock responses for specific URIs and handles response body based on the requested URI.
+ * </p>
+ *
+ * @version 1.0
+ * @since 1.0
+ */
 package com.bad_walden_stadtwerke.mock;
 
 import java.io.IOException;
@@ -11,15 +22,20 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class MockHttpClient {
-
 	public static boolean mockConnectionError = false;
-	public static boolean mockServerSideError = false;
+    public static boolean mockServerSideError = false;
 	private final List<Integer> mockServerSideErrorCodes = java.util.Arrays.asList(4, 10);
 	private int mockServerSideRequestCounter = 0;
 
-    public static MockHttpClient newMockHttpClient() {
-        return new MockHttpClient();
-    }
+	/**
+     * [MOCK - OOS] no real functionality
+     * Creates a new instance of the MockHttpClient class.
+     *
+     * @return A new instance of MockHttpClient.
+     */
+	public static MockHttpClient newMockHttpClient() {
+		return new MockHttpClient();
+	}
 
     private static String mockResponseBodySupplier(HttpRequest request) {
         String uri = request.uri().toString();
@@ -75,6 +91,20 @@ public class MockHttpClient {
 
     public <T> HttpResponse<T> send(HttpRequest request, BodyHandler<T> responseBodyHandler) throws IOException, InterruptedException {
         HttpResponse<T> mockResponse = mock(HttpResponse.class);
+
+	/**
+     * [MOCK - OOS] no real functionality
+     * Sends an HTTP request and returns a mock response.
+     *
+     * @param request          The HTTP request to send.
+     * @param responseBodyHandler The body handler for the HTTP response.
+     * @param <T>              The type of the response body.
+     * @return A mock HTTP response.
+     * @throws IOException          If an I/O error occurs.
+     * @throws InterruptedException If the operation is interrupted.
+     */
+	public <T> HttpResponse<T> send(HttpRequest request, BodyHandler<T> responseBodyHandler) throws IOException, InterruptedException {
+		HttpResponse<T> mockResponse = mock(HttpResponse.class);
 
         mockServerSideRequestCounter++;
         mockServerSideError = mockServerSideErrorCodes.contains(mockServerSideRequestCounter);
