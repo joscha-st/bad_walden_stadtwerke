@@ -40,9 +40,12 @@ In this folder are files that to you need to be able to run the code. Further ex
 This folder contains 2 subfolders. One of them contains the code [Code/bad_walden_stadtwerke/src/main](Code/bad_walden_stadtwerke/src/main) and the other one contains the tests [Code/bad_walden_stadtwerke/src/test](Code/bad_walden_stadtwerke/src/test). Please read the README.md file in the Code folder for further explanation of the code.<br>
 
 ### Our scope
+For the signup process we only coded the client. We mocked the server, and it's http responses, with mockito. Also, our signup process starts with the first pop-up after the first login. We decided that the login itself, that happens beforehand, is out of scope.
 
-For the signup process we only coded the client. We mocked the server and it's http request with mockito. Also, our signup process starts with the first pop up after the first login. We decided that the login itself, that happens beforehand, is out of scope.
-
+| Scope                  | In-Scope                                                                             | Out-of-Scope                                                            |
+|------------------------|--------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
+| Signup Process         | UI/views, Controller, Client-side-logic, Handling of outgoing and incoming API calls | Server-side-request handling, login and user-session-handling           |
+| Other Parts of program | Program container with sidebar but no content.                                       | All other parts of the program are out of scope and are at most mocked. |
 
 ## How to open our repository and run our program
 
