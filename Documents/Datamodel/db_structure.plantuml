@@ -4,46 +4,7 @@
 top to bottom direction
 skinparam linetype ortho
 
-class citizens {
-   first_name: varchar(50)
-   last_name: varchar(50)
-   birthdate: date
-   gender: char(1)
-   mail: varchar(50)
-   country_code: int
-   phone: int
-   household_id: int
-   id: int
-}
-class household {
-   street: varchar(50)
-   nr: varchar(5)
-   plz: int
-   city: varchar(50)
-   id: int
-}
-class login_data {
-   password: varchar(50)
-   username: varchar(50)
-   id: int
-}
-class role_assignment {
-   user_id: int
-   role_id: int
-}
-class roles {
-   name: varchar(50)
-   id: int
-}
-class node2 as "stadtwerke.contract_types" {
-   name: varchar(50)
-   description: varchar(150)
-   price  /* in cents */: int
-   unit: enum('m3', 'kwh')
-   category: enum('water', 'gas', 'electricity', 'heat_pump')
-   id: int
-}
-class node6 as "stadtwerke.contracts" {
+class contracts {
    startdate: date
    cancellation_date  /* only set when cancelled */: date
    cancellation_period  /* in months */: int
@@ -55,7 +16,18 @@ class node6 as "stadtwerke.contracts" {
    household_id: int
    id: int
 }
-class node0 as "stadtwerke.invoicings" {
+class customer {
+   household_id  /* fetched from rathaus */: int
+   first_name  /* billing address */: varchar(50)
+   last_name  /* billing address */: varchar(50)
+   street  /* billing address */: varchar(50)
+   street_nr  /* billing address */: varchar(5)
+   plz  /* billing adress */: int
+   city  /* billing address */: varchar(50)
+   has_completed_signup: tinyint(1)
+   id: int
+}
+class invoicings {
    amount_due  /* in cents */: int
    amount_paid  /* in cents */: int
    date_due: date
@@ -63,20 +35,52 @@ class node0 as "stadtwerke.invoicings" {
    contract_id: int
    id: int
 }
-class node3 as "stadtwerke.meter_readings" {
+class meter_readings {
    meter_id: varchar(50)
    reading: int
    date: date
    contract: int
    id: int
 }
+class role_assignment {
+   user_id: int
+   role_id: int
+}
+class roles {
+   name: varchar(50)
+   id: int
+}
+class tariffs {
+   name: int
+   description: int
+   price  /* in cents */: int
+   unit: enum('m3', 'kwh')
+   category: enum('water', 'gas', 'electricity', 'heat_pump')
+   id: int
+}
+class translations {
+   content: varchar(200)
+   id: int
+   language: enum('de', 'en')
+}
+class node0 as "userdata  /* all data except customer_id fetched from rathaus */" {
+   first_name: varchar(50)
+   last_name: varchar(50)
+   birthdate: date
+   mail: varchar(50)
+   country_code: int
+   phone: int
+   customer_id: int
+   id: int
+}
 
-citizens         -[#595959,plain]-^  household       : "household_id:id"
-login_data       -[#595959,plain]-^  citizens        : "id"
-role_assignment  -[#595959,plain]-^  login_data      : "user_id:id"
+contracts        -[#595959,plain]-^  customer        : "household_id:id"
+contracts        -[#595959,plain]-^  tariffs         : "type_id:id"
+invoicings       -[#595959,plain]-^  contracts       : "contract_id:id"
+meter_readings   -[#595959,plain]-^  contracts       : "contract:id"
 role_assignment  -[#595959,plain]-^  roles           : "role_id:id"
-node6            -[#595959,plain]-^  household       : "household_id:id"
-node6            -[#595959,plain]-^  node2           : "type_id:id"
-node0            -[#595959,plain]-^  node6           : "contract_id:id"
-node3            -[#595959,plain]-^  node6           : "contract:id"
+role_assignment  -[#595959,plain]-^  node0           : "user_id:id"
+tariffs          -[#595959,plain]-^  translations    : "description:id"
+tariffs          -[#595959,plain]-^  translations    : "name:id"
+node0            -[#595959,plain]-^  customer        : "customer_id:id"
 @enduml
