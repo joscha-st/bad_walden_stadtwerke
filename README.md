@@ -27,7 +27,7 @@ We want to give you a directory to the files that build the base for what we imp
 
 BPMN: [Documents/Application Software/SignUp Process BPMN_Final.png](Documents/Application%20Software/SignUp%20Process%20BPMN_Final.png)<br>
 UI: [Documents/UI/PNGs/Login/SignUp.png](Documents/UI/PNGs/Login/SignUp.png)<br>
-Datamodel: [Documents/Datamodel/db_EER.png](Documents/Datamodel/db_EER_old.png) and  [Documents/Datamodel/db_structure.plantuml](Documents/Datamodel/db_structure.plantuml)<br>
+Datamodel: [Documents/Datamodel/db_EER.png](Documents/Datamodel/db_EER.png) and  [Documents/Datamodel/db_structure.plantuml](Documents/Datamodel/db_structure.plantuml)<br>
 
 ---
 
