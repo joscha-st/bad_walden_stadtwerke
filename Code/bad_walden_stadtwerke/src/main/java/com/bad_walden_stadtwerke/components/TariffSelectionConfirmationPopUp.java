@@ -17,47 +17,68 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ResourceBundle;
 
+/**
+ * The {@code TariffSelectionConfirmationPopUp} class provides a user interface component
+ * that confirms a user's tariff selection. It is intended to be used during the sign-up process
+ * for new customers, allowing them to confirm their selected tariff options.
+ */
+
 public class TariffSelectionConfirmationPopUp {
-	private static final String FXML_PATH = "/com/bad_walden_stadtwerke/view/initialSignUp/tariffConfirmationPopUp-dialog.fxml";
-	private static final String BUNDLE_NAME = SignUpManager.BUNDLE_NAME;
-	private CheckBox checkBox;
-	private Stage dialogStage;
-	private PopupController controller;
-	private ResourceBundle bundle = ResourceBundle.getBundle(BUNDLE_NAME, LanguageController.getLanguage());
+    private static final String FXML_PATH = "/com/bad_walden_stadtwerke/view/initialSignUp/tariffConfirmationPopUp-dialog.fxml";
+    private static final String BUNDLE_NAME = SignUpManager.BUNDLE_NAME;
+    private CheckBox checkBox;
+    private Stage dialogStage;
+    private PopupController controller;
+    private ResourceBundle bundle = ResourceBundle.getBundle(BUNDLE_NAME, LanguageController.getLanguage());
 
-	public TariffSelectionConfirmationPopUp(Tariff tariff) {
-		try {
-			FXMLLoader loader = new FXMLLoader();
-			loader.setResources(bundle);
-			loader.setLocation(getClass().getResource(FXML_PATH));
-			Pane page = loader.load();
+    /**
+     * Constructs a new {@code TariffSelectionConfirmationPopUp} for a given tariff.
+     * This constructor loads the required FXML document and sets up the dialog
+     * with a modality and other UI components configured.
+     *
+     * @param tariff The tariff for which confirmation is required. It can be {@code null}.
+     */
+    public TariffSelectionConfirmationPopUp(Tariff tariff) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setResources(bundle);
+            loader.setLocation(getClass().getResource(FXML_PATH));
+            Pane page = loader.load();
 
-			Dialog<ButtonType> dialog = new Dialog<>();
-			dialog.initModality(Modality.WINDOW_MODAL);
-			DialogPane dialogPane = new DialogPane();
-			dialogPane.setContent(page);
-			dialog.setDialogPane(dialogPane);
-			dialog.setTitle(bundle.getString("tariffSelectionConfirmationHeader"));
-			dialog.setResizable(false);
+            Dialog<ButtonType> dialog = new Dialog<>();
+            dialog.initModality(Modality.WINDOW_MODAL);
+            DialogPane dialogPane = new DialogPane();
+            dialogPane.setContent(page);
+            dialog.setDialogPane(dialogPane);
+            dialog.setTitle(bundle.getString("tariffSelectionConfirmationHeader"));
+            dialog.setResizable(false);
 
-			this.controller = loader.getController();
-			this.checkBox = controller.getCheckBox();
-			if (tariff != null) {
-				this.controller.setGridPane(TariffTableDisplay.getGridPane(tariff));
-			}
+            this.controller = loader.getController();
+            this.checkBox = controller.getCheckBox();
+            if (tariff != null) {
+                this.controller.setGridPane(TariffTableDisplay.getGridPane(tariff));
+            }
 
-			this.dialogStage = (Stage) dialog.getDialogPane().getScene().getWindow();
+            this.dialogStage = (Stage) dialog.getDialogPane().getScene().getWindow();
 
-		} catch (IOException e) {
-			ExceptionPopup.showErrorPopup(bundle.getString("signUpErrorTitle"), bundle.getString("tariffSelectionConfirmationErrorLabel"));
-		}
-	}
+        } catch (IOException e) {
+            ExceptionPopup.showErrorPopup(bundle.getString("signUpErrorTitle"), bundle.getString("tariffSelectionConfirmationErrorLabel"));
+        }
+    }
 
-	public void show() {
-		dialogStage.showAndWait();
-	}
+    /**
+     * Displays the confirmation popup window and waits for the user to close it.
+     */
+    public void show() {
+        dialogStage.showAndWait();
+    }
 
-	public boolean getCheckboxValue() {
-		return checkBox.isSelected();
-	}
+    /**
+     * Returns the value of the checkbox indicating whether the user has confirmed the tariff selection.
+     *
+     * @return {@code true} if the checkbox is selected, otherwise {@code false}.
+     */
+    public boolean getCheckboxValue() {
+        return checkBox.isSelected();
+    }
 }
