@@ -20,6 +20,7 @@ class household {
    nr: varchar(5)
    plz: int
    city: varchar(50)
+   has_completed_signup: tinyint(1)
    id: int
 }
 class login_data {
@@ -35,12 +36,21 @@ class roles {
    name: varchar(50)
    id: int
 }
-class node6 as "stadtwerke.contract_types" {
+class node2 as "stadtwerke.contract_types" {
    name: varchar(50)
    description: varchar(150)
    price  /* in cents */: int
    unit: enum('m3', 'kwh')
    category: enum('water', 'gas', 'electricity', 'heat_pump')
+   tariff_id: int
+   id: int
+}
+class node11 as "stadtwerke.contract_types_en" {
+   name_en: varchar(50)
+   description_en: varchar(150)
+   price  /* /* in cents */ */: int
+   unit: enum('m3', 'kwh')
+   category_en: enum('water', 'gas', 'electricity', 'heat-pump')
    tariff_id: int
    id: int
 }
@@ -56,7 +66,7 @@ class node1 as "stadtwerke.contracts" {
    household_id: int
    id: int
 }
-class node0 as "stadtwerke.invoicings" {
+class node7 as "stadtwerke.invoicings" {
    amount_due  /* in cents */: int
    amount_paid  /* in cents */: int
    date_due: date
@@ -64,7 +74,7 @@ class node0 as "stadtwerke.invoicings" {
    contract_id: int
    id: int
 }
-class node8 as "stadtwerke.meter_readings" {
+class node3 as "stadtwerke.meter_readings" {
    meter_id: varchar(50)
    reading: int
    date: date
@@ -73,14 +83,14 @@ class node8 as "stadtwerke.meter_readings" {
 }
 class tariffs {
    tariff_name: varchar(50)
+   tariff_description: varchar(100)
    tariff_price_per_unit: decimal(10,2)
    tariff_category: enum('water', 'gas', 'electricity')
-   tariff_description: varchar(100)
    tariff_id: int
 }
 class tariffs_en {
-   tariff_name_en: int
-   tariff_description_en: int
+   tariff_name_en: varchar(50)
+   tariff_description_en: varchar(100)
    tariff_category_en: enum('water', 'electricity', 'gas')
    tariff_price_per_unit_en: decimal(10,2)
    tariff_id: int
@@ -90,10 +100,11 @@ citizens         -[#595959,plain]-^  household       : "household_id:id"
 login_data       -[#595959,plain]-^  citizens        : "id"
 role_assignment  -[#595959,plain]-^  login_data      : "user_id:id"
 role_assignment  -[#595959,plain]-^  roles           : "role_id:id"
-node6            -[#595959,plain]-^  tariffs         : "tariff_id"
-node6            -[#595959,plain]-^  tariffs_en      : "tariff_id"
+node2            -[#595959,plain]-^  tariffs         : "tariff_id"
+node2            -[#595959,plain]-^  tariffs_en      : "tariff_id"
+node11           -[#595959,plain]-^  tariffs_en      : "tariff_id"
 node1            -[#595959,plain]-^  household       : "household_id:id"
-node1            -[#595959,plain]-^  node6           : "type_id:id"
-node0            -[#595959,plain]-^  node1           : "contract_id:id"
-node8            -[#595959,plain]-^  node1           : "contract:id"
+node1            -[#595959,plain]-^  node2           : "type_id:id"
+node7            -[#595959,plain]-^  node1           : "contract_id:id"
+node3            -[#595959,plain]-^  node1           : "contract:id"
 @enduml
