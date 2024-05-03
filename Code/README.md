@@ -17,7 +17,9 @@ The [test folder](Code/bad_walden_stadtwerke/src/test) contains all JUnit tests 
 ## Programming Decisions
 
 ### Architectural decisions
-We decided to implement the client side of the sign-up process while mocking the server using Mockito. Our client sends out real working requests and is also able to receive and handle the mocked server inputs.
+We decided to implement the client side of the sign-up process while mocking the server using Mockito. Our client sends out real working requests and is also able to receive and handle the mocked server inputs.  
+The general design is depicted in the following much simplified system overview:
+![system overview.png](system%20overview.png)
 
 ### Usage of JavaFXML
 We decided to use JavaFXML instead of JavaFX because it offers us the possibility to clearly separate our UI from our logic. In JavaFXML, we have an FXML file that contains the UI, and a so-called "controller file" that handles UI events and the logic behind the UI. As a result, we have a clear separation between logic and design.
