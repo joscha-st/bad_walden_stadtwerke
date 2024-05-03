@@ -89,9 +89,6 @@ public class MockHttpClient {
 		return "{\"status\": \"connected\"}";
 	}
 
-    public <T> HttpResponse<T> send(HttpRequest request, BodyHandler<T> responseBodyHandler) throws IOException, InterruptedException {
-        HttpResponse<T> mockResponse = mock(HttpResponse.class);
-
 	/**
      * [MOCK - OOS] no real functionality
      * Sends an HTTP request and returns a mock response.
