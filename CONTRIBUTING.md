@@ -4,7 +4,7 @@ Welcome to the 'Bad Walden: Stadtwerke' project! We're excited to see your contr
 ## Before You Start:
 **Understand the Project:** This project is a utility service management software for the fictional city of Bad Walden. Take some time to understand the project's goals and requirements.
 **Important Disclamer:** This project is part of a university assignment, it is not related to any productive use.  
-Please not due to this some parts of the project are mocked as they were out of scope (see [Code/bad_walden/stadtwerke/README.md](Code/bad_walden_stadtwerke/README.md)) and following are some unusual implications such as Mockito running in compile scope. 
+Please not due to this some parts of the project are mocked as they were out of scope (see [Code/bad_walden_stadtwerke/README.md](Code/README.md)) and following are some unusual implications such as Mockito running in compile scope. 
 
 
 ## Project Structure:
@@ -14,7 +14,7 @@ Please not due to this some parts of the project are mocked as they were out of 
 
 
 ## How to Contribute:
-**Get started**: Get yourself a local copy of the code. For this, follow the [README.md#how-to-run-the-programm-and-see-our-code](How to run the code section in our readme).  
+**Get started**: Get yourself a local copy of the code. For this, follow the [How to run the code section in our readme](Code/README.md).  
 **Make Changes:** Follow the standard Java coding conventions when making changes.  
 **Write Unit Tests:** All contributions should come with unit tests to ensure a robust codebase.  
 **Test on your machine:** We're using Maven for our project, please make sure you do a clean - install, to test wheter everything works.  
