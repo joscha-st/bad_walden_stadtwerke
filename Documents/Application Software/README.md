@@ -41,11 +41,9 @@ Customers can choose from a variety of tariffs that meet their needs.
 Secure storage of customer data after successful registration.
 5. Redirect to Home Screen:
 After logging in, customers are redirected to the regular home screen of the website.
-![Customer: Inital Sign Up](Sign_Up_Server_BPMN.png)
+![Customer: Inital Sign Up](SignUp_Process_BPMN_Final.png)
 
-#### Customer: Login process
-The Login Page can be used to login into the account. By typing in the correct username and password the user will be led to the Home Page.
-![Customer: Login process](UI_Einlogprozess.png)
+
 
 #### Customer: Invoice
 This process gives the user an overview of all their invoices. They can filter their invoices by date and utilities.
