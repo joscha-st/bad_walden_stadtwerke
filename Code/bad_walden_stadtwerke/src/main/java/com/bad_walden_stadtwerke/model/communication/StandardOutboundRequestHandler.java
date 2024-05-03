@@ -143,6 +143,7 @@ public class StandardOutboundRequestHandler {
 
 	private static void CreateNewClientIfNoneExists() {
 		if (client == null) {
+			//Replace this with the standard Java.net Client for real use.
 			client = MockHttpClient.newMockHttpClient();
 			CentralLoggingUtility.handleEvent("Communication", "New client initialized");
 		}

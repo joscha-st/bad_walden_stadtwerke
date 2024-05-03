@@ -1,4 +1,5 @@
 /**
+ * [MOCK - OOS] no real functionality
  * The MockActiveSession class simulates an active session for testing purposes.
  * <p>
  * It provides mock data for the active user, including user ID, friendly display name, and initial sign-up status.
@@ -15,7 +16,8 @@ public class MockActiveSession {
 	private static String bearerToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9";
 
 	/**
-     * Retrieves the active user from the mock session.
+     * [MOCK - OOS] no real functionality
+	 * Retrieves the active user from the mock session.
      *
      * @return The active user.
      */
@@ -24,7 +26,8 @@ public class MockActiveSession {
 	}
 
 	/**
-     * Retrieves the bearer token for the active session.
+     * [MOCK - OOS] no real functionality
+	 * Retrieves the bearer token for the active session.
      *
      * @return The bearer token.
      */
@@ -33,14 +36,16 @@ public class MockActiveSession {
 	}
 
 	/**
-     * Refreshes the current session data from the web server.
+     * [MOCK - OOS] no real functionality
+	 * Refreshes the current session data from the web server.
      * This method is currently empty as it is a mock implementation.
      */
 	public static void refreshCurrentSessionDataFromWebServer() {
 	}
 
 /**
-     * The SessionUser class represents the user in the mock active session.
+     *[MOCK - OOS] no real functionality
+ * The SessionUser class represents the user in the mock active session.
      */
 	public static class SessionUser {
 		private int userId = 57782;
@@ -49,7 +54,8 @@ public class MockActiveSession {
 		private boolean hasDoneInitialSignUp = false;
 
 		/**
-         * Retrieves the friendly display name of the user.
+         * [MOCK - OOS] no real functionality
+		 * Retrieves the friendly display name of the user.
          *
          * @return The friendly display name.
          */
@@ -58,7 +64,8 @@ public class MockActiveSession {
 		}
 
 		/**
-         * Checks if the user has completed the initial sign-up process.
+         * [MOCK - OOS] no real functionality
+		 * Checks if the user has completed the initial sign-up process.
          *
          * @return True if the user has completed the initial sign-up, otherwise false.
          */
